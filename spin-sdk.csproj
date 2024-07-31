@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <RootNamespace>spin_sdk</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <_hostArch>$([System.Runtime.InteropServices.RuntimeInformation]::ProcessArchitecture.ToString().ToLowerInvariant)</_hostArch>
+    <_hostOS>linux</_hostOS>
+    <_hostOS Condition="$([MSBuild]::IsOSPlatform('OSX'))">osx</_hostOS>
+    <_hostOS Condition="$([MSBuild]::IsOSPlatform('WINDOWS'))">windows</_hostOS>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <CustomLinkerArg Include="-Wl,--component-type,$(MSBuildProjectDirectory)/SpinHttpWorld_component_type.wit" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Microsoft.DotNet.ILCompiler.LLVM" Version="9.0.0-dev" />
+    <PackageReference Include="runtime.win-x64.Microsoft.DotNet.ILCompiler.LLVM" Version="9.0.0-dev" Condition="'$(_hostOS)' == 'windows' and '$(_hostArch)' == 'x64'" />
+    <PackageReference Include="runtime.linux-arm64.Microsoft.DotNet.ILCompiler.LLVM" Version="9.0.0-dev" Condition="'$(_hostOS)' == 'linux' and '$(_hostArch)' == 'arm64'" />
+  </ItemGroup>
+  
+</Project>
