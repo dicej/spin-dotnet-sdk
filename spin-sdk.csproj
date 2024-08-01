@@ -30,7 +30,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="ImportInDev.proj" />
+    <Content Include="SpinHttpWorld_component_type.wit" />
     <CustomLinkerArg Include="-Wl,--component-type,$(MSBuildProjectDirectory)/SpinHttpWorld_component_type.wit" />
   </ItemGroup>
   
