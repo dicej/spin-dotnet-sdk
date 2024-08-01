@@ -1,6 +1,6 @@
 using SpinHttpWorld.wit.imports.wasi.io.v0_2_0;
 
-namespace SpinHttpWorld.wit.exports.wasi.http.v0_2_0;
+namespace Spin.Http;
 
 class OutputStream : Stream
 {

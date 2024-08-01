@@ -183,9 +183,9 @@ public interface ISqlite {
     public class Connection: IDisposable {
         internal int Handle { get; set; }
 
-        internal readonly record struct THandle(int Handle);
+        public readonly record struct THandle(int Handle);
 
-        internal Connection(THandle handle) {
+        public Connection(THandle handle) {
             Handle = handle.Handle;
         }
 

@@ -40,9 +40,9 @@ public interface IError {
     public class Error: IDisposable {
         internal int Handle { get; set; }
 
-        internal readonly record struct THandle(int Handle);
+        public readonly record struct THandle(int Handle);
 
-        internal Error(THandle handle) {
+        public Error(THandle handle) {
             Handle = handle.Handle;
         }
 

@@ -597,9 +597,9 @@ public interface ITypes {
     public class Fields: IDisposable {
         internal int Handle { get; set; }
 
-        internal readonly record struct THandle(int Handle);
+        public readonly record struct THandle(int Handle);
 
-        internal Fields(THandle handle) {
+        public Fields(THandle handle) {
             Handle = handle.Handle;
         }
 
@@ -1063,9 +1063,9 @@ public interface ITypes {
     public class IncomingRequest: IDisposable {
         internal int Handle { get; set; }
 
-        internal readonly record struct THandle(int Handle);
+        public readonly record struct THandle(int Handle);
 
-        internal IncomingRequest(THandle handle) {
+        public IncomingRequest(THandle handle) {
             Handle = handle.Handle;
         }
 
@@ -1377,9 +1377,9 @@ public interface ITypes {
     public class OutgoingRequest: IDisposable {
         internal int Handle { get; set; }
 
-        internal readonly record struct THandle(int Handle);
+        public readonly record struct THandle(int Handle);
 
-        internal OutgoingRequest(THandle handle) {
+        public OutgoingRequest(THandle handle) {
             Handle = handle.Handle;
         }
 
@@ -2061,9 +2061,9 @@ public interface ITypes {
     public class RequestOptions: IDisposable {
         internal int Handle { get; set; }
 
-        internal readonly record struct THandle(int Handle);
+        public readonly record struct THandle(int Handle);
 
-        internal RequestOptions(THandle handle) {
+        public RequestOptions(THandle handle) {
             Handle = handle.Handle;
         }
 
@@ -2393,9 +2393,9 @@ public interface ITypes {
     public class ResponseOutparam: IDisposable {
         internal int Handle { get; set; }
 
-        internal readonly record struct THandle(int Handle);
+        public readonly record struct THandle(int Handle);
 
-        internal ResponseOutparam(THandle handle) {
+        public ResponseOutparam(THandle handle) {
             Handle = handle.Handle;
         }
 
@@ -3401,9 +3401,9 @@ public interface ITypes {
     public class IncomingResponse: IDisposable {
         internal int Handle { get; set; }
 
-        internal readonly record struct THandle(int Handle);
+        public readonly record struct THandle(int Handle);
 
-        internal IncomingResponse(THandle handle) {
+        public IncomingResponse(THandle handle) {
             Handle = handle.Handle;
         }
 
@@ -3520,9 +3520,9 @@ public interface ITypes {
     public class IncomingBody: IDisposable {
         internal int Handle { get; set; }
 
-        internal readonly record struct THandle(int Handle);
+        public readonly record struct THandle(int Handle);
 
-        internal IncomingBody(THandle handle) {
+        public IncomingBody(THandle handle) {
             Handle = handle.Handle;
         }
 
@@ -3621,9 +3621,9 @@ public interface ITypes {
     public class FutureTrailers: IDisposable {
         internal int Handle { get; set; }
 
-        internal readonly record struct THandle(int Handle);
+        public readonly record struct THandle(int Handle);
 
-        internal FutureTrailers(THandle handle) {
+        public FutureTrailers(THandle handle) {
             Handle = handle.Handle;
         }
 
@@ -4345,9 +4345,9 @@ public interface ITypes {
     public class OutgoingResponse: IDisposable {
         internal int Handle { get; set; }
 
-        internal readonly record struct THandle(int Handle);
+        public readonly record struct THandle(int Handle);
 
-        internal OutgoingResponse(THandle handle) {
+        public OutgoingResponse(THandle handle) {
             Handle = handle.Handle;
         }
 
@@ -4527,9 +4527,9 @@ public interface ITypes {
     public class OutgoingBody: IDisposable {
         internal int Handle { get; set; }
 
-        internal readonly record struct THandle(int Handle);
+        public readonly record struct THandle(int Handle);
 
-        internal OutgoingBody(THandle handle) {
+        public OutgoingBody(THandle handle) {
             Handle = handle.Handle;
         }
 
@@ -5255,9 +5255,9 @@ public interface ITypes {
     public class FutureIncomingResponse: IDisposable {
         internal int Handle { get; set; }
 
-        internal readonly record struct THandle(int Handle);
+        public readonly record struct THandle(int Handle);
 
-        internal FutureIncomingResponse(THandle handle) {
+        public FutureIncomingResponse(THandle handle) {
             Handle = handle.Handle;
         }
 

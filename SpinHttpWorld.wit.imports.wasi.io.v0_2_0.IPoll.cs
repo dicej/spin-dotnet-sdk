@@ -22,9 +22,9 @@ public interface IPoll {
     public class Pollable: IDisposable {
         internal int Handle { get; set; }
 
-        internal readonly record struct THandle(int Handle);
+        public readonly record struct THandle(int Handle);
 
-        internal Pollable(THandle handle) {
+        public Pollable(THandle handle) {
             Handle = handle.Handle;
         }
 

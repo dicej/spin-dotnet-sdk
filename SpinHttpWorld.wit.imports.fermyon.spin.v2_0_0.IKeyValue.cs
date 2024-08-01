@@ -68,9 +68,9 @@ public interface IKeyValue {
     public class Store: IDisposable {
         internal int Handle { get; set; }
 
-        internal readonly record struct THandle(int Handle);
+        public readonly record struct THandle(int Handle);
 
-        internal Store(THandle handle) {
+        public Store(THandle handle) {
             Handle = handle.Handle;
         }
 

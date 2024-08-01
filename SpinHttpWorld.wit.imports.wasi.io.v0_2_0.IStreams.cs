@@ -65,9 +65,9 @@ public interface IStreams {
     public class InputStream: IDisposable {
         internal int Handle { get; set; }
 
-        internal readonly record struct THandle(int Handle);
+        public readonly record struct THandle(int Handle);
 
-        internal InputStream(THandle handle) {
+        public InputStream(THandle handle) {
             Handle = handle.Handle;
         }
 
@@ -377,9 +377,9 @@ public interface IStreams {
     public class OutputStream: IDisposable {
         internal int Handle { get; set; }
 
-        internal readonly record struct THandle(int Handle);
+        public readonly record struct THandle(int Handle);
 
-        internal OutputStream(THandle handle) {
+        public OutputStream(THandle handle) {
             Handle = handle.Handle;
         }
 

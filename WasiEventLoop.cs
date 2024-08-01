@@ -1,7 +1,7 @@
 using System.Runtime.CompilerServices;
 using SpinHttpWorld.wit.imports.wasi.io.v0_2_0;
 
-namespace SpinHttpWorld.wit.exports.wasi.http.v0_2_0;
+namespace Spin.Http;
 
 internal static class WasiEventLoop
 {
