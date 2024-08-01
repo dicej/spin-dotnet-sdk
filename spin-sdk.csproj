@@ -1,5 +1,4 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <VersionPrefix>0.1.0</VersionPrefix>
     <VersionSuffix Condition="'$(BuildNumber)' == ''">dev</VersionSuffix>
@@ -22,22 +21,11 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <_hostArch>$([System.Runtime.InteropServices.RuntimeInformation]::ProcessArchitecture.ToString().ToLowerInvariant)</_hostArch>
-    <_hostOS>linux</_hostOS>
-    <_hostOS Condition="$([MSBuild]::IsOSPlatform('OSX'))">osx</_hostOS>
-    <_hostOS Condition="$([MSBuild]::IsOSPlatform('WINDOWS'))">windows</_hostOS>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <Content Include="SpinHttpWorld_component_type.wit" />
-    <CustomLinkerArg Include="-Wl,--component-type,$(MSBuildProjectDirectory)/SpinHttpWorld_component_type.wit" />
-  </ItemGroup>
-  
-  <ItemGroup>
-    <PackageReference Include="Microsoft.DotNet.ILCompiler.LLVM" Version="9.0.0-dev" />
-    <PackageReference Include="runtime.win-x64.Microsoft.DotNet.ILCompiler.LLVM" Version="9.0.0-dev" Condition="'$(_hostOS)' == 'windows' and '$(_hostArch)' == 'x64'" />
-    <PackageReference Include="runtime.linux-arm64.Microsoft.DotNet.ILCompiler.LLVM" Version="9.0.0-dev" Condition="'$(_hostOS)' == 'linux' and '$(_hostArch)' == 'arm64'" />
-  </ItemGroup>
+  <Target Name="PackTaskDependencies" BeforeTargets="GenerateNuspec">
+    <ItemGroup>
+      <_PackageFiles Include="build\**" BuildAction="Content" PackagePath="build" />
+      <_PackageFiles Include="SpinHttpWorld_component_type.wit" BuildAction="Content" />
+    </ItemGroup>
+  </Target>
   
 </Project>
