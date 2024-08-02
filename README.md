@@ -16,7 +16,8 @@ download the artifacts manually and point NuGet to them as described below.
 **PLEASE NOTE**: Due to [a
 bug](https://github.com/WebAssembly/wasi-sdk/issues/454) in the WASI-SDK 23
 build, this SDK does not yet work on Windows, and upgrading to WASI-SDK 24
-(which fixes that bug) will require changes to the .NET runtime.  Stay tuned.
+(which fixes that bug) will require changes to the .NET runtime.  This will be
+fixed soon.
 
 ## Running the Sample(s)
 
@@ -24,16 +25,10 @@ build, this SDK does not yet work on Windows, and upgrading to WASI-SDK 24
 
 - [.NET 9.0 Preview 6 or later](https://dotnet.microsoft.com/en-us/download/dotnet/9.0)
 - [Spin 2.7.0 or later](https://github.com/fermyon/spin/releases/tag/v2.7.0)
-- The following files, downloaded to a local directory on your computer:
-    - [Fermyon.Spin.SDK.0.1.0-dev.nupkg](https://github.com/dicej/spin-dotnet-sdk/releases/download/canary/Fermyon.Spin.SDK.0.1.0-dev.nupkg)
-    - [Microsoft.DotNet.ILCompiler.LLVM.9.0.0-dev.nupkg](https://github.com/dicej/spin-dotnet-sdk/releases/download/canary/Microsoft.DotNet.ILCompiler.LLVM.9.0.0-dev.nupkg)
-    - [runtime.wasi-wasm.Microsoft.DotNet.ILCompiler.LLVM.9.0.0-dev.nupkg](https://github.com/dicej/spin-dotnet-sdk/releases/download/canary/runtime.wasi-wasm.Microsoft.DotNet.ILCompiler.LLVM.9.0.0-dev.nupkg)
-    - Either [runtime.linux-arm64.Microsoft.DotNet.ILCompiler.LLVM.9.0.0-dev.nupkg](https://github.com/dicej/spin-dotnet-sdk/releases/download/canary/runtime.linux-arm64.Microsoft.DotNet.ILCompiler.LLVM.9.0.0-dev.nupkg), [runtime.linux-x64.Microsoft.DotNet.ILCompiler.LLVM.9.0.0-dev.nupkg](https://github.com/dicej/spin-dotnet-sdk/releases/download/canary/runtime.linux-x64.Microsoft.DotNet.ILCompiler.LLVM.9.0.0-dev.nupkg), [runtime.win-x64.Microsoft.DotNet.ILCompiler.LLVM.9.0.0-dev.nupkg](https://github.com/dicej/spin-dotnet-sdk/releases/download/canary/runtime.win-arm64.Microsoft.DotNet.ILCompiler.LLVM.9.0.0-dev.nupkg), or [runtime.osx-arm64.Microsoft.DotNet.ILCompiler.LLVM.9.0.0-dev.nupkg](https://github.com/dicej/spin-dotnet-sdk/releases/download/canary/runtime.osx-arm64.Microsoft.DotNet.ILCompiler.LLVM.9.0.0-dev.nupkg), depending on the platform you're using.  If there isn't a build yet for your platform, please file an issue.
 
-Once you've downloaded the above files, please set the `NUGET_LOCAL_PATH`
-environment variable to point to the absolute path of the directory you chose.
-
-For example, set `platform=linux-arm64`, `platform=linux-x64`, `platform=win-x64`, or `platform=osx-arm64` and run:
+Also, we need to download a few pre-release packages and tell NuGet where to
+find them.  Set `platform=linux-arm64`, `platform=linux-x64`,
+`platform=win-x64`, or `platform=osx-arm64` and run:
 
 ```
 mkdir packages
