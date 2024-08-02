@@ -4,7 +4,7 @@
     <VersionSuffix Condition="'$(BuildNumber)' == ''">dev</VersionSuffix>
     <VersionSuffix Condition="'$(BuildNumber)' != ''">preview$([System.String]::Format('{0:00000}', $([MSBuild]::Add($(BuildNumber), 0))))</VersionSuffix>
     <PackageVersion>$(VersionPrefix)-$(VersionSuffix)</PackageVersion>
-    <PackageOutputPath>$(MSBuildThisFileDirectory)artifacts\</PackageOutputPath>
+    <PackageOutputPath>$(MSBuildThisFileDirectory)artifacts/</PackageOutputPath>
     <IsPackable>false</IsPackable>
     <PackageId>Fermyon.Spin.SDK</PackageId>
     <Authors>Fermyon Engineering</Authors>
@@ -23,7 +23,7 @@
 
   <Target Name="PackTaskDependencies" BeforeTargets="GenerateNuspec">
     <ItemGroup>
-      <_PackageFiles Include="build\**" BuildAction="Content" PackagePath="build" />
+      <_PackageFiles Include="build/**" BuildAction="Content" PackagePath="build" />
       <_PackageFiles Include="SpinHttpWorld_component_type.wit" BuildAction="Content" PackagePath="." />
       <_PackageFiles Include="SpinHttpWorld.wit.exports.wasi.http.v0_2_0.IIncomingHandler.cs" BuildAction="Content" PackagePath="." />
       <_PackageFiles Include="SpinHttpWorld.wit.exports.wasi.http.v0_2_0.IncomingHandlerInterop.cs" BuildAction="Content" PackagePath="." />      
@@ -33,6 +33,7 @@
   <ItemGroup>
     <Compile Remove="SpinHttpWorld.wit.exports.wasi.http.v0_2_0.IIncomingHandler.cs" />
     <Compile Remove="SpinHttpWorld.wit.exports.wasi.http.v0_2_0.IncomingHandlerInterop.cs" />
+    <Compile Remove="samples/**" />
   </ItemGroup>  
   
 </Project>

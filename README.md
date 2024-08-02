@@ -36,11 +36,21 @@ cd samples/http-hello
 spin build -u
 ```
 
-While Spin is running, you can switch to another terminal and run e.g. `curl -i
-localhost:8000`, which should yield something like:
+While Spin is running, you can switch to another terminal and run e.g.
 
 ```
-[TODO]
+curl -i localhost:3000
+```
+
+which should yield something like:
+
+```
+HTTP/1.1 200 OK
+content-type: text/plain
+transfer-encoding: chunked
+date: Fri, 02 Aug 2024 19:45:33 GMT
+
+hello, world!
 ```
 
 Please file an issue if you have any trouble.
