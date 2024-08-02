@@ -13,6 +13,11 @@ for all major platforms (i.e. Windows, MacOS, and Linux), we'll switch to those
 and publish an official package for this library.  Meanwhile, you'll need to
 download the artifacts manually and point NuGet to them as described below.
 
+**PLEASE NOTE**: Due to [a
+bug](https://github.com/WebAssembly/wasi-sdk/issues/454) in the WASI-SDK 23
+build, this SDK does not yet work on Windows, and upgrading to WASI-SDK 24
+(which fixes that bug) will require changes to the .NET runtime.  Stay tuned.
+
 ## Running the Sample(s)
 
 ### Prerequisite(s)
