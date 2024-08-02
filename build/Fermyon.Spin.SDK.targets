@@ -1,0 +1,57 @@
+<!--
+    TODO: Most of this file has been temporarily borrowed from
+    https://github.com/bytecodealliance/componentize-dotnet/blob/main/src/WitBindgen
+    and modified.  We should upstream the relevant changes and switch to using
+    that project instead.
+-->
+
+<Project>
+  <PropertyGroup>
+    <_hostArchRaw>$([System.Runtime.InteropServices.RuntimeInformation]::ProcessArchitecture.ToString().ToLowerInvariant)</_hostArchRaw>
+    <_hostArch>arm64</_hostArch>
+    <_hostArch Condition="'$(_hostArchRaw)' == 'x64'">x86_64</_hostArch>    
+    <_hostArchAlt>aarch64</_hostArchAlt>
+    <_hostArchAlt Condition="'$(_hostArchRaw)' == 'x64'">x86_64</_hostArchAlt>    
+    <_hostOS>linux</_hostOS>
+    <_hostOS Condition="$([MSBuild]::IsOSPlatform('OSX'))">macos</_hostOS>
+    <_hostOS Condition="$([MSBuild]::IsOSPlatform('WINDOWS'))">windows</_hostOS>
+    <_extension>tar.gz</_extension>
+    <_extension Condition="$([MSBuild]::IsOSPlatform('WINDOWS'))">zip</_extension>
+
+    <WasiSdkVersion>23.0</WasiSdkVersion>
+    <WasiSdkUrl>https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-$(WasiSdkVersion.Split(".")[0])/wasi-sdk-$(WasiSdkVersion)-$(_hostArch)-$(_hostOs).tar.gz</WasiSdkUrl>
+    <WasiSdkRoot>$([System.IO.Path]::Combine("$([System.Environment]::GetFolderPath(SpecialFolder.UserProfile))", ".wasi-sdk", "wasi-sdk-$(WasiSdkVersion)"))</WasiSdkRoot>
+  </PropertyGroup>
+  
+  <!--
+      MSBuild stuff to acquire the necessary SDKs (WASI SDK) automatically. It will take a few mins on the
+      first build on a given machine, but after that should no-op.
+    -->
+    <Target Name="PrepareWasmSdks" BeforeTargets="CheckWasmSdks" DependsOnTargets="ObtainWasiSdk">
+        <PropertyGroup>
+            <ClangExeName>clang</ClangExeName>
+            <ClangExeName Condition="$([MSBuild]::IsOSPlatform('Windows'))">$(ClangExeName).exe</ClangExeName>
+            <Wasicompiler>$(WasiSdkRoot)/bin/$(ClangExeName)</Wasicompiler>
+            <WASI_SDK_PATH>$(WasiSdkRoot)</WASI_SDK_PATH>
+        </PropertyGroup>
+    </Target>
+
+    <Target Name="ObtainWasiSdk" Condition="!(Exists($(WasiSdkRoot)))">
+        <PropertyGroup>
+            <WasiSdkDownloadTempDir>$([System.IO.Path]::Combine($([System.IO.Path]::GetTempPath()), $([System.IO.Path]::GetRandomFileName())))</WasiSdkDownloadTempDir>
+        </PropertyGroup>
+
+        <MakeDir Directories="$(WasiSdkDownloadTempDir)" />
+        <DownloadFile
+            SourceUrl="$(WasiSdkUrl)"
+            DestinationFolder="$(WasiSdkDownloadTempDir)">
+            <Output TaskParameter="DownloadedFile" ItemName="WasiSdkDownloadTempFile" />
+        </DownloadFile>
+
+        <!-- Windows 10+ has tar built in, so this should work cross-platform -->
+        <Message Importance="high" Text="Extracting @(WasiSdkDownloadTempFile) to $(WasiSdkRoot)..." />
+        <MakeDir Directories="$(WasiSdkRoot)" />
+        <Exec Command="tar -xf &quot;@(WasiSdkDownloadTempFile)&quot; -C . --strip-components=1" WorkingDirectory="$(WasiSdkRoot)" />
+        <RemoveDir Directories="$(WasiSdkDownloadTempDir)" />
+    </Target>
+</Project>

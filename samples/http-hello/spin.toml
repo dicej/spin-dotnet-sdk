@@ -1,0 +1,15 @@
+spin_manifest_version = 2
+
+[application]
+name = "hello"
+version = "0.1.0"
+authors = ["Fermyon Engineering <engineering@fermyon.com>"]
+
+[[trigger.http]]
+route = "/..."
+component = "hello"
+
+[component.hello]
+source = "bin/Release/net9.0/wasi-wasm/publish/App.wasm"
+[component.hello.build]
+command = "dotnet publish App.csproj"
