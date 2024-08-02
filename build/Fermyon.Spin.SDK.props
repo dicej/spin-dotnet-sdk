@@ -1,17 +1,5 @@
 <Project>
-  <PropertyGroup>
-    <_hostArch>$([System.Runtime.InteropServices.RuntimeInformation]::ProcessArchitecture.ToString().ToLowerInvariant)</_hostArch>
-    <_hostOS>linux</_hostOS>
-    <_hostOS Condition="$([MSBuild]::IsOSPlatform('OSX'))">osx</_hostOS>
-    <_hostOS Condition="$([MSBuild]::IsOSPlatform('WINDOWS'))">win</_hostOS>
-  </PropertyGroup>
-
   <ItemGroup>
-    <CustomLinkerArg Include="-Wl,--component-type,$(MSBuildProjectDirectory)/SpinHttpWorld_component_type.wit" />
-  </ItemGroup>
-  
-  <ItemGroup>
-    <PackageReference Include="Microsoft.DotNet.ILCompiler.LLVM" Version="9.0.0-dev" />
-    <PackageReference Include="runtime.$(_hostOS)-$(_hostArch).Microsoft.DotNet.ILCompiler.LLVM" Version="9.0.0-dev" />
+    <CustomLinkerArg Include="-Wl,--component-type,$(NuGetPackageRoot)/fermyon.spin.sdk/0.1.0-dev/SpinHttpWorld_component_type.wit" />
   </ItemGroup>
 </Project>
