@@ -18,7 +18,7 @@
     <_extension>tar.gz</_extension>
     <_extension Condition="$([MSBuild]::IsOSPlatform('WINDOWS'))">zip</_extension>
 
-    <WasiSdkVersion>23.0</WasiSdkVersion>
+    <WasiSdkVersion>24.0</WasiSdkVersion>
     <WasiSdkUrl>https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-$(WasiSdkVersion.Split(".")[0])/wasi-sdk-$(WasiSdkVersion)-$(_hostArch)-$(_hostOs).tar.gz</WasiSdkUrl>
     <WasiSdkRoot>$([System.IO.Path]::Combine("$([System.Environment]::GetFolderPath(SpecialFolder.UserProfile))", ".wasi-sdk", "wasi-sdk-$(WasiSdkVersion)"))</WasiSdkRoot>
   </PropertyGroup>
