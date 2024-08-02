@@ -26,8 +26,18 @@ download the artifacts manually and point NuGet to them as described below.
     - Either [runtime.linux-arm64.Microsoft.DotNet.ILCompiler.LLVM.9.0.0-dev.nupkg](https://github.com/dicej/spin-dotnet-sdk/releases/download/canary/runtime.linux-arm64.Microsoft.DotNet.ILCompiler.LLVM.9.0.0-dev.nupkg), [runtime.linux-x64.Microsoft.DotNet.ILCompiler.LLVM.9.0.0-dev.nupkg](https://github.com/dicej/spin-dotnet-sdk/releases/download/canary/runtime.linux-x64.Microsoft.DotNet.ILCompiler.LLVM.9.0.0-dev.nupkg), [runtime.win-x64.Microsoft.DotNet.ILCompiler.LLVM.9.0.0-dev.nupkg](https://github.com/dicej/spin-dotnet-sdk/releases/download/canary/runtime.win-arm64.Microsoft.DotNet.ILCompiler.LLVM.9.0.0-dev.nupkg), or [runtime.osx-arm64.Microsoft.DotNet.ILCompiler.LLVM.9.0.0-dev.nupkg](https://github.com/dicej/spin-dotnet-sdk/releases/download/canary/runtime.osx-arm64.Microsoft.DotNet.ILCompiler.LLVM.9.0.0-dev.nupkg), depending on the platform you're using.  If there isn't a build yet for your platform, please file an issue.
 
 Once you've downloaded the above files, please set the `NUGET_LOCAL_PATH`
-environment variable to point to the absolute path of the directory you chose,
-e.g. `export NUGET_LOCAL_PATH=$HOME/Downloads`.
+environment variable to point to the absolute path of the directory you chose.
+
+For example, set `platform=linux-arm64`, `platform=linux-x64`, `platform=win-x64`, or `platform=osx-arm64` and run:
+
+```
+mkdir packages
+curl -LO --output-dir packages https://github.com/dicej/spin-dotnet-sdk/releases/download/canary/Fermyon.Spin.SDK.0.1.0-dev.nupkg
+curl -LO --output-dir packages https://github.com/dicej/spin-dotnet-sdk/releases/download/canary/Microsoft.DotNet.ILCompiler.LLVM.9.0.0-dev.nupkg
+curl -LO --output-dir packages https://github.com/dicej/spin-dotnet-sdk/releases/download/canary/runtime.wasi-wasm.Microsoft.DotNet.ILCompiler.LLVM.9.0.0-dev.nupkg
+curl -LO --output-dir packages https://github.com/dicej/spin-dotnet-sdk/releases/download/canary/runtime.$platform.Microsoft.DotNet.ILCompiler.LLVM.9.0.0-dev.nupkg
+export NUGET_LOCAL_PATH=$(pwd)/packages
+```
 
 ### Building and Running
 

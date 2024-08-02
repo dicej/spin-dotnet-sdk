@@ -52,6 +52,8 @@
         <Message Importance="high" Text="Extracting @(WasiSdkDownloadTempFile) to $(WasiSdkRoot)..." />
         <MakeDir Directories="$(WasiSdkRoot)" />
         <Exec Command="tar -xf &quot;@(WasiSdkDownloadTempFile)&quot; -C . --strip-components=1" WorkingDirectory="$(WasiSdkRoot)" />
+        <!-- Make Microsoft.NETCore.Native.targets happy -->
+        <Touch Files="$(WasiSdkRoot)/VERSION" AlwaysCreate="true" />
         <RemoveDir Directories="$(WasiSdkDownloadTempDir)" />
     </Target>
 </Project>
