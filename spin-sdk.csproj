@@ -24,7 +24,7 @@
   <Target Name="PackTaskDependencies" BeforeTargets="GenerateNuspec">
     <ItemGroup>
       <_PackageFiles Include="build\**" BuildAction="Content" PackagePath="build" />
-      <_PackageFiles Include="SpinHttpWorld_component_type.wit" BuildAction="Content" />
+      <_PackageFiles Include="SpinHttpWorld_component_type.wit" BuildAction="Content" PackagePath="." />
     </ItemGroup>
   </Target>
   
