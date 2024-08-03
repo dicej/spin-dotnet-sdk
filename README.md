@@ -8,10 +8,11 @@ fork of the .NET runtime.
 As of this writing, .NET support for WASIp2 is still under development, so this
 library relies on unofficial builds of the NativeAOT-LLVM compiler and standard
 library.  Once WASIp2 support has been fully merged into the
-`feature/NativeAOT-LLVM` and CI has been updated to publish official packages
-for all major platforms (i.e. Windows, MacOS, and Linux), we'll switch to those
-and publish an official package for this library.  Meanwhile, you'll need to
-download the artifacts manually and point NuGet to them as described below.
+`feature/NativeAOT-LLVM` branch and CI has been updated to publish official
+packages for all major platforms (i.e. Windows, MacOS, and Linux), we'll switch
+to those and publish an official package for this library.  Meanwhile, you'll
+need to download the artifacts manually and point NuGet to them as described
+below.
 
 ## Running the Sample(s)
 
