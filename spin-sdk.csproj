@@ -24,15 +24,15 @@
   <Target Name="PackTaskDependencies" BeforeTargets="GenerateNuspec">
     <ItemGroup>
       <_PackageFiles Include="build/**" BuildAction="Content" PackagePath="build" />
-      <_PackageFiles Include="SpinHttpWorld_component_type.wit" BuildAction="Content" PackagePath="." />
-      <_PackageFiles Include="SpinHttpWorld.wit.exports.wasi.http.v0_2_0.IIncomingHandler.cs" BuildAction="Content" PackagePath="." />
-      <_PackageFiles Include="SpinHttpWorld.wit.exports.wasi.http.v0_2_0.IncomingHandlerInterop.cs" BuildAction="Content" PackagePath="." />      
+      <_PackageFiles Include="src/SpinHttpWorld_component_type.wit" BuildAction="Content" PackagePath="." />
+      <_PackageFiles Include="src/SpinHttpWorld.wit.exports.wasi.http.v0_2_0.IIncomingHandler.cs" BuildAction="Content" PackagePath="." />
+      <_PackageFiles Include="src/SpinHttpWorld.wit.exports.wasi.http.v0_2_0.IncomingHandlerInterop.cs" BuildAction="Content" PackagePath="." />      
     </ItemGroup>
   </Target>
 
   <ItemGroup>
-    <Compile Remove="SpinHttpWorld.wit.exports.wasi.http.v0_2_0.IIncomingHandler.cs" />
-    <Compile Remove="SpinHttpWorld.wit.exports.wasi.http.v0_2_0.IncomingHandlerInterop.cs" />
+    <Compile Remove="src/SpinHttpWorld.wit.exports.wasi.http.v0_2_0.IIncomingHandler.cs" />
+    <Compile Remove="src/SpinHttpWorld.wit.exports.wasi.http.v0_2_0.IncomingHandlerInterop.cs" />
     <Compile Remove="samples/**" />
   </ItemGroup>  
   
