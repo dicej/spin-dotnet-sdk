@@ -36,6 +36,8 @@ export NUGET_LOCAL_PATH=$(pwd)/packages
 
 ### Building and Running
 
+Open `samples/http-hello/spin.toml` and change `source = "bin/Release/net9.0/wasi-wasm/publish/App.wasm"` to include the path to the architecture you're using - e.g., `source·=·"bin/osx-arm64/Release/net9.0/wasi-wasm/publish/App.wasm`.
+
 ```
 cd samples/http-hello
 spin build -u
