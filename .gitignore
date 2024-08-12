@@ -3,5 +3,6 @@
 .packages
 bin
 obj
+build
 artifacts
 .spin

@@ -10,6 +10,6 @@ route = "/..."
 component = "hello"
 
 [component.hello]
-source = "bin/Release/net9.0/wasi-wasm/publish/App.wasm"
+source = "build/App.wasm"
 [component.hello.build]
-command = "dotnet publish App.csproj"
+command = "dotnet publish -o build App.csproj"
