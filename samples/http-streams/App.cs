@@ -1,7 +1,7 @@
+using System.Text;
 using Sha2;
 using Spin.Http;
 using SpinHttpWorld.wit.imports.wasi.http.v0_2_0;
-using System.Text;
 
 namespace SpinHttpWorld.wit.exports.wasi.http.v0_2_0;
 
@@ -25,7 +25,8 @@ public class IncomingHandlerImpl : IIncomingHandler
         var path = request.PathWithQuery();
         var headers = request.Headers().Entries();
 
-        if (path is null) {
+        if (path is null)
+        {
             path = "/";
         }
 
@@ -94,23 +95,19 @@ public class IncomingHandlerImpl : IIncomingHandler
             var requestBody = request.Consume();
             try
             {
-                using (var stream = new InputStream(requestBody.Stream()))
+                using var stream = new InputStream(requestBody.Stream());
+                using var sink = new OutputStream(responseBody.Write());
+                var buffer = new byte[16 * 1024];
+                while (true)
                 {
-                    using (var sink = new OutputStream(responseBody.Write()))
+                    var count = await stream.ReadAsync(buffer);
+                    if (count == 0)
                     {
-                        var buffer = new byte[16 * 1024];
-                        while (true)
-                        {
-                            var count = await stream.ReadAsync(buffer);
-                            if (count == 0)
-                            {
-                                break;
-                            }
-                            else
-                            {
-                                await sink.WriteAsync(buffer, 0, count);
-                            }
-                        }
+                        break;
+                    }
+                    else
+                    {
+                        await sink.WriteAsync(buffer, 0, count);
                     }
                 }
             }
@@ -145,29 +142,25 @@ public class IncomingHandlerImpl : IIncomingHandler
         var sha = new Sha256();
         try
         {
-            using (var client = new HttpClient())
+            using var client = new HttpClient();
+            using var stream = await client.GetStreamAsync(url);
+            var buffer = new byte[16 * 1024];
+            while (true)
             {
-                using (var stream = await client.GetStreamAsync(url))
+                var count = await stream.ReadAsync(buffer);
+                if (count == 0)
                 {
-                    var buffer = new byte[16 * 1024];
-                    while (true)
-                    {
-                        var count = await stream.ReadAsync(buffer);
-                        if (count == 0)
-                        {
-                            var hash = sha.GetHash();
-                            hash.CopyTo(buffer, 0);
-                            var hashString = BitConverter
-                                .ToString(buffer, 0, hash.Count)
-                                .Replace("-", "")
-                                .ToLower();
-                            return (url, hashString);
-                        }
-                        else
-                        {
-                            sha.AddData(buffer, 0, (uint)count);
-                        }
-                    }
+                    var hash = sha.GetHash();
+                    hash.CopyTo(buffer, 0);
+                    var hashString = BitConverter
+                        .ToString(buffer, 0, hash.Count)
+                        .Replace("-", "")
+                        .ToLower();
+                    return (url, hashString);
+                }
+                else
+                {
+                    sha.AddData(buffer, 0, (uint)count);
                 }
             }
         }
@@ -175,5 +168,5 @@ public class IncomingHandlerImpl : IIncomingHandler
         {
             return (url, e.ToString());
         }
-    }    
+    }
 }
