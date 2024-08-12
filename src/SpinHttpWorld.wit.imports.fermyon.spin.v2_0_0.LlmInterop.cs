@@ -22,7 +22,7 @@ namespace SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0
 
         }
 
-        internal  static unsafe global::SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0.ILlm.InferencingResult Infer(string model, string prompt, global::SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0.ILlm.InferencingParams? @params)
+        public  static unsafe global::SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0.ILlm.InferencingResult Infer(string model, string prompt, global::SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0.ILlm.InferencingParams? @params)
         {
 
             var result = model;
@@ -126,7 +126,7 @@ namespace SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0
 
         }
 
-        internal  static unsafe global::SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0.ILlm.EmbeddingsResult GenerateEmbeddings(string model, List<string> text)
+        public  static unsafe global::SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0.ILlm.EmbeddingsResult GenerateEmbeddings(string model, List<string> text)
         {
 
             var result = model;

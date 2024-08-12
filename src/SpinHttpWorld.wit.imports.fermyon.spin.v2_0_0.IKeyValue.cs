@@ -100,7 +100,7 @@ public interface IKeyValue {
 
         }
 
-        internal  static unsafe global::SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0.IKeyValue.Store Open(string label)
+        public  static unsafe global::SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0.IKeyValue.Store Open(string label)
         {
 
             var result = label;
@@ -174,7 +174,7 @@ public interface IKeyValue {
 
         }
 
-        internal   unsafe byte[]? Get(string key)
+        public   unsafe byte[]? Get(string key)
         {
             var handle = this.Handle;
 
@@ -268,7 +268,7 @@ public interface IKeyValue {
 
         }
 
-        internal   unsafe void Set(string key, byte[] value)
+        public   unsafe void Set(string key, byte[] value)
         {
             var handle = this.Handle;
 
@@ -345,7 +345,7 @@ public interface IKeyValue {
 
         }
 
-        internal   unsafe void Delete(string key)
+        public   unsafe void Delete(string key)
         {
             var handle = this.Handle;
 
@@ -419,7 +419,7 @@ public interface IKeyValue {
 
         }
 
-        internal   unsafe bool Exists(string key)
+        public   unsafe bool Exists(string key)
         {
             var handle = this.Handle;
 
@@ -493,7 +493,7 @@ public interface IKeyValue {
 
         }
 
-        internal   unsafe List<string> GetKeys()
+        public   unsafe List<string> GetKeys()
         {
             var handle = this.Handle;
 

@@ -54,7 +54,7 @@ public interface IPoll {
 
         }
 
-        internal   unsafe bool Ready()
+        public   unsafe bool Ready()
         {
             var handle = this.Handle;
             var result =  ReadyWasmInterop.wasmImportReady(handle);
@@ -70,7 +70,7 @@ public interface IPoll {
 
         }
 
-        internal   unsafe void Block()
+        public   unsafe void Block()
         {
             var handle = this.Handle;
             BlockWasmInterop.wasmImportBlock(handle);

@@ -72,7 +72,7 @@ public interface IError {
 
         }
 
-        internal   unsafe string ToDebugString()
+        public   unsafe string ToDebugString()
         {
             var handle = this.Handle;
 

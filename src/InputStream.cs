@@ -3,7 +3,7 @@ using SpinHttpWorld.wit.imports.wasi.io.v0_2_0;
 
 namespace Spin.Http;
 
-class InputStream : Stream
+public class InputStream : Stream
 {
     IStreams.InputStream stream;
     int offset;

@@ -54,7 +54,7 @@ public interface IMysql {
 
         }
 
-        internal  static unsafe global::SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0.IMysql.Connection Open(string address)
+        public  static unsafe global::SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0.IMysql.Connection Open(string address)
         {
 
             var result = address;
@@ -133,7 +133,7 @@ public interface IMysql {
 
         }
 
-        internal   unsafe global::SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0.IRdbmsTypes.RowSet Query(string statement, List<global::SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0.IRdbmsTypes.ParameterValue> @params)
+        public   unsafe global::SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0.IRdbmsTypes.RowSet Query(string statement, List<global::SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0.IRdbmsTypes.ParameterValue> @params)
         {
             var handle = this.Handle;
 
@@ -441,7 +441,7 @@ public interface IMysql {
 
         }
 
-        internal   unsafe void Execute(string statement, List<global::SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0.IRdbmsTypes.ParameterValue> @params)
+        public   unsafe void Execute(string statement, List<global::SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0.IRdbmsTypes.ParameterValue> @params)
         {
             var handle = this.Handle;
 

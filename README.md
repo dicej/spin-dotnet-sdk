@@ -36,6 +36,8 @@ export NUGET_LOCAL_PATH=$(pwd)/packages
 
 ### Building and Running
 
+#### Hello World!
+
 ```
 cd samples/http-hello
 spin build -u
@@ -56,6 +58,38 @@ transfer-encoding: chunked
 date: Fri, 02 Aug 2024 19:45:33 GMT
 
 hello, world!
+```
+
+#### Streaming and Outbound Requests
+
+```
+cd samples/http-streams
+spin build -u
+```
+
+Then, in another terminal, use `curl` to send a request to the app:
+
+```
+curl -i -H 'content-type: text/plain' --data-binary @- localhost:3000/echo <<EOF
+’Twas brillig, and the slithy toves
+      Did gyre and gimble in the wabe:
+All mimsy were the borogoves,
+      And the mome raths outgrabe.
+EOF
+```
+
+The above should echo the request body in the response.
+
+In addition to the `/echo` endpoint, the app supports a `/hash-all` endpoint
+which concurrently downloads one or more URLs and streams the SHA-256 hashes of
+their contents.  You can test it with e.g.:
+
+```
+curl -i \
+    -H 'url: https://webassembly.github.io/spec/core/' \
+    -H 'url: https://www.w3.org/groups/wg/wasm/' \
+    -H 'url: https://bytecodealliance.org/' \
+    localhost:3000/hash-all
 ```
 
 Please file an issue if you have any trouble.

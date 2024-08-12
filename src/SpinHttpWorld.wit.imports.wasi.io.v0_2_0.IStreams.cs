@@ -97,7 +97,7 @@ public interface IStreams {
 
         }
 
-        internal   unsafe byte[] Read(ulong len)
+        public   unsafe byte[] Read(ulong len)
         {
             var handle = this.Handle;
 
@@ -162,7 +162,7 @@ public interface IStreams {
 
         }
 
-        internal   unsafe byte[] BlockingRead(ulong len)
+        public   unsafe byte[] BlockingRead(ulong len)
         {
             var handle = this.Handle;
 
@@ -227,7 +227,7 @@ public interface IStreams {
 
         }
 
-        internal   unsafe ulong Skip(ulong len)
+        public   unsafe ulong Skip(ulong len)
         {
             var handle = this.Handle;
 
@@ -289,7 +289,7 @@ public interface IStreams {
 
         }
 
-        internal   unsafe ulong BlockingSkip(ulong len)
+        public   unsafe ulong BlockingSkip(ulong len)
         {
             var handle = this.Handle;
 
@@ -351,7 +351,7 @@ public interface IStreams {
 
         }
 
-        internal   unsafe global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IPoll.Pollable Subscribe()
+        public   unsafe global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IPoll.Pollable Subscribe()
         {
             var handle = this.Handle;
             var result =  SubscribeWasmInterop.wasmImportSubscribe(handle);
@@ -409,7 +409,7 @@ public interface IStreams {
 
         }
 
-        internal   unsafe ulong CheckWrite()
+        public   unsafe ulong CheckWrite()
         {
             var handle = this.Handle;
 
@@ -471,7 +471,7 @@ public interface IStreams {
 
         }
 
-        internal   unsafe void Write(byte[] contents)
+        public   unsafe void Write(byte[] contents)
         {
             var handle = this.Handle;
 
@@ -536,7 +536,7 @@ public interface IStreams {
 
         }
 
-        internal   unsafe void BlockingWriteAndFlush(byte[] contents)
+        public   unsafe void BlockingWriteAndFlush(byte[] contents)
         {
             var handle = this.Handle;
 
@@ -601,7 +601,7 @@ public interface IStreams {
 
         }
 
-        internal   unsafe void Flush()
+        public   unsafe void Flush()
         {
             var handle = this.Handle;
 
@@ -663,7 +663,7 @@ public interface IStreams {
 
         }
 
-        internal   unsafe void BlockingFlush()
+        public   unsafe void BlockingFlush()
         {
             var handle = this.Handle;
 
@@ -725,7 +725,7 @@ public interface IStreams {
 
         }
 
-        internal   unsafe global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IPoll.Pollable Subscribe()
+        public   unsafe global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IPoll.Pollable Subscribe()
         {
             var handle = this.Handle;
             var result =  SubscribeWasmInterop.wasmImportSubscribe(handle);
@@ -742,7 +742,7 @@ public interface IStreams {
 
         }
 
-        internal   unsafe void WriteZeroes(ulong len)
+        public   unsafe void WriteZeroes(ulong len)
         {
             var handle = this.Handle;
 
@@ -804,7 +804,7 @@ public interface IStreams {
 
         }
 
-        internal   unsafe void BlockingWriteZeroesAndFlush(ulong len)
+        public   unsafe void BlockingWriteZeroesAndFlush(ulong len)
         {
             var handle = this.Handle;
 
@@ -866,7 +866,7 @@ public interface IStreams {
 
         }
 
-        internal   unsafe ulong Splice(global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IStreams.InputStream src, ulong len)
+        public   unsafe ulong Splice(global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IStreams.InputStream src, ulong len)
         {
             var handle = this.Handle;
             var handle0 = src.Handle;
@@ -929,7 +929,7 @@ public interface IStreams {
 
         }
 
-        internal   unsafe ulong BlockingSplice(global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IStreams.InputStream src, ulong len)
+        public   unsafe ulong BlockingSplice(global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IStreams.InputStream src, ulong len)
         {
             var handle = this.Handle;
             var handle0 = src.Handle;

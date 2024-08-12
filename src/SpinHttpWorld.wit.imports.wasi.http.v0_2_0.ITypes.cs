@@ -629,7 +629,7 @@ public interface ITypes {
 
         }
 
-        internal   unsafe  Fields()
+        public   unsafe  Fields()
         {
             var result =  ConstructorWasmInterop.wasmImportConstructor();
             this.Handle = result;
@@ -644,7 +644,7 @@ public interface ITypes {
 
         }
 
-        internal  static unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields FromList(List<(string, byte[])> entries)
+        public  static unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields FromList(List<(string, byte[])> entries)
         {
 
             byte[] buffer0 = new byte[16 * entries.Count];
@@ -731,7 +731,7 @@ public interface ITypes {
 
         }
 
-        internal   unsafe List<byte[]> Get(string name)
+        public   unsafe List<byte[]> Get(string name)
         {
             var handle = this.Handle;
 
@@ -766,7 +766,7 @@ public interface ITypes {
 
         }
 
-        internal   unsafe bool Has(string name)
+        public   unsafe bool Has(string name)
         {
             var handle = this.Handle;
 
@@ -785,7 +785,7 @@ public interface ITypes {
 
         }
 
-        internal   unsafe void Set(string name, List<byte[]> value)
+        public   unsafe void Set(string name, List<byte[]> value)
         {
             var handle = this.Handle;
 
@@ -870,7 +870,7 @@ public interface ITypes {
 
         }
 
-        internal   unsafe void Delete(string name)
+        public   unsafe void Delete(string name)
         {
             var handle = this.Handle;
 
@@ -939,7 +939,7 @@ public interface ITypes {
 
         }
 
-        internal   unsafe void Append(string name, byte[] value)
+        public   unsafe void Append(string name, byte[] value)
         {
             var handle = this.Handle;
 
@@ -1011,7 +1011,7 @@ public interface ITypes {
 
         }
 
-        internal   unsafe List<(string, byte[])> Entries()
+        public   unsafe List<(string, byte[])> Entries()
         {
             var handle = this.Handle;
 
@@ -1044,7 +1044,7 @@ public interface ITypes {
 
         }
 
-        internal   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields Clone()
+        public   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields Clone()
         {
             var handle = this.Handle;
             var result =  CloneWasmInterop.wasmImportClone(handle);
@@ -1095,7 +1095,7 @@ public interface ITypes {
 
         }
 
-        internal   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Method Method()
+        public   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Method Method()
         {
             var handle = this.Handle;
 
@@ -1174,7 +1174,7 @@ public interface ITypes {
 
         }
 
-        internal   unsafe string? PathWithQuery()
+        public   unsafe string? PathWithQuery()
         {
             var handle = this.Handle;
 
@@ -1213,7 +1213,7 @@ public interface ITypes {
 
         }
 
-        internal   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Scheme? Scheme()
+        public   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Scheme? Scheme()
         {
             var handle = this.Handle;
 
@@ -1274,7 +1274,7 @@ public interface ITypes {
 
         }
 
-        internal   unsafe string? Authority()
+        public   unsafe string? Authority()
         {
             var handle = this.Handle;
 
@@ -1313,7 +1313,7 @@ public interface ITypes {
 
         }
 
-        internal   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields Headers()
+        public   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields Headers()
         {
             var handle = this.Handle;
             var result =  HeadersWasmInterop.wasmImportHeaders(handle);
@@ -1330,7 +1330,7 @@ public interface ITypes {
 
         }
 
-        internal   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.IncomingBody Consume()
+        public   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.IncomingBody Consume()
         {
             var handle = this.Handle;
 
@@ -1409,7 +1409,7 @@ public interface ITypes {
 
         }
 
-        internal   unsafe  OutgoingRequest(global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields headers)
+        public   unsafe  OutgoingRequest(global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields headers)
         {
             var handle = headers.Handle;
             headers.Handle = 0;
@@ -1426,7 +1426,7 @@ public interface ITypes {
 
         }
 
-        internal   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.OutgoingBody Body()
+        public   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.OutgoingBody Body()
         {
             var handle = this.Handle;
 
@@ -1471,7 +1471,7 @@ public interface ITypes {
 
         }
 
-        internal   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Method Method()
+        public   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Method Method()
         {
             var handle = this.Handle;
 
@@ -1550,7 +1550,7 @@ public interface ITypes {
 
         }
 
-        internal   unsafe void SetMethod(global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Method method)
+        public   unsafe void SetMethod(global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Method method)
         {
             var handle = this.Handle;
 
@@ -1681,7 +1681,7 @@ public interface ITypes {
 
         }
 
-        internal   unsafe string? PathWithQuery()
+        public   unsafe string? PathWithQuery()
         {
             var handle = this.Handle;
 
@@ -1720,7 +1720,7 @@ public interface ITypes {
 
         }
 
-        internal   unsafe void SetPathWithQuery(string? pathWithQuery)
+        public   unsafe void SetPathWithQuery(string? pathWithQuery)
         {
             var handle = this.Handle;
 
@@ -1780,7 +1780,7 @@ public interface ITypes {
 
         }
 
-        internal   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Scheme? Scheme()
+        public   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Scheme? Scheme()
         {
             var handle = this.Handle;
 
@@ -1841,7 +1841,7 @@ public interface ITypes {
 
         }
 
-        internal   unsafe void SetScheme(global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Scheme? scheme)
+        public   unsafe void SetScheme(global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Scheme? scheme)
         {
             var handle = this.Handle;
 
@@ -1938,7 +1938,7 @@ public interface ITypes {
 
         }
 
-        internal   unsafe string? Authority()
+        public   unsafe string? Authority()
         {
             var handle = this.Handle;
 
@@ -1977,7 +1977,7 @@ public interface ITypes {
 
         }
 
-        internal   unsafe void SetAuthority(string? authority)
+        public   unsafe void SetAuthority(string? authority)
         {
             var handle = this.Handle;
 
@@ -2037,7 +2037,7 @@ public interface ITypes {
 
         }
 
-        internal   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields Headers()
+        public   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields Headers()
         {
             var handle = this.Handle;
             var result =  HeadersWasmInterop.wasmImportHeaders(handle);
@@ -2093,7 +2093,7 @@ public interface ITypes {
 
         }
 
-        internal   unsafe  RequestOptions()
+        public   unsafe  RequestOptions()
         {
             var result =  ConstructorWasmInterop.wasmImportConstructor();
             this.Handle = result;
@@ -2108,7 +2108,7 @@ public interface ITypes {
 
         }
 
-        internal   unsafe ulong? ConnectTimeout()
+        public   unsafe ulong? ConnectTimeout()
         {
             var handle = this.Handle;
 
@@ -2147,7 +2147,7 @@ public interface ITypes {
 
         }
 
-        internal   unsafe void SetConnectTimeout(ulong? duration)
+        public   unsafe void SetConnectTimeout(ulong? duration)
         {
             var handle = this.Handle;
 
@@ -2201,7 +2201,7 @@ public interface ITypes {
 
         }
 
-        internal   unsafe ulong? FirstByteTimeout()
+        public   unsafe ulong? FirstByteTimeout()
         {
             var handle = this.Handle;
 
@@ -2240,7 +2240,7 @@ public interface ITypes {
 
         }
 
-        internal   unsafe void SetFirstByteTimeout(ulong? duration)
+        public   unsafe void SetFirstByteTimeout(ulong? duration)
         {
             var handle = this.Handle;
 
@@ -2294,7 +2294,7 @@ public interface ITypes {
 
         }
 
-        internal   unsafe ulong? BetweenBytesTimeout()
+        public   unsafe ulong? BetweenBytesTimeout()
         {
             var handle = this.Handle;
 
@@ -2333,7 +2333,7 @@ public interface ITypes {
 
         }
 
-        internal   unsafe void SetBetweenBytesTimeout(ulong? duration)
+        public   unsafe void SetBetweenBytesTimeout(ulong? duration)
         {
             var handle = this.Handle;
 
@@ -2425,7 +2425,7 @@ public interface ITypes {
 
         }
 
-        internal  static unsafe void Set(global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ResponseOutparam param, Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.OutgoingResponse, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode> response)
+        public  static unsafe void Set(global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ResponseOutparam param, Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.OutgoingResponse, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode> response)
         {
             var handle = param.Handle;
             param.Handle = 0;
@@ -3433,7 +3433,7 @@ public interface ITypes {
 
         }
 
-        internal   unsafe ushort Status()
+        public   unsafe ushort Status()
         {
             var handle = this.Handle;
             var result =  StatusWasmInterop.wasmImportStatus(handle);
@@ -3449,7 +3449,7 @@ public interface ITypes {
 
         }
 
-        internal   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields Headers()
+        public   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields Headers()
         {
             var handle = this.Handle;
             var result =  HeadersWasmInterop.wasmImportHeaders(handle);
@@ -3466,7 +3466,7 @@ public interface ITypes {
 
         }
 
-        internal   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.IncomingBody Consume()
+        public   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.IncomingBody Consume()
         {
             var handle = this.Handle;
 
@@ -3552,7 +3552,7 @@ public interface ITypes {
 
         }
 
-        internal   unsafe global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IStreams.InputStream Stream()
+        public   unsafe global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IStreams.InputStream Stream()
         {
             var handle = this.Handle;
 
@@ -3597,7 +3597,7 @@ public interface ITypes {
 
         }
 
-        internal  static unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.FutureTrailers Finish(global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.IncomingBody @this)
+        public  static unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.FutureTrailers Finish(global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.IncomingBody @this)
         {
             var handle = @this.Handle;
             @this.Handle = 0;
@@ -3653,7 +3653,7 @@ public interface ITypes {
 
         }
 
-        internal   unsafe global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IPoll.Pollable Subscribe()
+        public   unsafe global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IPoll.Pollable Subscribe()
         {
             var handle = this.Handle;
             var result =  SubscribeWasmInterop.wasmImportSubscribe(handle);
@@ -3670,7 +3670,7 @@ public interface ITypes {
 
         }
 
-        internal   unsafe Result<Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields?, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode>, None>? Get()
+        public   unsafe Result<Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields?, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode>, None>? Get()
         {
             var handle = this.Handle;
 
@@ -4377,7 +4377,7 @@ public interface ITypes {
 
         }
 
-        internal   unsafe  OutgoingResponse(global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields headers)
+        public   unsafe  OutgoingResponse(global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields headers)
         {
             var handle = headers.Handle;
             headers.Handle = 0;
@@ -4394,7 +4394,7 @@ public interface ITypes {
 
         }
 
-        internal   unsafe ushort StatusCode()
+        public   unsafe ushort StatusCode()
         {
             var handle = this.Handle;
             var result =  StatusCodeWasmInterop.wasmImportStatusCode(handle);
@@ -4410,7 +4410,7 @@ public interface ITypes {
 
         }
 
-        internal   unsafe void SetStatusCode(ushort statusCode)
+        public   unsafe void SetStatusCode(ushort statusCode)
         {
             var handle = this.Handle;
             var result =  SetStatusCodeWasmInterop.wasmImportSetStatusCode(handle, statusCode);
@@ -4448,7 +4448,7 @@ public interface ITypes {
 
         }
 
-        internal   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields Headers()
+        public   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields Headers()
         {
             var handle = this.Handle;
             var result =  HeadersWasmInterop.wasmImportHeaders(handle);
@@ -4465,7 +4465,7 @@ public interface ITypes {
 
         }
 
-        internal   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.OutgoingBody Body()
+        public   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.OutgoingBody Body()
         {
             var handle = this.Handle;
 
@@ -4559,7 +4559,7 @@ public interface ITypes {
 
         }
 
-        internal   unsafe global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IStreams.OutputStream Write()
+        public   unsafe global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IStreams.OutputStream Write()
         {
             var handle = this.Handle;
 
@@ -4604,7 +4604,7 @@ public interface ITypes {
 
         }
 
-        internal  static unsafe void Finish(global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.OutgoingBody @this, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields? trailers)
+        public  static unsafe void Finish(global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.OutgoingBody @this, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields? trailers)
         {
             var handle = @this.Handle;
             @this.Handle = 0;
@@ -5287,7 +5287,7 @@ public interface ITypes {
 
         }
 
-        internal   unsafe global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IPoll.Pollable Subscribe()
+        public   unsafe global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IPoll.Pollable Subscribe()
         {
             var handle = this.Handle;
             var result =  SubscribeWasmInterop.wasmImportSubscribe(handle);
@@ -5304,7 +5304,7 @@ public interface ITypes {
 
         }
 
-        internal   unsafe Result<Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.IncomingResponse, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode>, None>? Get()
+        public   unsafe Result<Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.IncomingResponse, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode>, None>? Get()
         {
             var handle = this.Handle;
 

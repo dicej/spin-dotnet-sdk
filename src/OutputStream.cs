@@ -2,7 +2,7 @@ using SpinHttpWorld.wit.imports.wasi.io.v0_2_0;
 
 namespace Spin.Http;
 
-class OutputStream : Stream
+public class OutputStream : Stream
 {
     IStreams.OutputStream stream;
 

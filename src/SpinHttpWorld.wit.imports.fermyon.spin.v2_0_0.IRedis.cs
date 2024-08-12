@@ -211,7 +211,7 @@ public interface IRedis {
 
         }
 
-        internal  static unsafe global::SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0.IRedis.Connection Open(string address)
+        public  static unsafe global::SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0.IRedis.Connection Open(string address)
         {
 
             var result = address;
@@ -285,7 +285,7 @@ public interface IRedis {
 
         }
 
-        internal   unsafe void Publish(string channel, byte[] payload)
+        public   unsafe void Publish(string channel, byte[] payload)
         {
             var handle = this.Handle;
 
@@ -362,7 +362,7 @@ public interface IRedis {
 
         }
 
-        internal   unsafe byte[]? Get(string key)
+        public   unsafe byte[]? Get(string key)
         {
             var handle = this.Handle;
 
@@ -456,7 +456,7 @@ public interface IRedis {
 
         }
 
-        internal   unsafe void Set(string key, byte[] value)
+        public   unsafe void Set(string key, byte[] value)
         {
             var handle = this.Handle;
 
@@ -533,7 +533,7 @@ public interface IRedis {
 
         }
 
-        internal   unsafe long Incr(string key)
+        public   unsafe long Incr(string key)
         {
             var handle = this.Handle;
 
@@ -607,7 +607,7 @@ public interface IRedis {
 
         }
 
-        internal   unsafe uint Del(List<string> keys)
+        public   unsafe uint Del(List<string> keys)
         {
             var handle = this.Handle;
 
@@ -694,7 +694,7 @@ public interface IRedis {
 
         }
 
-        internal   unsafe uint Sadd(string key, List<string> values)
+        public   unsafe uint Sadd(string key, List<string> values)
         {
             var handle = this.Handle;
 
@@ -784,7 +784,7 @@ public interface IRedis {
 
         }
 
-        internal   unsafe List<string> Smembers(string key)
+        public   unsafe List<string> Smembers(string key)
         {
             var handle = this.Handle;
 
@@ -865,7 +865,7 @@ public interface IRedis {
 
         }
 
-        internal   unsafe uint Srem(string key, List<string> values)
+        public   unsafe uint Srem(string key, List<string> values)
         {
             var handle = this.Handle;
 
@@ -955,7 +955,7 @@ public interface IRedis {
 
         }
 
-        internal   unsafe List<global::SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0.IRedis.RedisResult> Execute(string command, List<global::SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0.IRedis.RedisParameter> arguments)
+        public   unsafe List<global::SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0.IRedis.RedisResult> Execute(string command, List<global::SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0.IRedis.RedisParameter> arguments)
         {
             var handle = this.Handle;
 

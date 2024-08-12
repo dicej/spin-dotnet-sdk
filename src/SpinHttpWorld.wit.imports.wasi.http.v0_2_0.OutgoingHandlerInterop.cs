@@ -22,7 +22,7 @@ namespace SpinHttpWorld.wit.imports.wasi.http.v0_2_0
 
         }
 
-        internal  static unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.FutureIncomingResponse Handle(global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.OutgoingRequest request, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.RequestOptions? options)
+        public  static unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.FutureIncomingResponse Handle(global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.OutgoingRequest request, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.RequestOptions? options)
         {
             var handle = request.Handle;
             request.Handle = 0;

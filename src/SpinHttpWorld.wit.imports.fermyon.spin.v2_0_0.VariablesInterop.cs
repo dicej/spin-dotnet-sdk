@@ -22,7 +22,7 @@ namespace SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0
 
         }
 
-        internal  static unsafe string Get(string name)
+        public  static unsafe string Get(string name)
         {
 
             var result = name;

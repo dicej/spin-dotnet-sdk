@@ -1,0 +1,16 @@
+spin_manifest_version = 2
+
+[application]
+name = "hello"
+version = "0.1.0"
+authors = ["Fermyon Engineering <engineering@fermyon.com>"]
+
+[[trigger.http]]
+route = "/..."
+component = "hello"
+
+[component.hello]
+source = "build/App.wasm"
+allowed_outbound_hosts = ["http://*:*", "https://*:*"]
+[component.hello.build]
+command = "dotnet publish -o build App.csproj"

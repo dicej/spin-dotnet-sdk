@@ -22,7 +22,7 @@ namespace SpinHttpWorld.wit.imports.wasi.http.v0_2_0
 
         }
 
-        internal  static unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode? HttpErrorCode(global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IError.Error err)
+        public  static unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode? HttpErrorCode(global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IError.Error err)
         {
             var handle = err.Handle;
 

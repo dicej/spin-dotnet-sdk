@@ -115,7 +115,7 @@ public interface IMqtt {
 
         }
 
-        internal  static unsafe global::SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0.IMqtt.Connection Open(string address, string username, string password, ulong keepAliveIntervalInSecs)
+        public  static unsafe global::SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0.IMqtt.Connection Open(string address, string username, string password, ulong keepAliveIntervalInSecs)
         {
 
             var result = address;
@@ -195,7 +195,7 @@ public interface IMqtt {
 
         }
 
-        internal   unsafe void Publish(string topic, byte[] payload, global::SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0.IMqtt.Qos qos)
+        public   unsafe void Publish(string topic, byte[] payload, global::SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0.IMqtt.Qos qos)
         {
             var handle = this.Handle;
 

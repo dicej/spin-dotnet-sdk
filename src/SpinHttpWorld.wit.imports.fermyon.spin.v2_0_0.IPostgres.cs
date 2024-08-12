@@ -54,7 +54,7 @@ public interface IPostgres {
 
         }
 
-        internal  static unsafe global::SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0.IPostgres.Connection Open(string address)
+        public  static unsafe global::SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0.IPostgres.Connection Open(string address)
         {
 
             var result = address;
@@ -133,7 +133,7 @@ public interface IPostgres {
 
         }
 
-        internal   unsafe global::SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0.IRdbmsTypes.RowSet Query(string statement, List<global::SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0.IRdbmsTypes.ParameterValue> @params)
+        public   unsafe global::SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0.IRdbmsTypes.RowSet Query(string statement, List<global::SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0.IRdbmsTypes.ParameterValue> @params)
         {
             var handle = this.Handle;
 
@@ -441,7 +441,7 @@ public interface IPostgres {
 
         }
 
-        internal   unsafe ulong Execute(string statement, List<global::SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0.IRdbmsTypes.ParameterValue> @params)
+        public   unsafe ulong Execute(string statement, List<global::SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0.IRdbmsTypes.ParameterValue> @params)
         {
             var handle = this.Handle;
 

@@ -215,7 +215,7 @@ public interface ISqlite {
 
         }
 
-        internal  static unsafe global::SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0.ISqlite.Connection Open(string database)
+        public  static unsafe global::SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0.ISqlite.Connection Open(string database)
         {
 
             var result = database;
@@ -294,7 +294,7 @@ public interface ISqlite {
 
         }
 
-        internal   unsafe global::SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0.ISqlite.QueryResult Execute(string statement, List<global::SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0.ISqlite.Value> parameters)
+        public   unsafe global::SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0.ISqlite.QueryResult Execute(string statement, List<global::SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0.ISqlite.Value> parameters)
         {
             var handle = this.Handle;
 

@@ -22,7 +22,7 @@ namespace SpinHttpWorld.wit.imports.wasi.io.v0_2_0
 
         }
 
-        internal  static unsafe uint[] Poll(List<global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IPoll.Pollable> @in)
+        public  static unsafe uint[] Poll(List<global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IPoll.Pollable> @in)
         {
 
             byte[] buffer = new byte[4 * @in.Count];

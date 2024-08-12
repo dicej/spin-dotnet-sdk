@@ -11,7 +11,7 @@ internal static class WasiEventLoop
         pollable.Handle = 0;
         return CallRegister((Thread)null!, handle);
 
-        [UnsafeAccessor(UnsafeAccessorKind.StaticMethod, Name = "Register")]
+        [UnsafeAccessor(UnsafeAccessorKind.StaticMethod, Name = "RegisterWasiPollable")]
         static extern Task CallRegister(Thread t, int handle);
     }
 
@@ -19,7 +19,7 @@ internal static class WasiEventLoop
     {
         CallDispatch((Thread)null!);
 
-        [UnsafeAccessor(UnsafeAccessorKind.StaticMethod, Name = "Dispatch")]
+        [UnsafeAccessor(UnsafeAccessorKind.StaticMethod, Name = "DispatchWasiEventLoop")]
         static extern void CallDispatch(Thread t);
     }
 }

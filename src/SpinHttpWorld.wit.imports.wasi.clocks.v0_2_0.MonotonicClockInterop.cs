@@ -22,7 +22,7 @@ namespace SpinHttpWorld.wit.imports.wasi.clocks.v0_2_0
 
         }
 
-        internal  static unsafe ulong Now()
+        public  static unsafe ulong Now()
         {
             var result =  NowWasmInterop.wasmImportNow();
             return unchecked((ulong)(result));
@@ -37,7 +37,7 @@ namespace SpinHttpWorld.wit.imports.wasi.clocks.v0_2_0
 
         }
 
-        internal  static unsafe ulong Resolution()
+        public  static unsafe ulong Resolution()
         {
             var result =  ResolutionWasmInterop.wasmImportResolution();
             return unchecked((ulong)(result));
@@ -52,7 +52,7 @@ namespace SpinHttpWorld.wit.imports.wasi.clocks.v0_2_0
 
         }
 
-        internal  static unsafe global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IPoll.Pollable SubscribeInstant(ulong when)
+        public  static unsafe global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IPoll.Pollable SubscribeInstant(ulong when)
         {
             var result =  SubscribeInstantWasmInterop.wasmImportSubscribeInstant(unchecked((long)(when)));
             var resource = new global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IPoll.Pollable(new global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IPoll.Pollable.THandle(result));
@@ -68,7 +68,7 @@ namespace SpinHttpWorld.wit.imports.wasi.clocks.v0_2_0
 
         }
 
-        internal  static unsafe global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IPoll.Pollable SubscribeDuration(ulong when)
+        public  static unsafe global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IPoll.Pollable SubscribeDuration(ulong when)
         {
             var result =  SubscribeDurationWasmInterop.wasmImportSubscribeDuration(unchecked((long)(when)));
             var resource = new global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IPoll.Pollable(new global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IPoll.Pollable.THandle(result));
