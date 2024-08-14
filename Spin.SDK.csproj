@@ -14,7 +14,7 @@
     <PackageTags>webassembly, wasm, spin</PackageTags>
     
     <TargetFramework>net9.0</TargetFramework>
-    <RootNamespace>spin_sdk</RootNamespace>
+    <RootNamespace>Spin.SDK</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <IsPackable>true</IsPackable>
