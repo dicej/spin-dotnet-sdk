@@ -11,5 +11,6 @@ component = "hello"
 
 [component.hello]
 source = "build/App.wasm"
+files = [{ source = "static/", destination = "/" }]
 [component.hello.build]
 command = "dotnet publish -o build App.csproj"
