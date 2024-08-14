@@ -51,7 +51,7 @@ public class Store
         _store.Set(key, value);
     }
 
-    public void GetString(string key, string value, Encoding encoding)
+    public void SetString(string key, string value, Encoding encoding)
     {
         _store.Set(key, encoding.GetBytes(value));
     }
