@@ -1,23 +1,23 @@
 using System.Text;
+using SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0;
 
 namespace Spin.SDK.KeyValue;
 
 public class Store
 {
-    private readonly SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0.IKeyValue.Store _store;
+    private readonly IKeyValue.Store _store;
 
-    private Store(SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0.IKeyValue.Store store)
+    private Store(IKeyValue.Store store)
     {
         _store = store;
     }
+
     private const string DEFAULT_STORE_NAME = "default";
-    
     
     public static Store Open(string name)
     {
         var inner = SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0.IKeyValue.Store.Open(name);
         return new Store(inner);
-
     }
 
     public static Store OpenDefault()
@@ -60,5 +60,4 @@ public class Store
     {
         _store.Delete(key);
     }
-
 }
