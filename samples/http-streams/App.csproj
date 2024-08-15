@@ -19,7 +19,7 @@
     <_hostOS Condition="$([MSBuild]::IsOSPlatform('OSX'))">osx</_hostOS>
     <_hostOS Condition="$([MSBuild]::IsOSPlatform('WINDOWS'))">win</_hostOS>
   </PropertyGroup>
-    
+
   <ItemGroup>
     <PackageReference Include="Fermyon.Spin.SDK" Version="0.1.0-dev" />
     <PackageReference Include="Microsoft.DotNet.ILCompiler.LLVM" Version="9.0.0-dev" />
