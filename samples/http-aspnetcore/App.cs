@@ -2,6 +2,7 @@ using System.Text;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Spin.Http;
 using SpinHttpWorld.wit.imports.wasi.http.v0_2_0;
 
@@ -15,6 +16,8 @@ public class IncomingHandlerImpl : IIncomingHandler
     {
         var builder = WebApplication.CreateBuilder(new string[0]);
         builder.Services.AddSingleton<IServer, WasiHttpServer>();
+        builder.Logging.ClearProviders();
+        builder.Logging.AddProvider(new WasiLoggingProvider()).AddFilter("Microsoft.AspNetCore.DataProtection", LogLevel.Error);
         builder.Services.AddRazorPages();
 
         var app = builder.Build();
