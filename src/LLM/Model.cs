@@ -1,4 +1,4 @@
-namespace Spin.SDK.LLM;
+namespace Spin.LLM;
 
 public readonly struct Model(string name)
 {

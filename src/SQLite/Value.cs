@@ -1,6 +1,6 @@
 using SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0;
 
-namespace Spin.SDK.SQLite;
+namespace Spin.SQLite;
 
 public class Value
 {
@@ -16,12 +16,12 @@ public class Value
             _ => FromNull()
         };
     }
-    
+
     internal ISqlite.Value Actual { get; }
 
     public byte Tag => Actual.Tag;
     public bool IsNull => Actual.Tag == ISqlite.Value.NULL;
-    
+
     public long AsInteger() => Actual.AsInteger;
     public double AsDouble() => Actual.AsReal;
     public string AsText() => Actual.AsText;
@@ -31,7 +31,7 @@ public class Value
     {
         Actual = actual;
     }
-    
+
     public static Value FromInteger(long value)
     {
         return new Value(ISqlite.Value.integer(value));
@@ -41,17 +41,17 @@ public class Value
     {
         return new Value(ISqlite.Value.text(value));
     }
-    
+
     public static Value FromDouble(double value)
     {
         return new Value(ISqlite.Value.real(value));
     }
-    
+
     public static Value FromBlob(byte[] value)
     {
         return new Value(ISqlite.Value.blob(value));
     }
-    
+
     public static Value FromNull()
     {
         return new Value(ISqlite.Value.@null());

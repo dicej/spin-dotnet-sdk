@@ -1,7 +1,7 @@
 using System.Text;
 using SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0;
 
-namespace Spin.SDK.KeyValue;
+namespace Spin.KeyValue;
 
 public class Store
 {
@@ -13,7 +13,7 @@ public class Store
     }
 
     private const string DEFAULT_STORE_NAME = "default";
-    
+
     public static Store Open(string name)
     {
         var inner = SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0.IKeyValue.Store.Open(name);

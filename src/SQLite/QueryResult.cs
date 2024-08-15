@@ -1,6 +1,6 @@
 using SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0;
 
-namespace Spin.SDK.SQLite;
+namespace Spin.SQLite;
 
 public class QueryResult
 {
@@ -12,7 +12,7 @@ public class QueryResult
         Rows = rows;
         Columns = columns;
     }
-    
+
     internal static QueryResult From(ISqlite.QueryResult result)
     {
         return new QueryResult(result.rows.Select(RowResult.From).ToList(), result.columns);

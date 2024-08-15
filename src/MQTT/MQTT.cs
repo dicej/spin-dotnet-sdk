@@ -1,6 +1,6 @@
 using SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0;
 
-namespace Spin.SDK.MQTT;
+namespace Spin.MQTT;
 
 public class Connection: IDisposable
 {
@@ -9,7 +9,7 @@ public class Connection: IDisposable
     {
         _connection = IMqtt.Connection.Open(address, username, password, keepAlive);
     }
-    
+
     public static Connection Open(string address, string username, string password, ulong keepAliveIntervalInSecs)
     {
         return new Connection(address, username, password, keepAliveIntervalInSecs);
@@ -33,7 +33,7 @@ public class Connection: IDisposable
 
 public enum Qos
 {
-    AT_MOST_ONCE, 
-    AT_LEAST_ONCE, 
+    AT_MOST_ONCE,
+    AT_LEAST_ONCE,
     EXACTLY_ONCE
 }

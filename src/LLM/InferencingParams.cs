@@ -1,6 +1,6 @@
 using SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0;
 
-namespace Spin.SDK.LLM;
+namespace Spin.LLM;
 
 public class InferencingParams
 {

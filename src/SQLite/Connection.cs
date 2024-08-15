@@ -1,17 +1,17 @@
 using SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0;
 
-namespace Spin.SDK.SQLite;
+namespace Spin.SQLite;
 
 public class Connection: IDisposable
 {
     private const string DEFAULT_DATABASE_NAME = "default";
     private readonly ISqlite.Connection _connection;
-    
+
     private Connection(ISqlite.Connection connection)
     {
         _connection = connection;
     }
-    
+
     public static Connection Open(string databaseName)
     {
         return new Connection(ISqlite.Connection.Open(databaseName));
