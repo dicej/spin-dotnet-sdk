@@ -1,7 +1,7 @@
 using SpinHttpWorld;
 using SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0;
 
-namespace Spin.Variables;
+namespace Fermyon.Spin.Variables;
 
 public class Variables
 {

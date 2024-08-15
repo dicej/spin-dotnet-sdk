@@ -1,4 +1,4 @@
-namespace Spin.LLM;
+namespace Fermyon.Spin.LLM;
 
 public static class Models
 {

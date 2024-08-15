@@ -1,6 +1,6 @@
 using SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0;
 
-namespace Spin.MQTT;
+namespace Fermyon.Spin.MQTT;
 
 public class Connection: IDisposable
 {

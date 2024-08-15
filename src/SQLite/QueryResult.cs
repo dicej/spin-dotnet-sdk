@@ -1,6 +1,6 @@
 using SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0;
 
-namespace Spin.SQLite;
+namespace Fermyon.Spin.SQLite;
 
 public class QueryResult
 {

@@ -1,4 +1,4 @@
-namespace Spin.LLM;
+namespace Fermyon.Spin.LLM;
 
 public readonly struct Model(string name)
 {

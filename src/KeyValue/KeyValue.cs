@@ -1,7 +1,7 @@
 using System.Text;
 using SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0;
 
-namespace Spin.KeyValue;
+namespace Fermyon.Spin.KeyValue;
 
 public class Store
 {
