@@ -20,7 +20,7 @@ below.
 
 - [.NET 9.0 Preview 6 or later](https://dotnet.microsoft.com/en-us/download/dotnet/9.0)
 - [Spin 2.7.0 or later](https://github.com/fermyon/spin/releases/tag/v2.7.0)
-- glibc 2.38 or later (available on Ubuntu 24.04 - see
+- (if using Linux) glibc 2.38 or later (available on Ubuntu 24.04 - see
   [dotnet/runtimelab#2605](https://github.com/dotnet/runtimelab/pull/2605))
 
 Also, we need to download a few pre-release packages and tell NuGet where to
