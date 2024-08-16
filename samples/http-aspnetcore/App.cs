@@ -28,13 +28,11 @@ public class IncomingHandlerImpl : IIncomingHandler
         builder
             .Logging.AddProvider(new WasiLoggingProvider())
             .AddFilter("Microsoft.AspNetCore.DataProtection", LogLevel.Error);
-        builder.Services.AddRazorPages();
 
         var app = builder.Build();
         app.UseStaticFiles();
-        app.MapRazorPages();
 
-        app.MapGet("/", () => "Hello, world! See also: /weatherforecast and /myrazorpage");
+        app.MapGet("/", () => "Hello, world! See also: /weatherforecast and /mystaticpage.html");
 
         app.MapGet(
             "/weatherforecast",

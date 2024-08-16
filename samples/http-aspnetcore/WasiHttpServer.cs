@@ -242,11 +242,11 @@ public class WasiHttpServer : IServer
             CancellationToken cancellationToken = default
         )
         {
-            if (offset != 0 || count is not null)
+            using var file = File.OpenRead(path);
+            if (offset != 0 || (count is not null && count != file.Length))
             {
                 throw new Exception("TODO: handle offset and count");
             }
-            using var file = File.OpenRead(path);
             await file.CopyToAsync(Stream);
         }
 
