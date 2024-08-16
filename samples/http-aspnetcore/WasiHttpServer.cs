@@ -38,6 +38,7 @@ public class WasiHttpServer : IServer
             {
                 await application.ProcessRequestAsync(ctx);
                 application.DisposeContext(ctx, null);
+                await requestContext.CompleteAsync();
             }
             catch (Exception ex)
             {
@@ -205,6 +206,8 @@ public class WasiHttpServer : IServer
 
         public async Task CompleteAsync()
         {
+            ((IHttpRequestFeature)this).Body.Dispose();            
+            
             ITypes.IncomingBody.Finish(_requestBody);
 
             Stream.Dispose();

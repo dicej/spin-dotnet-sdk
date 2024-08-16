@@ -1,4 +1,5 @@
 using System.Text;
+using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,10 +15,19 @@ public class IncomingHandlerImpl : IIncomingHandler
     /// via `responseOut`.</summary>
     public static void Handle(ITypes.IncomingRequest request, ITypes.ResponseOutparam responseOut)
     {
-        var builder = WebApplication.CreateBuilder(new string[0]);
+        var builder = WebApplication.CreateSlimBuilder(new string[0]);
+        builder.Services.ConfigureHttpJsonOptions(options =>
+        {
+            options.SerializerOptions.TypeInfoResolverChain.Insert(
+                0,
+                AppJsonSerializerContext.Default
+            );
+        });
         builder.Services.AddSingleton<IServer, WasiHttpServer>();
         builder.Logging.ClearProviders();
-        builder.Logging.AddProvider(new WasiLoggingProvider()).AddFilter("Microsoft.AspNetCore.DataProtection", LogLevel.Error);
+        builder
+            .Logging.AddProvider(new WasiLoggingProvider())
+            .AddFilter("Microsoft.AspNetCore.DataProtection", LogLevel.Error);
         builder.Services.AddRazorPages();
 
         var app = builder.Build();
@@ -45,7 +55,7 @@ public class IncomingHandlerImpl : IIncomingHandler
                 };
                 var forecast = Enumerable
                     .Range(1, 5)
-                    .Select(index => new
+                    .Select(index => new Forecast()
                     {
                         Date = DateTime.Now.AddDays(index),
                         TempC = Random.Shared.Next(-20, 55),
@@ -64,3 +74,13 @@ public class IncomingHandlerImpl : IIncomingHandler
         RequestHandler.Run(task());
     }
 }
+
+public class Forecast
+{
+    public DateTime Date { get; set; }
+    public int TempC { get; set; }
+    public string Summary { get; set; }
+}
+
+[JsonSerializable(typeof(Forecast[]))]
+internal partial class AppJsonSerializerContext : JsonSerializerContext { }
