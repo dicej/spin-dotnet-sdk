@@ -14,9 +14,9 @@ to those and publish an official package for this library.  Meanwhile, you'll
 need to download the artifacts manually and point NuGet to them as described
 below.
 
-## Running the Sample(s)
+## Running the Examples
 
-### Prerequisite(s)
+### Prerequisites
 
 - [.NET 9.0 Preview 6 or later](https://dotnet.microsoft.com/en-us/download/dotnet/9.0)
 - [Spin 2.7.0 or later](https://github.com/fermyon/spin/releases/tag/v2.7.0)
@@ -37,6 +37,8 @@ export NUGET_LOCAL_PATH=$(pwd)/packages
 ```
 
 ### Building and Running
+
+Please file an issue if you have any trouble building or running these examples:
 
 #### Hello World!
 
@@ -94,9 +96,41 @@ curl -i \
     localhost:3000/hash-all
 ```
 
-Please file an issue if you have any trouble.
+#### ASP.NET Core and JSON Serialization
+
+**PLEASE NOTE: https://github.com/fermyon/spin/pull/2721 is required to run this example, so you'll need to build Spin from that branch until that PR is merged and released.**
+
+This example currently relies on a lightly-patched build of ASP.NET Core, which
+you'll need to download and record the location of in an environment variable as
+follows:
+
+```
+curl -LO --output-dir packages https://github.com/dicej/spin-dotnet-sdk/releases/download/canary/aspnetcore-wasi.zip
+unzip aspnetcore-wasi.zip
+export ASPNETCORE_WASI_PATH=$(pwd)/aspnetcore-wasi
+```
+
+With that done, you should be able to build and run the example:
+
+```
+cd samples/http-aspnetcore
+spin build -u
+```
+
+Then, in another terminal, use `curl` to send a requests to the app:
+
+```
+curl -i localhost:3000/
+curl -i localhost:3000/weatherforecast
+curl -i localhost:3000/mystaticpage.html
+```
 
 ## TODOs and Open Questions
 
 - This currently borrows (and tweaks) some MSBuild configuration from [componentize-dotnet](https://github.com/bytecodealliance/componentize-dotnet).  We should upstream the changes and use the `ByteCodeAlliance.Componentize.DotNet.WitBindgen` package instead.
 - Currently, application code must explicitly add the `runtime.wasi-wasm.Microsoft.DotNet.ILCompiler.LLVM` and `runtime.${os}-${arch}.Microsoft.DotNet.ILCompiler.LLVM` `PackageReference`s as well as the `Fermyon.Spin.SDK` reference.  Is it possible to use only the latter and have the former pulled in automatically?
+
+## Credits
+
+- As mentioned above, this uses some MSBuild configuration from [componentize-dotnet](https://github.com/bytecodealliance/componentize-dotnet)
+- The ASP.NET Core example was ported from [Steve Sanderson's .NET WASI SDK prototype](https://github.com/SteveSandersonMS/dotnet-wasi-sdk), and WasiHttpServer.cs contains code which is based on that work.

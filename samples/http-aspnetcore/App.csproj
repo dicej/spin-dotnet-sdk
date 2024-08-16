@@ -15,8 +15,7 @@
 
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
-    <!-- TODO: publish a package with the necessary assemblies and replace this hard-code path -->
-    <IlcReference Include="/home/dicej/Downloads/assemblies/*.dll" />
+    <IlcReference Include="$(ASPNETCORE_WASI_PATH)/*.dll" />
   </ItemGroup>
 
   <PropertyGroup>
@@ -31,4 +30,10 @@
     <PackageReference Include="Microsoft.DotNet.ILCompiler.LLVM" Version="9.0.0-dev" />
     <PackageReference Include="runtime.$(_hostOS)-$(_hostArch).Microsoft.DotNet.ILCompiler.LLVM" Version="9.0.0-dev" />
   </ItemGroup>
+
+  <Target Name="CheckAspNetCoreWasiPath"
+          BeforeTargets="IlcCompile">
+    <Error Text="ASP.NET Core assemblies not found.  Please download and extract the contents of https://github.com/dicej/spin-dotnet-sdk/releases/download/canary/aspnetcore-wasi.zip and set the ASPNETCORE_WASI_PATH environment variable to the location of the extracted directory."
+           Condition="'$(ASPNETCORE_WASI_PATH)' == '' or !Exists('$(ASPNETCORE_WASI_PATH)/Microsoft.AspNetCore.dll')" />
+  </Target>
 </Project>
