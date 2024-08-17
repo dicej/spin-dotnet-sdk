@@ -1,7 +1,7 @@
 using System.Formats.Asn1;
 using SpinHttpWorld.wit.imports.fermyon.spin.v2_0_0;
 
-namespace Spin.SDK.LLM;
+namespace Fermyon.Spin.LLM;
 
 public class Inferencing
 {

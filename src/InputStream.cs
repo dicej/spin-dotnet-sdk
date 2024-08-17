@@ -1,7 +1,7 @@
 using SpinHttpWorld;
 using SpinHttpWorld.wit.imports.wasi.io.v0_2_0;
 
-namespace Spin.Http;
+namespace Fermyon.Spin.Http;
 
 public class InputStream : Stream
 {

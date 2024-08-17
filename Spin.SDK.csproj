@@ -6,7 +6,7 @@
     <PackageVersion>$(VersionPrefix)-$(VersionSuffix)</PackageVersion>
     <PackageOutputPath>$(MSBuildThisFileDirectory)artifacts/</PackageOutputPath>
     <IsPackable>false</IsPackable>
-    <PackageId>Fermyon.Spin.SDK</PackageId>
+    <PackageId>Fermyon.Spin</PackageId>
     <Authors>Fermyon Engineering</Authors>
     <Description>SDK for creating Spin applications using .NET</Description>
     <RepositoryUrl>https://github.com/fermyon/spin-dotnet-sdk</RepositoryUrl>
