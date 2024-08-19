@@ -7,7 +7,10 @@
     <PackageOutputPath>$(MSBuildThisFileDirectory)artifacts/</PackageOutputPath>
     <IsPackable>false</IsPackable>
     <PackageId>Fermyon.Spin.SDK</PackageId>
+    <OutputType>Library</OutputType>
     <Authors>Fermyon Engineering</Authors>
+    <Company>Fermyon</Company>
+    <Copyright>Fermyon Technologies, Inc. All Rights Reserved.</Copyright>
     <Description>SDK for creating Spin applications using .NET</Description>
     <RepositoryUrl>https://github.com/fermyon/spin-dotnet-sdk</RepositoryUrl>
     <PackageLicenseExpression>Apache-2.0 WITH LLVM-exception</PackageLicenseExpression>

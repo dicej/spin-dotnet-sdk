@@ -1,0 +1,33 @@
+name: Publish NuGet packages
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9.0.x
+
+      - run: dotnet pack  --configuration Release
+
+      - name: Publish to GitHub Packages
+        run: |
+          for nupkg in $(find . -name *.nupkg)
+          do
+            dotnet nuget push $nupkg --source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json --api-key ${{ secrets.GITHUB_TOKEN }} --skip-duplicate
+          done
+
+      # - name: Publish to nuget.org
+      #   run: |
+      #     for nupkg in $(find . -name *.nupkg)
+      #     do
+      #       dotnet nuget push $nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }} --skip-duplicate
+      #     done
