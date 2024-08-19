@@ -20,8 +20,6 @@ jobs:
       - name: Setup NUGET_LOCAL_PATH
         run: |
           mkdir packages
-          # TODO: remove this once the samples rely on a local build of the Spin SDK
-          curl -LO --output-dir packages https://github.com/${{ github.repository }}/releases/download/canary/Fermyon.Spin.SDK.0.1.0-dev.nupkg
           curl -LO --output-dir packages https://github.com/${{ github.repository }}/releases/download/canary/Microsoft.DotNet.ILCompiler.LLVM.9.0.0-dev.nupkg
           curl -LO --output-dir packages https://github.com/${{ github.repository }}/releases/download/canary/runtime.wasi-wasm.Microsoft.DotNet.ILCompiler.LLVM.9.0.0-dev.nupkg
           curl -LO --output-dir packages https://github.com/${{ github.repository }}/releases/download/canary/runtime.linux-x64.Microsoft.DotNet.ILCompiler.LLVM.9.0.0-dev.nupkg
