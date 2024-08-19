@@ -24,19 +24,33 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
-  <Target Name="PackTaskDependencies" BeforeTargets="GenerateNuspec">
-    <ItemGroup>
-      <_PackageFiles Include="build/**" BuildAction="Content" PackagePath="build" />
-      <_PackageFiles Include="src/SpinHttpWorld_component_type.wit" BuildAction="Content" PackagePath="." />
-      <_PackageFiles Include="src/SpinHttpWorld.wit.exports.wasi.http.v0_2_0.IIncomingHandler.cs" BuildAction="Content" PackagePath="." />
-      <_PackageFiles Include="src/SpinHttpWorld.wit.exports.wasi.http.v0_2_0.IncomingHandlerInterop.cs" BuildAction="Content" PackagePath="." />
-    </ItemGroup>
-  </Target>
+  <ItemGroup>
+    <Compile Remove="samples/**" />
+  </ItemGroup>
 
   <ItemGroup>
+
     <Compile Remove="src/SpinHttpWorld.wit.exports.wasi.http.v0_2_0.IIncomingHandler.cs" />
+    <Content Include="src/SpinHttpWorld.wit.exports.wasi.http.v0_2_0.IIncomingHandler.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <TargetPath>%(Filename)%(Extension)</TargetPath>
+    </Content>
+
     <Compile Remove="src/SpinHttpWorld.wit.exports.wasi.http.v0_2_0.IncomingHandlerInterop.cs" />
-    <Compile Remove="samples/**" />
+    <Content Include="src/SpinHttpWorld.wit.exports.wasi.http.v0_2_0.IncomingHandlerInterop.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <TargetPath>%(Filename)%(Extension)</TargetPath>
+    </Content>
+
+    <Content Include="src/SpinHttpWorld_component_type.wit">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <TargetPath>%(Filename)%(Extension)</TargetPath>
+    </Content>
+
+    <Content Include="build/**">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+
   </ItemGroup>
 
 </Project>
