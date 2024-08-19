@@ -1,0 +1,30 @@
+name: Build
+
+on:
+  pull_request:
+    branches: [ "*" ]
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9.0.x
+
+      - name: Setup NUGET_LOCAL_PATH
+        run: |
+          mkdir packages
+          # TODO: remove this once the samples rely on a local build of the Spin SDK
+          curl -LO --output-dir packages https://github.com/${{ github.repository }}/releases/download/canary/Fermyon.Spin.SDK.0.1.0-dev.nupkg
+          curl -LO --output-dir packages https://github.com/${{ github.repository }}/releases/download/canary/Microsoft.DotNet.ILCompiler.LLVM.9.0.0-dev.nupkg
+          curl -LO --output-dir packages https://github.com/${{ github.repository }}/releases/download/canary/runtime.wasi-wasm.Microsoft.DotNet.ILCompiler.LLVM.9.0.0-dev.nupkg
+          curl -LO --output-dir packages https://github.com/${{ github.repository }}/releases/download/canary/runtime.linux-x64.Microsoft.DotNet.ILCompiler.LLVM.9.0.0-dev.nupkg
+          echo "NUGET_LOCAL_PATH=$(pwd)/packages" >> $GITHUB_ENV
+
+      - run: dotnet build  --configuration Release
