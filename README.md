@@ -105,7 +105,7 @@ you'll need to download and record the location of in an environment variable as
 follows:
 
 ```
-curl -LO --output-dir packages https://github.com/dicej/spin-dotnet-sdk/releases/download/canary/aspnetcore-wasi.zip
+curl -LO https://github.com/dicej/spin-dotnet-sdk/releases/download/canary/aspnetcore-wasi.zip
 unzip aspnetcore-wasi.zip
 export ASPNETCORE_WASI_PATH=$(pwd)/aspnetcore-wasi
 ```
