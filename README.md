@@ -106,7 +106,7 @@ follows:
 
 ```
 curl -LO --output-dir packages https://github.com/dicej/spin-dotnet-sdk/releases/download/canary/aspnetcore-wasi.zip
-unzip aspnetcore-wasi.zip
+unzip packages/aspnetcore-wasi.zip
 export ASPNETCORE_WASI_PATH=$(pwd)/aspnetcore-wasi
 ```
 

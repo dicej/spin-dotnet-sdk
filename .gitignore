@@ -7,4 +7,5 @@ build
 artifacts
 .spin
 packages
+aspnetcore-wasi
 .gdb_history
