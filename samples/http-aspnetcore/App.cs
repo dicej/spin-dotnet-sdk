@@ -1,5 +1,10 @@
+using System;
+using System.Data;
+using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.Extensions.DependencyInjection;
@@ -64,6 +69,24 @@ public class IncomingHandlerImpl : IIncomingHandler
             }
         );
 
+        app.MapPost(
+            "/echo",
+            async context =>
+            {
+                context.Response.Headers.ContentType = context.Request.Headers.ContentType;
+                await context.Request.Body.CopyToAsync(context.Response.Body);
+            }
+        );
+
+        app.MapPost("/data", (Message message) => message.Greeting);
+
+        // TODO: The following line should not be necessary, but if it is
+        // omitted then the NativeAOT-LLVM compiler will emit incomplete code
+        // for the generated `IJsonTypeInfoResolver.GetTypeInfo` method of the
+        // `AppJsonSerializerContext` class such that any attempt to deserialize
+        // a `Message` from JSON leads to an infinite loop.
+        _ = AppJsonSerializerContext.Default.Message;
+
         Func<Task> task = async () =>
         {
             await app.StartAsync();
@@ -71,6 +94,11 @@ public class IncomingHandlerImpl : IIncomingHandler
         };
         RequestHandler.Run(task());
     }
+}
+
+public class Message
+{
+    public string Greeting { get; set; }
 }
 
 public class Forecast
@@ -81,4 +109,5 @@ public class Forecast
 }
 
 [JsonSerializable(typeof(Forecast[]))]
+[JsonSerializable(typeof(Message))]
 internal partial class AppJsonSerializerContext : JsonSerializerContext { }

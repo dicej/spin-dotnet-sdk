@@ -1,5 +1,10 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
 using System.IO.Pipelines;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Hosting.Server.Features;
 using Microsoft.AspNetCore.Http;
@@ -30,6 +35,7 @@ public class WasiHttpServer : IServer
 
             var requestFeatures = new FeatureCollection();
             requestFeatures[typeof(IHttpRequestFeature)] = requestContext;
+            requestFeatures[typeof(IHttpRequestBodyDetectionFeature)] = requestContext;
             requestFeatures[typeof(IHttpResponseFeature)] = requestContext;
             requestFeatures[typeof(IHttpResponseBodyFeature)] = requestContext;
 
@@ -98,7 +104,11 @@ public class WasiHttpServer : IServer
         }
     }
 
-    class RequestContext : IHttpRequestFeature, IHttpResponseFeature, IHttpResponseBodyFeature
+    class RequestContext
+        : IHttpRequestFeature,
+            IHttpResponseFeature,
+            IHttpResponseBodyFeature,
+            IHttpRequestBodyDetectionFeature
     {
         private List<(Func<object, Task>, object)> _onStartingCallbacks = new();
         private List<(Func<object, Task>, object)> _onCompletedCallbacks = new();
@@ -144,6 +154,7 @@ public class WasiHttpServer : IServer
             get => throw new NotImplementedException();
             set => throw new NotImplementedException();
         }
+        public bool CanHaveBody { get; } = true;
 
         // TODO: Prohibit changing the status code or response headers if
         // `_stream is not null` (i.e. if we've already started sending the
@@ -162,7 +173,9 @@ public class WasiHttpServer : IServer
                     var responseHeaders = new List<(string, byte[])>();
                     foreach (var pair in ((IHttpResponseFeature)this).Headers)
                     {
-                        responseHeaders.Add((pair.Key, Encoding.UTF8.GetBytes(pair.Value.ToString())));
+                        responseHeaders.Add(
+                            (pair.Key, Encoding.UTF8.GetBytes(pair.Value.ToString()))
+                        );
                     }
 
                     var response = new ITypes.OutgoingResponse(
@@ -206,8 +219,8 @@ public class WasiHttpServer : IServer
 
         public async Task CompleteAsync()
         {
-            ((IHttpRequestFeature)this).Body.Dispose();            
-            
+            ((IHttpRequestFeature)this).Body.Dispose();
+
             ITypes.IncomingBody.Finish(_requestBody);
 
             Stream.Dispose();

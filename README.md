@@ -123,6 +123,13 @@ Then, in another terminal, use `curl` to send a requests to the app:
 curl -i localhost:3000/
 curl -i localhost:3000/weatherforecast
 curl -i localhost:3000/mystaticpage.html
+curl -i localhost:3000/echo -H 'content-type: text/plain' --data-binary @- <<EOF
+’Twas brillig, and the slithy toves
+      Did gyre and gimble in the wabe:
+All mimsy were the borogoves,
+      And the mome raths outgrabe.
+EOF
+curl -i localhost:3000/data -H 'content-type: application/json' -d '{"Greeting":"warm"}'
 ```
 
 ## TODOs and Open Questions

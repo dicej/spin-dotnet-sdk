@@ -1,4 +1,8 @@
+using System;
+using System.Collections.Generic;
+using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 using Sha2;
 using Spin.Http;
 using SpinHttpWorld.wit.imports.wasi.http.v0_2_0;

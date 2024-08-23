@@ -18,7 +18,6 @@
 
     <TargetFramework>net9.0</TargetFramework>
     <RootNamespace>Spin.SDK</RootNamespace>
-    <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <IsPackable>true</IsPackable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
