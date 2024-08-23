@@ -10,8 +10,6 @@
     <_hostArchRaw>$([System.Runtime.InteropServices.RuntimeInformation]::ProcessArchitecture.ToString().ToLowerInvariant)</_hostArchRaw>
     <_hostArch>arm64</_hostArch>
     <_hostArch Condition="'$(_hostArchRaw)' == 'x64'">x86_64</_hostArch>    
-    <_hostArchAlt>aarch64</_hostArchAlt>
-    <_hostArchAlt Condition="'$(_hostArchRaw)' == 'x64'">x86_64</_hostArchAlt>    
     <_hostOS>linux</_hostOS>
     <_hostOS Condition="$([MSBuild]::IsOSPlatform('OSX'))">macos</_hostOS>
     <_hostOS Condition="$([MSBuild]::IsOSPlatform('WINDOWS'))">windows</_hostOS>
