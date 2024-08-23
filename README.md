@@ -129,7 +129,7 @@ curl -i localhost:3000/echo -H 'content-type: text/plain' --data-binary @- <<EOF
 All mimsy were the borogoves,
       And the mome raths outgrabe.
 EOF
-curl -i localhost:3000/data -H 'content-type: application/json' -d '{"Greeting":"warm"}'
+curl -i localhost:3000/data -H 'content-type: application/json' -d '{"Greeting":"Hola"}'
 ```
 
 ## TODOs and Open Questions
