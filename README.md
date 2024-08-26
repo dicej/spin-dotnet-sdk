@@ -100,9 +100,9 @@ curl -i \
 
 **PLEASE NOTE: https://github.com/fermyon/spin/pull/2721 is required to run this example, so you'll need to build Spin from that branch until that PR is merged and released.**
 
-This example currently relies on a lightly-patched build of ASP.NET Core, which
-you'll need to download and record the location of in an environment variable as
-follows:
+This example currently relies on a [lightly-patched build of ASP.NET
+Core](#aspnetcore-patches), which you'll need to download and record the
+location of in an environment variable as follows:
 
 ```
 curl -LO https://github.com/dicej/spin-dotnet-sdk/releases/download/canary/aspnetcore-wasi.zip
@@ -136,8 +136,70 @@ curl -i localhost:3000/data -H 'content-type: application/json' -d '{"Greeting":
 
 - This currently borrows (and tweaks) some MSBuild configuration from [componentize-dotnet](https://github.com/bytecodealliance/componentize-dotnet).  We should upstream the changes and use the `ByteCodeAlliance.Componentize.DotNet.WitBindgen` package instead.
 - Currently, application code must explicitly add the `runtime.wasi-wasm.Microsoft.DotNet.ILCompiler.LLVM` and `runtime.${os}-${arch}.Microsoft.DotNet.ILCompiler.LLVM` `PackageReference`s as well as the `Fermyon.Spin.SDK` reference.  Is it possible to use only the latter and have the former pulled in automatically?
+- Upstream the changes to the .NET runtime and AspNetCore, and update CI for the latter to produce `wasi-wasm` packages.  This will allow us to use official packages instead of hand-built ones.
 
 ## Credits
 
 - As mentioned above, this uses some MSBuild configuration from [componentize-dotnet](https://github.com/bytecodealliance/componentize-dotnet)
 - The ASP.NET Core example was ported from [Steve Sanderson's .NET WASI SDK prototype](https://github.com/SteveSandersonMS/dotnet-wasi-sdk), and WasiHttpServer.cs contains code which is based on that work.
+
+## AspNetCore Patches
+
+The `aspnetcore-wasi.zip` file was created by copying the `shared/Microsoft.AspNetCore.App/9.0.0-preview.7.24406.2/*.dll` files from a Linux/ARM64 installation of .NET 9 preview 7, then replacing the `Microsoft.Extensions.Hosting` and `Microsoft.Extensions.FileProviders.Physical` assemblies with versions built with the following patches:
+
+```diff
+diff --git a/src/libraries/Microsoft.Extensions.Hosting/src/Internal/ConsoleLifetime.netcoreapp.cs b/src/libraries/Microsoft.Extensions.Hosting/src/Internal/ConsoleLifetime.netcoreapp.cs
+index 256697d927b..a2bf6e18064 100644
+--- a/src/libraries/Microsoft.Extensions.Hosting/src/Internal/ConsoleLifetime.netcoreapp.cs
++++ b/src/libraries/Microsoft.Extensions.Hosting/src/Internal/ConsoleLifetime.netcoreapp.cs
+@@ -15,10 +15,13 @@ public partial class ConsoleLifetime : IHostLifetime
+
+         private partial void RegisterShutdownHandlers()
+         {
+-            Action<PosixSignalContext> handler = HandlePosixSignal;
+-            _sigIntRegistration = PosixSignalRegistration.Create(PosixSignal.SIGINT, handler);
+-            _sigQuitRegistration = PosixSignalRegistration.Create(PosixSignal.SIGQUIT, handler);
+-            _sigTermRegistration = PosixSignalRegistration.Create(PosixSignal.SIGTERM, handler);
++            if (!OperatingSystem.IsWasi())
++            {
++                Action<PosixSignalContext> handler = HandlePosixSignal;
++                _sigIntRegistration = PosixSignalRegistration.Create(PosixSignal.SIGINT, handler);
++                _sigQuitRegistration = PosixSignalRegistration.Create(PosixSignal.SIGQUIT, handler);
++                _sigTermRegistration = PosixSignalRegistration.Create(PosixSignal.SIGTERM, handler);
++            }
+         }
+
+         private void HandlePosixSignal(PosixSignalContext context)
+@@ -31,9 +34,12 @@ private void HandlePosixSignal(PosixSignalContext context)
+
+         private partial void UnregisterShutdownHandlers()
+         {
+-            _sigIntRegistration?.Dispose();
+-            _sigQuitRegistration?.Dispose();
+-            _sigTermRegistration?.Dispose();
++            if (!OperatingSystem.IsWasi())
++            {
++                _sigIntRegistration?.Dispose();
++                _sigQuitRegistration?.Dispose();
++                _sigTermRegistration?.Dispose();
++            }
+         }
+     }
+ }
+
+diff --git a/src/libraries/Microsoft.Extensions.FileProviders.Physical/src/PhysicalFileProvider.cs b/src/libraries/Microsoft.Extensions.FileProviders.Physical/src/PhysicalFileProvider.cs
+index 925df989275..71fa429b4b5 100644
+--- a/src/libraries/Microsoft.Extensions.FileProviders.Physical/src/PhysicalFileProvider.cs
++++ b/src/libraries/Microsoft.Extensions.FileProviders.Physical/src/PhysicalFileProvider.cs
+@@ -163,8 +163,8 @@ internal PhysicalFilesWatcher CreateFileWatcher()
+
+             FileSystemWatcher? watcher;
+ #if NET
+-            //  For browser/iOS/tvOS we will proactively fallback to polling since FileSystemWatcher is not supported.
+-            if (OperatingSystem.IsBrowser() || (OperatingSystem.IsIOS() && !OperatingSystem.IsMacCatalyst()) || OperatingSystem.IsTvOS())
++            //  For WASI/browser/iOS/tvOS we will proactively fallback to polling since FileSystemWatcher is not supported.
++            if (OperatingSystem.IsWasi() || OperatingSystem.IsBrowser() || (OperatingSystem.IsIOS() && !OperatingSystem.IsMacCatalyst()) || OperatingSystem.IsTvOS())
+             {
+                 UsePollingFileWatcher = true;
+                 UseActivePolling = true;
+```
