@@ -90,7 +90,7 @@ public class InputStream : Stream
                     var buffer = result;
                     if (buffer.Length == 0)
                     {
-                        await WasiEventLoop.Register(stream.Subscribe()).ConfigureAwait(false);
+                        await WasiEventLoop.Register(stream.Subscribe(), cancellationToken).ConfigureAwait(false);
                     }
                     else
                     {
