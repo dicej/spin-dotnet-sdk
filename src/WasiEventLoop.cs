@@ -7,14 +7,14 @@ namespace Spin.Http;
 
 internal static class WasiEventLoop
 {
-    internal static Task Register(IPoll.Pollable pollable)
+    internal static Task Register(IPoll.Pollable pollable, CancellationToken cancellationToken)
     {
         var handle = pollable.Handle;
         pollable.Handle = 0;
-        return CallRegister((Thread)null!, handle);
+        return CallRegister((Thread)null!, handle, cancellationToken);
 
-        [UnsafeAccessor(UnsafeAccessorKind.StaticMethod, Name = "RegisterWasiPollable")]
-        static extern Task CallRegister(Thread t, int handle);
+        [UnsafeAccessor(UnsafeAccessorKind.StaticMethod, Name = "RegisterWasiPollableHandle")]
+        static extern Task CallRegister(Thread t, int handle, CancellationToken cancellationToken);
     }
 
     internal static void Dispatch()

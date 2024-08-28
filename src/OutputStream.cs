@@ -80,7 +80,7 @@ public class OutputStream : Stream
             var count = (int)stream.CheckWrite();
             if (count == 0)
             {
-                await WasiEventLoop.Register(stream.Subscribe());
+                await WasiEventLoop.Register(stream.Subscribe(), cancellationToken);
             }
             else if (offset == limit)
             {
