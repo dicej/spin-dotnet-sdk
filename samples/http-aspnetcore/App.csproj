@@ -10,6 +10,8 @@
     <SelfContained>true</SelfContained>
     <RuntimeIdentifier>wasi-wasm</RuntimeIdentifier>
     <PublishTrimmed>true</PublishTrimmed>
+    <EnableRequestDelegateGenerator>true</EnableRequestDelegateGenerator>
+    <InterceptorsPreviewNamespaces>$(InterceptorsPreviewNamespaces);Microsoft.AspNetCore.Http.Generated</InterceptorsPreviewNamespaces>
   </PropertyGroup>
 
   <ItemGroup>

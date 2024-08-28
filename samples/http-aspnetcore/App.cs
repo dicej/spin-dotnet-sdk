@@ -80,13 +80,6 @@ public class IncomingHandlerImpl : IIncomingHandler
 
         app.MapPost("/data", (Message message) => message.Greeting);
 
-        // TODO: The following line should not be necessary, but if it is
-        // omitted then the NativeAOT-LLVM compiler will emit incomplete code
-        // for the generated `IJsonTypeInfoResolver.GetTypeInfo` method of the
-        // `AppJsonSerializerContext` class such that any attempt to deserialize
-        // a `Message` from JSON leads to an infinite loop.
-        _ = AppJsonSerializerContext.Default.Message;
-
         Func<Task> task = async () =>
         {
             await app.StartAsync();
