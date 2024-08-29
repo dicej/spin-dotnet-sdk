@@ -191,7 +191,6 @@ public interface ISqlite {
 
         public void Dispose() {
             Dispose(true);
-            GC.SuppressFinalize(this);
         }
 
         [DllImport("fermyon:spin/sqlite@2.0.0", EntryPoint = "[resource-drop]connection"), WasmImportLinkage]
@@ -202,10 +201,6 @@ public interface ISqlite {
                 wasmImportResourceDrop(Handle);
                 Handle = 0;
             }
-        }
-
-        ~Connection() {
-            Dispose(false);
         }
 
         internal static class OpenWasmInterop

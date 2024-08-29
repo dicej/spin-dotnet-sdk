@@ -76,7 +76,6 @@ public interface IKeyValue {
 
         public void Dispose() {
             Dispose(true);
-            GC.SuppressFinalize(this);
         }
 
         [DllImport("fermyon:spin/key-value@2.0.0", EntryPoint = "[resource-drop]store"), WasmImportLinkage]
@@ -87,10 +86,6 @@ public interface IKeyValue {
                 wasmImportResourceDrop(Handle);
                 Handle = 0;
             }
-        }
-
-        ~Store() {
-            Dispose(false);
         }
 
         internal static class OpenWasmInterop

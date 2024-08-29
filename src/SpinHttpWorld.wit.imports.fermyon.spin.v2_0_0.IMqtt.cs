@@ -91,7 +91,6 @@ public interface IMqtt {
 
         public void Dispose() {
             Dispose(true);
-            GC.SuppressFinalize(this);
         }
 
         [DllImport("fermyon:spin/mqtt@2.0.0", EntryPoint = "[resource-drop]connection"), WasmImportLinkage]
@@ -102,10 +101,6 @@ public interface IMqtt {
                 wasmImportResourceDrop(Handle);
                 Handle = 0;
             }
-        }
-
-        ~Connection() {
-            Dispose(false);
         }
 
         internal static class OpenWasmInterop
