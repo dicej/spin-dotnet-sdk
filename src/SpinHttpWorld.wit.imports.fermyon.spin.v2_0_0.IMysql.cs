@@ -37,7 +37,7 @@ public interface IMysql {
         private static extern void wasmImportResourceDrop(int p0);
 
         protected virtual void Dispose(bool disposing) {
-            if (Handle != 0) {
+            if (disposing && Handle != 0) {
                 wasmImportResourceDrop(Handle);
                 Handle = 0;
             }
