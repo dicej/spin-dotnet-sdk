@@ -258,12 +258,12 @@ interface variables {
 }
 
 world spin-http {
-  import wasi:io/poll@0.2.0;
-  import wasi:clocks/monotonic-clock@0.2.0;
-  import wasi:io/error@0.2.0;
-  import wasi:io/streams@0.2.0;
-  import wasi:http/types@0.2.0;
-  import wasi:http/outgoing-handler@0.2.0;
+  import wasi:io/poll@0.2.1;
+  import wasi:clocks/monotonic-clock@0.2.1;
+  import wasi:io/error@0.2.1;
+  import wasi:io/streams@0.2.1;
+  import wasi:http/types@0.2.1;
+  import wasi:http/outgoing-handler@0.2.1;
   import llm;
   import redis;
   import rdbms-types;
@@ -274,9 +274,9 @@ world spin-http {
   import key-value;
   import variables;
 
-  export wasi:http/incoming-handler@0.2.0;
+  export wasi:http/incoming-handler@0.2.1;
 }
-package wasi:io@0.2.0 {
+package wasi:io@0.2.1 {
   interface poll {
     resource pollable {
       ready: func() -> bool;
@@ -323,9 +323,9 @@ package wasi:io@0.2.0 {
 }
 
 
-package wasi:clocks@0.2.0 {
+package wasi:clocks@0.2.1 {
   interface monotonic-clock {
-    use wasi:io/poll@0.2.0.{pollable};
+    use wasi:io/poll@0.2.1.{pollable};
 
     type instant = u64;
 
@@ -342,12 +342,12 @@ package wasi:clocks@0.2.0 {
 }
 
 
-package wasi:http@0.2.0 {
+package wasi:http@0.2.1 {
   interface types {
-    use wasi:clocks/monotonic-clock@0.2.0.{duration};
-    use wasi:io/streams@0.2.0.{input-stream, output-stream};
-    use wasi:io/error@0.2.0.{error as io-error};
-    use wasi:io/poll@0.2.0.{pollable};
+    use wasi:clocks/monotonic-clock@0.2.1.{duration};
+    use wasi:io/streams@0.2.1.{input-stream, output-stream};
+    use wasi:io/error@0.2.1.{error as io-error};
+    use wasi:io/poll@0.2.1.{pollable};
 
     variant method {
       get,

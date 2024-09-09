@@ -11,18 +11,18 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 
-namespace SpinHttpWorld.wit.imports.wasi.io.v0_2_0
+namespace SpinHttpWorld.wit.imports.wasi.io.v0_2_1
 {
     public static class PollInterop {
 
         internal static class PollWasmInterop
         {
-            [DllImport("wasi:io/poll@0.2.0", EntryPoint = "poll"), WasmImportLinkage]
+            [DllImport("wasi:io/poll@0.2.1", EntryPoint = "poll"), WasmImportLinkage]
             internal static extern void wasmImportPoll(nint p0, int p1, nint p2);
 
         }
 
-        public  static unsafe uint[] Poll(List<global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IPoll.Pollable> @in)
+        public  static unsafe uint[] Poll(List<global::SpinHttpWorld.wit.imports.wasi.io.v0_2_1.IPoll.Pollable> @in)
         {
 
             byte[] buffer = new byte[4 * @in.Count];
@@ -30,7 +30,7 @@ namespace SpinHttpWorld.wit.imports.wasi.io.v0_2_0
             var address = gcHandle.AddrOfPinnedObject();
 
             for (int index = 0; index < @in.Count; ++index) {
-                global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IPoll.Pollable element = @in[index];
+                global::SpinHttpWorld.wit.imports.wasi.io.v0_2_1.IPoll.Pollable element = @in[index];
                 int basePtr = (int)address + (index * 4);
                 var handle = element.Handle;
                 BitConverter.TryWriteBytes(new Span<byte>((void*)(basePtr + 0), 4), unchecked((int)handle));

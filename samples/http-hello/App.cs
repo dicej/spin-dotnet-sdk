@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Text;
 using Spin.Http;
-using SpinHttpWorld.wit.imports.wasi.http.v0_2_0;
+using SpinHttpWorld.wit.imports.wasi.http.v0_2_1;
 
-namespace SpinHttpWorld.wit.exports.wasi.http.v0_2_0;
+namespace SpinHttpWorld.wit.exports.wasi.http.v0_2_1;
 
 public class IncomingHandlerImpl : IIncomingHandler
 {

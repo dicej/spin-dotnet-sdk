@@ -4,7 +4,7 @@
 using System;
 using Microsoft.Extensions.Logging;
 
-namespace SpinHttpWorld.wit.exports.wasi.http.v0_2_0;
+namespace SpinHttpWorld.wit.exports.wasi.http.v0_2_1;
 
 public class WasiLoggingProvider : ILoggerProvider
 {

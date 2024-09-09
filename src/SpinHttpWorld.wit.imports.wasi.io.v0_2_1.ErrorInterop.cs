@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 
-namespace SpinHttpWorld.wit.imports.wasi.io.v0_2_0
+namespace SpinHttpWorld.wit.imports.wasi.io.v0_2_1
 {
     public static class ErrorInterop {
 

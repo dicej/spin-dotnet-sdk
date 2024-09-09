@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 
-namespace SpinHttpWorld.wit.imports.wasi.http.v0_2_0;
+namespace SpinHttpWorld.wit.imports.wasi.http.v0_2_1;
 
 public interface ITypes {
 
@@ -607,7 +607,7 @@ public interface ITypes {
             Dispose(true);
         }
 
-        [DllImport("wasi:http/types@0.2.0", EntryPoint = "[resource-drop]fields"), WasmImportLinkage]
+        [DllImport("wasi:http/types@0.2.1", EntryPoint = "[resource-drop]fields"), WasmImportLinkage]
         private static extern void wasmImportResourceDrop(int p0);
 
         protected virtual void Dispose(bool disposing) {
@@ -619,7 +619,7 @@ public interface ITypes {
 
         internal static class ConstructorWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[constructor]fields"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[constructor]fields"), WasmImportLinkage]
             internal static extern int wasmImportConstructor();
 
         }
@@ -634,12 +634,12 @@ public interface ITypes {
 
         internal static class FromListWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[static]fields.from-list"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[static]fields.from-list"), WasmImportLinkage]
             internal static extern void wasmImportFromList(nint p0, int p1, nint p2);
 
         }
 
-        public  static unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields FromList(List<(string, byte[])> entries)
+        public  static unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Fields FromList(List<(string, byte[])> entries)
         {
 
             byte[] buffer0 = new byte[16 * entries.Count];
@@ -668,40 +668,40 @@ public interface ITypes {
                 var ptr = (nint)retAreaByte0;
                 FromListWasmInterop.wasmImportFromList((int)address, entries.Count, ptr);
 
-                Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.HeaderError> lifted11;
+                Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Fields, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.HeaderError> lifted11;
 
                 switch (new Span<byte>((void*)(ptr + 0), 1)[0]) {
                     case 0: {
-                        var resource = new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields.THandle(BitConverter.ToInt32(new Span<byte>((void*)(ptr + 4), 4))));
+                        var resource = new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Fields(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Fields.THandle(BitConverter.ToInt32(new Span<byte>((void*)(ptr + 4), 4))));
 
-                        lifted11 = Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.HeaderError>.ok(resource);
+                        lifted11 = Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Fields, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.HeaderError>.ok(resource);
                         break;
                     }
                     case 1: {
 
-                        global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.HeaderError lifted;
+                        global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.HeaderError lifted;
 
                         switch (new Span<byte>((void*)(ptr + 4), 1)[0]) {
                             case 0: {
 
-                                lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.HeaderError.invalidSyntax();
+                                lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.HeaderError.invalidSyntax();
                                 break;
                             }
                             case 1: {
 
-                                lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.HeaderError.forbidden();
+                                lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.HeaderError.forbidden();
                                 break;
                             }
                             case 2: {
 
-                                lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.HeaderError.immutable();
+                                lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.HeaderError.immutable();
                                 break;
                             }
 
                             default: throw new ArgumentException($"invalid discriminant: {new Span<byte>((void*)(ptr + 4), 1)[0]}");
                         }
 
-                        lifted11 = Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.HeaderError>.err(lifted);
+                        lifted11 = Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Fields, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.HeaderError>.err(lifted);
                         break;
                     }
 
@@ -721,7 +721,7 @@ public interface ITypes {
 
         internal static class GetWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[method]fields.get"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[method]fields.get"), WasmImportLinkage]
             internal static extern void wasmImportGet(int p0, nint p1, int p2, nint p3);
 
         }
@@ -756,7 +756,7 @@ public interface ITypes {
 
         internal static class HasWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[method]fields.has"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[method]fields.has"), WasmImportLinkage]
             internal static extern int wasmImportHas(int p0, nint p1, int p2);
 
         }
@@ -775,7 +775,7 @@ public interface ITypes {
 
         internal static class SetWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[method]fields.set"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[method]fields.set"), WasmImportLinkage]
             internal static extern void wasmImportSet(int p0, nint p1, int p2, nint p3, int p4, nint p5);
 
         }
@@ -808,39 +808,39 @@ public interface ITypes {
                 var ptr = (nint)retAreaByte0;
                 SetWasmInterop.wasmImportSet(handle, interopString.ToInt32(), lengthresult, (int)address, value.Count, ptr);
 
-                Result<None, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.HeaderError> lifted11;
+                Result<None, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.HeaderError> lifted11;
 
                 switch (new Span<byte>((void*)(ptr + 0), 1)[0]) {
                     case 0: {
 
-                        lifted11 = Result<None, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.HeaderError>.ok(new global::SpinHttpWorld.None());
+                        lifted11 = Result<None, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.HeaderError>.ok(new global::SpinHttpWorld.None());
                         break;
                     }
                     case 1: {
 
-                        global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.HeaderError lifted;
+                        global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.HeaderError lifted;
 
                         switch (new Span<byte>((void*)(ptr + 1), 1)[0]) {
                             case 0: {
 
-                                lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.HeaderError.invalidSyntax();
+                                lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.HeaderError.invalidSyntax();
                                 break;
                             }
                             case 1: {
 
-                                lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.HeaderError.forbidden();
+                                lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.HeaderError.forbidden();
                                 break;
                             }
                             case 2: {
 
-                                lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.HeaderError.immutable();
+                                lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.HeaderError.immutable();
                                 break;
                             }
 
                             default: throw new ArgumentException($"invalid discriminant: {new Span<byte>((void*)(ptr + 1), 1)[0]}");
                         }
 
-                        lifted11 = Result<None, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.HeaderError>.err(lifted);
+                        lifted11 = Result<None, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.HeaderError>.err(lifted);
                         break;
                     }
 
@@ -860,7 +860,7 @@ public interface ITypes {
 
         internal static class DeleteWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[method]fields.delete"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[method]fields.delete"), WasmImportLinkage]
             internal static extern void wasmImportDelete(int p0, nint p1, int p2, nint p3);
 
         }
@@ -878,39 +878,39 @@ public interface ITypes {
                 var ptr = (nint)retAreaByte0;
                 DeleteWasmInterop.wasmImportDelete(handle, interopString.ToInt32(), lengthresult, ptr);
 
-                Result<None, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.HeaderError> lifted8;
+                Result<None, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.HeaderError> lifted8;
 
                 switch (new Span<byte>((void*)(ptr + 0), 1)[0]) {
                     case 0: {
 
-                        lifted8 = Result<None, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.HeaderError>.ok(new global::SpinHttpWorld.None());
+                        lifted8 = Result<None, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.HeaderError>.ok(new global::SpinHttpWorld.None());
                         break;
                     }
                     case 1: {
 
-                        global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.HeaderError lifted;
+                        global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.HeaderError lifted;
 
                         switch (new Span<byte>((void*)(ptr + 1), 1)[0]) {
                             case 0: {
 
-                                lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.HeaderError.invalidSyntax();
+                                lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.HeaderError.invalidSyntax();
                                 break;
                             }
                             case 1: {
 
-                                lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.HeaderError.forbidden();
+                                lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.HeaderError.forbidden();
                                 break;
                             }
                             case 2: {
 
-                                lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.HeaderError.immutable();
+                                lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.HeaderError.immutable();
                                 break;
                             }
 
                             default: throw new ArgumentException($"invalid discriminant: {new Span<byte>((void*)(ptr + 1), 1)[0]}");
                         }
 
-                        lifted8 = Result<None, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.HeaderError>.err(lifted);
+                        lifted8 = Result<None, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.HeaderError>.err(lifted);
                         break;
                     }
 
@@ -929,7 +929,7 @@ public interface ITypes {
 
         internal static class AppendWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[method]fields.append"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[method]fields.append"), WasmImportLinkage]
             internal static extern void wasmImportAppend(int p0, nint p1, int p2, nint p3, int p4, nint p5);
 
         }
@@ -950,39 +950,39 @@ public interface ITypes {
                 var ptr = (nint)retAreaByte0;
                 AppendWasmInterop.wasmImportAppend(handle, interopString.ToInt32(), lengthresult, (int)buffer, (value).Length, ptr);
 
-                Result<None, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.HeaderError> lifted8;
+                Result<None, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.HeaderError> lifted8;
 
                 switch (new Span<byte>((void*)(ptr + 0), 1)[0]) {
                     case 0: {
 
-                        lifted8 = Result<None, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.HeaderError>.ok(new global::SpinHttpWorld.None());
+                        lifted8 = Result<None, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.HeaderError>.ok(new global::SpinHttpWorld.None());
                         break;
                     }
                     case 1: {
 
-                        global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.HeaderError lifted;
+                        global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.HeaderError lifted;
 
                         switch (new Span<byte>((void*)(ptr + 1), 1)[0]) {
                             case 0: {
 
-                                lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.HeaderError.invalidSyntax();
+                                lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.HeaderError.invalidSyntax();
                                 break;
                             }
                             case 1: {
 
-                                lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.HeaderError.forbidden();
+                                lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.HeaderError.forbidden();
                                 break;
                             }
                             case 2: {
 
-                                lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.HeaderError.immutable();
+                                lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.HeaderError.immutable();
                                 break;
                             }
 
                             default: throw new ArgumentException($"invalid discriminant: {new Span<byte>((void*)(ptr + 1), 1)[0]}");
                         }
 
-                        lifted8 = Result<None, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.HeaderError>.err(lifted);
+                        lifted8 = Result<None, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.HeaderError>.err(lifted);
                         break;
                     }
 
@@ -1001,7 +1001,7 @@ public interface ITypes {
 
         internal static class EntriesWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[method]fields.entries"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[method]fields.entries"), WasmImportLinkage]
             internal static extern void wasmImportEntries(int p0, nint p1);
 
         }
@@ -1034,16 +1034,16 @@ public interface ITypes {
 
         internal static class CloneWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[method]fields.clone"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[method]fields.clone"), WasmImportLinkage]
             internal static extern int wasmImportClone(int p0);
 
         }
 
-        public   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields Clone()
+        public   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Fields Clone()
         {
             var handle = this.Handle;
             var result =  CloneWasmInterop.wasmImportClone(handle);
-            var resource = new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields.THandle(result));
+            var resource = new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Fields(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Fields.THandle(result));
             return resource;
 
             //TODO: free alloc handle (interopString) if exists
@@ -1068,7 +1068,7 @@ public interface ITypes {
             Dispose(true);
         }
 
-        [DllImport("wasi:http/types@0.2.0", EntryPoint = "[resource-drop]incoming-request"), WasmImportLinkage]
+        [DllImport("wasi:http/types@0.2.1", EntryPoint = "[resource-drop]incoming-request"), WasmImportLinkage]
         private static extern void wasmImportResourceDrop(int p0);
 
         protected virtual void Dispose(bool disposing) {
@@ -1080,12 +1080,12 @@ public interface ITypes {
 
         internal static class MethodWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[method]incoming-request.method"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[method]incoming-request.method"), WasmImportLinkage]
             internal static extern void wasmImportMethod(int p0, nint p1);
 
         }
 
-        public   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Method Method()
+        public   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Method Method()
         {
             var handle = this.Handle;
 
@@ -1095,57 +1095,57 @@ public interface ITypes {
                 var ptr = (nint)retAreaByte0;
                 MethodWasmInterop.wasmImportMethod(handle, ptr);
 
-                global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Method lifted;
+                global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Method lifted;
 
                 switch (new Span<byte>((void*)(ptr + 0), 1)[0]) {
                     case 0: {
 
-                        lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Method.get();
+                        lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Method.get();
                         break;
                     }
                     case 1: {
 
-                        lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Method.head();
+                        lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Method.head();
                         break;
                     }
                     case 2: {
 
-                        lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Method.post();
+                        lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Method.post();
                         break;
                     }
                     case 3: {
 
-                        lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Method.put();
+                        lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Method.put();
                         break;
                     }
                     case 4: {
 
-                        lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Method.delete();
+                        lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Method.delete();
                         break;
                     }
                     case 5: {
 
-                        lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Method.connect();
+                        lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Method.connect();
                         break;
                     }
                     case 6: {
 
-                        lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Method.options();
+                        lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Method.options();
                         break;
                     }
                     case 7: {
 
-                        lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Method.trace();
+                        lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Method.trace();
                         break;
                     }
                     case 8: {
 
-                        lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Method.patch();
+                        lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Method.patch();
                         break;
                     }
                     case 9: {
 
-                        lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Method.other(Encoding.UTF8.GetString((byte*)BitConverter.ToInt32(new Span<byte>((void*)(ptr + 4), 4)), BitConverter.ToInt32(new Span<byte>((void*)(ptr + 8), 4))));
+                        lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Method.other(Encoding.UTF8.GetString((byte*)BitConverter.ToInt32(new Span<byte>((void*)(ptr + 4), 4)), BitConverter.ToInt32(new Span<byte>((void*)(ptr + 8), 4))));
                         break;
                     }
 
@@ -1159,7 +1159,7 @@ public interface ITypes {
 
         internal static class PathWithQueryWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[method]incoming-request.path-with-query"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[method]incoming-request.path-with-query"), WasmImportLinkage]
             internal static extern void wasmImportPathWithQuery(int p0, nint p1);
 
         }
@@ -1198,12 +1198,12 @@ public interface ITypes {
 
         internal static class SchemeWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[method]incoming-request.scheme"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[method]incoming-request.scheme"), WasmImportLinkage]
             internal static extern void wasmImportScheme(int p0, nint p1);
 
         }
 
-        public   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Scheme? Scheme()
+        public   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Scheme? Scheme()
         {
             var handle = this.Handle;
 
@@ -1213,7 +1213,7 @@ public interface ITypes {
                 var ptr = (nint)retAreaByte0;
                 SchemeWasmInterop.wasmImportScheme(handle, ptr);
 
-                global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Scheme? lifted8;
+                global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Scheme? lifted8;
 
                 switch (new Span<byte>((void*)(ptr + 0), 1)[0]) {
                     case 0: {
@@ -1223,22 +1223,22 @@ public interface ITypes {
 
                     case 1: {
 
-                        global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Scheme lifted;
+                        global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Scheme lifted;
 
                         switch (new Span<byte>((void*)(ptr + 4), 1)[0]) {
                             case 0: {
 
-                                lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Scheme.http();
+                                lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Scheme.http();
                                 break;
                             }
                             case 1: {
 
-                                lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Scheme.https();
+                                lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Scheme.https();
                                 break;
                             }
                             case 2: {
 
-                                lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Scheme.other(Encoding.UTF8.GetString((byte*)BitConverter.ToInt32(new Span<byte>((void*)(ptr + 8), 4)), BitConverter.ToInt32(new Span<byte>((void*)(ptr + 12), 4))));
+                                lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Scheme.other(Encoding.UTF8.GetString((byte*)BitConverter.ToInt32(new Span<byte>((void*)(ptr + 8), 4)), BitConverter.ToInt32(new Span<byte>((void*)(ptr + 12), 4))));
                                 break;
                             }
 
@@ -1259,7 +1259,7 @@ public interface ITypes {
 
         internal static class AuthorityWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[method]incoming-request.authority"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[method]incoming-request.authority"), WasmImportLinkage]
             internal static extern void wasmImportAuthority(int p0, nint p1);
 
         }
@@ -1298,16 +1298,16 @@ public interface ITypes {
 
         internal static class HeadersWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[method]incoming-request.headers"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[method]incoming-request.headers"), WasmImportLinkage]
             internal static extern int wasmImportHeaders(int p0);
 
         }
 
-        public   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields Headers()
+        public   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Fields Headers()
         {
             var handle = this.Handle;
             var result =  HeadersWasmInterop.wasmImportHeaders(handle);
-            var resource = new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields.THandle(result));
+            var resource = new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Fields(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Fields.THandle(result));
             return resource;
 
             //TODO: free alloc handle (interopString) if exists
@@ -1315,12 +1315,12 @@ public interface ITypes {
 
         internal static class ConsumeWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[method]incoming-request.consume"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[method]incoming-request.consume"), WasmImportLinkage]
             internal static extern void wasmImportConsume(int p0, nint p1);
 
         }
 
-        public   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.IncomingBody Consume()
+        public   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.IncomingBody Consume()
         {
             var handle = this.Handle;
 
@@ -1330,18 +1330,18 @@ public interface ITypes {
                 var ptr = (nint)retAreaByte0;
                 ConsumeWasmInterop.wasmImportConsume(handle, ptr);
 
-                Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.IncomingBody, None> lifted;
+                Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.IncomingBody, None> lifted;
 
                 switch (new Span<byte>((void*)(ptr + 0), 1)[0]) {
                     case 0: {
-                        var resource = new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.IncomingBody(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.IncomingBody.THandle(BitConverter.ToInt32(new Span<byte>((void*)(ptr + 4), 4))));
+                        var resource = new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.IncomingBody(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.IncomingBody.THandle(BitConverter.ToInt32(new Span<byte>((void*)(ptr + 4), 4))));
 
-                        lifted = Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.IncomingBody, None>.ok(resource);
+                        lifted = Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.IncomingBody, None>.ok(resource);
                         break;
                     }
                     case 1: {
 
-                        lifted = Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.IncomingBody, None>.err(new global::SpinHttpWorld.None());
+                        lifted = Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.IncomingBody, None>.err(new global::SpinHttpWorld.None());
                         break;
                     }
 
@@ -1377,7 +1377,7 @@ public interface ITypes {
             Dispose(true);
         }
 
-        [DllImport("wasi:http/types@0.2.0", EntryPoint = "[resource-drop]outgoing-request"), WasmImportLinkage]
+        [DllImport("wasi:http/types@0.2.1", EntryPoint = "[resource-drop]outgoing-request"), WasmImportLinkage]
         private static extern void wasmImportResourceDrop(int p0);
 
         protected virtual void Dispose(bool disposing) {
@@ -1389,12 +1389,12 @@ public interface ITypes {
 
         internal static class ConstructorWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[constructor]outgoing-request"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[constructor]outgoing-request"), WasmImportLinkage]
             internal static extern int wasmImportConstructor(int p0);
 
         }
 
-        public   unsafe  OutgoingRequest(global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields headers)
+        public   unsafe  OutgoingRequest(global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Fields headers)
         {
             var handle = headers.Handle;
             headers.Handle = 0;
@@ -1406,12 +1406,12 @@ public interface ITypes {
 
         internal static class BodyWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[method]outgoing-request.body"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[method]outgoing-request.body"), WasmImportLinkage]
             internal static extern void wasmImportBody(int p0, nint p1);
 
         }
 
-        public   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.OutgoingBody Body()
+        public   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.OutgoingBody Body()
         {
             var handle = this.Handle;
 
@@ -1421,18 +1421,18 @@ public interface ITypes {
                 var ptr = (nint)retAreaByte0;
                 BodyWasmInterop.wasmImportBody(handle, ptr);
 
-                Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.OutgoingBody, None> lifted;
+                Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.OutgoingBody, None> lifted;
 
                 switch (new Span<byte>((void*)(ptr + 0), 1)[0]) {
                     case 0: {
-                        var resource = new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.OutgoingBody(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.OutgoingBody.THandle(BitConverter.ToInt32(new Span<byte>((void*)(ptr + 4), 4))));
+                        var resource = new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.OutgoingBody(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.OutgoingBody.THandle(BitConverter.ToInt32(new Span<byte>((void*)(ptr + 4), 4))));
 
-                        lifted = Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.OutgoingBody, None>.ok(resource);
+                        lifted = Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.OutgoingBody, None>.ok(resource);
                         break;
                     }
                     case 1: {
 
-                        lifted = Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.OutgoingBody, None>.err(new global::SpinHttpWorld.None());
+                        lifted = Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.OutgoingBody, None>.err(new global::SpinHttpWorld.None());
                         break;
                     }
 
@@ -1451,12 +1451,12 @@ public interface ITypes {
 
         internal static class MethodWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[method]outgoing-request.method"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[method]outgoing-request.method"), WasmImportLinkage]
             internal static extern void wasmImportMethod(int p0, nint p1);
 
         }
 
-        public   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Method Method()
+        public   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Method Method()
         {
             var handle = this.Handle;
 
@@ -1466,57 +1466,57 @@ public interface ITypes {
                 var ptr = (nint)retAreaByte0;
                 MethodWasmInterop.wasmImportMethod(handle, ptr);
 
-                global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Method lifted;
+                global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Method lifted;
 
                 switch (new Span<byte>((void*)(ptr + 0), 1)[0]) {
                     case 0: {
 
-                        lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Method.get();
+                        lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Method.get();
                         break;
                     }
                     case 1: {
 
-                        lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Method.head();
+                        lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Method.head();
                         break;
                     }
                     case 2: {
 
-                        lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Method.post();
+                        lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Method.post();
                         break;
                     }
                     case 3: {
 
-                        lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Method.put();
+                        lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Method.put();
                         break;
                     }
                     case 4: {
 
-                        lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Method.delete();
+                        lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Method.delete();
                         break;
                     }
                     case 5: {
 
-                        lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Method.connect();
+                        lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Method.connect();
                         break;
                     }
                     case 6: {
 
-                        lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Method.options();
+                        lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Method.options();
                         break;
                     }
                     case 7: {
 
-                        lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Method.trace();
+                        lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Method.trace();
                         break;
                     }
                     case 8: {
 
-                        lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Method.patch();
+                        lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Method.patch();
                         break;
                     }
                     case 9: {
 
-                        lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Method.other(Encoding.UTF8.GetString((byte*)BitConverter.ToInt32(new Span<byte>((void*)(ptr + 4), 4)), BitConverter.ToInt32(new Span<byte>((void*)(ptr + 8), 4))));
+                        lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Method.other(Encoding.UTF8.GetString((byte*)BitConverter.ToInt32(new Span<byte>((void*)(ptr + 4), 4)), BitConverter.ToInt32(new Span<byte>((void*)(ptr + 8), 4))));
                         break;
                     }
 
@@ -1530,12 +1530,12 @@ public interface ITypes {
 
         internal static class SetMethodWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[method]outgoing-request.set-method"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[method]outgoing-request.set-method"), WasmImportLinkage]
             internal static extern int wasmImportSetMethod(int p0, int p1, nint p2, int p3);
 
         }
 
-        public   unsafe void SetMethod(global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Method method)
+        public   unsafe void SetMethod(global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Method method)
         {
             var handle = this.Handle;
 
@@ -1661,7 +1661,7 @@ public interface ITypes {
 
         internal static class PathWithQueryWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[method]outgoing-request.path-with-query"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[method]outgoing-request.path-with-query"), WasmImportLinkage]
             internal static extern void wasmImportPathWithQuery(int p0, nint p1);
 
         }
@@ -1700,7 +1700,7 @@ public interface ITypes {
 
         internal static class SetPathWithQueryWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[method]outgoing-request.set-path-with-query"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[method]outgoing-request.set-path-with-query"), WasmImportLinkage]
             internal static extern int wasmImportSetPathWithQuery(int p0, int p1, nint p2, int p3);
 
         }
@@ -1760,12 +1760,12 @@ public interface ITypes {
 
         internal static class SchemeWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[method]outgoing-request.scheme"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[method]outgoing-request.scheme"), WasmImportLinkage]
             internal static extern void wasmImportScheme(int p0, nint p1);
 
         }
 
-        public   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Scheme? Scheme()
+        public   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Scheme? Scheme()
         {
             var handle = this.Handle;
 
@@ -1775,7 +1775,7 @@ public interface ITypes {
                 var ptr = (nint)retAreaByte0;
                 SchemeWasmInterop.wasmImportScheme(handle, ptr);
 
-                global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Scheme? lifted8;
+                global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Scheme? lifted8;
 
                 switch (new Span<byte>((void*)(ptr + 0), 1)[0]) {
                     case 0: {
@@ -1785,22 +1785,22 @@ public interface ITypes {
 
                     case 1: {
 
-                        global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Scheme lifted;
+                        global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Scheme lifted;
 
                         switch (new Span<byte>((void*)(ptr + 4), 1)[0]) {
                             case 0: {
 
-                                lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Scheme.http();
+                                lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Scheme.http();
                                 break;
                             }
                             case 1: {
 
-                                lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Scheme.https();
+                                lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Scheme.https();
                                 break;
                             }
                             case 2: {
 
-                                lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Scheme.other(Encoding.UTF8.GetString((byte*)BitConverter.ToInt32(new Span<byte>((void*)(ptr + 8), 4)), BitConverter.ToInt32(new Span<byte>((void*)(ptr + 12), 4))));
+                                lifted = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Scheme.other(Encoding.UTF8.GetString((byte*)BitConverter.ToInt32(new Span<byte>((void*)(ptr + 8), 4)), BitConverter.ToInt32(new Span<byte>((void*)(ptr + 12), 4))));
                                 break;
                             }
 
@@ -1821,12 +1821,12 @@ public interface ITypes {
 
         internal static class SetSchemeWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[method]outgoing-request.set-scheme"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[method]outgoing-request.set-scheme"), WasmImportLinkage]
             internal static extern int wasmImportSetScheme(int p0, int p1, int p2, nint p3, int p4);
 
         }
 
-        public   unsafe void SetScheme(global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Scheme? scheme)
+        public   unsafe void SetScheme(global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Scheme? scheme)
         {
             var handle = this.Handle;
 
@@ -1836,7 +1836,7 @@ public interface ITypes {
             int lowered17;
 
             if (scheme != null) {
-                var payload2 = (global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Scheme) scheme;
+                var payload2 = (global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Scheme) scheme;
 
                 int lowered;
                 nint lowered12;
@@ -1918,7 +1918,7 @@ public interface ITypes {
 
         internal static class AuthorityWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[method]outgoing-request.authority"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[method]outgoing-request.authority"), WasmImportLinkage]
             internal static extern void wasmImportAuthority(int p0, nint p1);
 
         }
@@ -1957,7 +1957,7 @@ public interface ITypes {
 
         internal static class SetAuthorityWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[method]outgoing-request.set-authority"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[method]outgoing-request.set-authority"), WasmImportLinkage]
             internal static extern int wasmImportSetAuthority(int p0, int p1, nint p2, int p3);
 
         }
@@ -2017,16 +2017,16 @@ public interface ITypes {
 
         internal static class HeadersWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[method]outgoing-request.headers"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[method]outgoing-request.headers"), WasmImportLinkage]
             internal static extern int wasmImportHeaders(int p0);
 
         }
 
-        public   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields Headers()
+        public   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Fields Headers()
         {
             var handle = this.Handle;
             var result =  HeadersWasmInterop.wasmImportHeaders(handle);
-            var resource = new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields.THandle(result));
+            var resource = new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Fields(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Fields.THandle(result));
             return resource;
 
             //TODO: free alloc handle (interopString) if exists
@@ -2056,7 +2056,7 @@ public interface ITypes {
             Dispose(true);
         }
 
-        [DllImport("wasi:http/types@0.2.0", EntryPoint = "[resource-drop]request-options"), WasmImportLinkage]
+        [DllImport("wasi:http/types@0.2.1", EntryPoint = "[resource-drop]request-options"), WasmImportLinkage]
         private static extern void wasmImportResourceDrop(int p0);
 
         protected virtual void Dispose(bool disposing) {
@@ -2068,7 +2068,7 @@ public interface ITypes {
 
         internal static class ConstructorWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[constructor]request-options"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[constructor]request-options"), WasmImportLinkage]
             internal static extern int wasmImportConstructor();
 
         }
@@ -2083,7 +2083,7 @@ public interface ITypes {
 
         internal static class ConnectTimeoutWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[method]request-options.connect-timeout"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[method]request-options.connect-timeout"), WasmImportLinkage]
             internal static extern void wasmImportConnectTimeout(int p0, nint p1);
 
         }
@@ -2122,7 +2122,7 @@ public interface ITypes {
 
         internal static class SetConnectTimeoutWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[method]request-options.set-connect-timeout"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[method]request-options.set-connect-timeout"), WasmImportLinkage]
             internal static extern int wasmImportSetConnectTimeout(int p0, int p1, long p2);
 
         }
@@ -2176,7 +2176,7 @@ public interface ITypes {
 
         internal static class FirstByteTimeoutWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[method]request-options.first-byte-timeout"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[method]request-options.first-byte-timeout"), WasmImportLinkage]
             internal static extern void wasmImportFirstByteTimeout(int p0, nint p1);
 
         }
@@ -2215,7 +2215,7 @@ public interface ITypes {
 
         internal static class SetFirstByteTimeoutWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[method]request-options.set-first-byte-timeout"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[method]request-options.set-first-byte-timeout"), WasmImportLinkage]
             internal static extern int wasmImportSetFirstByteTimeout(int p0, int p1, long p2);
 
         }
@@ -2269,7 +2269,7 @@ public interface ITypes {
 
         internal static class BetweenBytesTimeoutWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[method]request-options.between-bytes-timeout"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[method]request-options.between-bytes-timeout"), WasmImportLinkage]
             internal static extern void wasmImportBetweenBytesTimeout(int p0, nint p1);
 
         }
@@ -2308,7 +2308,7 @@ public interface ITypes {
 
         internal static class SetBetweenBytesTimeoutWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[method]request-options.set-between-bytes-timeout"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[method]request-options.set-between-bytes-timeout"), WasmImportLinkage]
             internal static extern int wasmImportSetBetweenBytesTimeout(int p0, int p1, long p2);
 
         }
@@ -2383,7 +2383,7 @@ public interface ITypes {
             Dispose(true);
         }
 
-        [DllImport("wasi:http/types@0.2.0", EntryPoint = "[resource-drop]response-outparam"), WasmImportLinkage]
+        [DllImport("wasi:http/types@0.2.1", EntryPoint = "[resource-drop]response-outparam"), WasmImportLinkage]
         private static extern void wasmImportResourceDrop(int p0);
 
         protected virtual void Dispose(bool disposing) {
@@ -2395,12 +2395,12 @@ public interface ITypes {
 
         internal static class SetWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[static]response-outparam.set"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[static]response-outparam.set"), WasmImportLinkage]
             internal static extern void wasmImportSet(int p0, int p1, int p2, int p3, long p4, nint p5, nint p6, int p7, int p8);
 
         }
 
-        public  static unsafe void Set(global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ResponseOutparam param, Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.OutgoingResponse, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode> response)
+        public  static unsafe void Set(global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ResponseOutparam param, Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.OutgoingResponse, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode> response)
         {
             var handle = param.Handle;
             param.Handle = 0;
@@ -2416,7 +2416,7 @@ public interface ITypes {
 
             switch (response.Tag) {
                 case 0: {
-                    global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.OutgoingResponse payload = response.AsOk;
+                    global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.OutgoingResponse payload = response.AsOk;
                     var handle0 = payload.Handle;
                     payload.Handle = 0;
 
@@ -2432,7 +2432,7 @@ public interface ITypes {
                     break;
                 }
                 case 1: {
-                    global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode payload3 = response.AsErr;
+                    global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode payload3 = response.AsErr;
 
                     int lowered325;
                     int lowered326;
@@ -2456,7 +2456,7 @@ public interface ITypes {
                             break;
                         }
                         case 1: {
-                            global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.DnsErrorPayload payload9 = payload3.AsDnsError;
+                            global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.DnsErrorPayload payload9 = payload3.AsDnsError;
 
                             int lowered;
                             nint lowered16;
@@ -2651,7 +2651,7 @@ public interface ITypes {
                             break;
                         }
                         case 14: {
-                            global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.TlsAlertReceivedPayload payload64 = payload3.AsTlsAlertReceived;
+                            global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.TlsAlertReceivedPayload payload64 = payload3.AsTlsAlertReceived;
 
                             int lowered71;
                             int lowered72;
@@ -2820,7 +2820,7 @@ public interface ITypes {
                             break;
                         }
                         case 22: {
-                            global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.FieldSizePayload? payload123 = payload3.AsHttpRequestHeaderSize;
+                            global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.FieldSizePayload? payload123 = payload3.AsHttpRequestHeaderSize;
 
                             int lowered149;
                             int lowered150;
@@ -2830,7 +2830,7 @@ public interface ITypes {
                             int lowered154;
 
                             if (payload123 != null) {
-                                var payload129 = (global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.FieldSizePayload) payload123;
+                                var payload129 = (global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.FieldSizePayload) payload123;
 
                                 int lowered138;
                                 nint lowered139;
@@ -2928,7 +2928,7 @@ public interface ITypes {
                             break;
                         }
                         case 24: {
-                            global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.FieldSizePayload payload168 = payload3.AsHttpRequestTrailerSize;
+                            global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.FieldSizePayload payload168 = payload3.AsHttpRequestTrailerSize;
 
                             int lowered177;
                             nint lowered178;
@@ -3020,7 +3020,7 @@ public interface ITypes {
                             break;
                         }
                         case 27: {
-                            global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.FieldSizePayload payload204 = payload3.AsHttpResponseHeaderSize;
+                            global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.FieldSizePayload payload204 = payload3.AsHttpResponseHeaderSize;
 
                             int lowered213;
                             nint lowered214;
@@ -3129,7 +3129,7 @@ public interface ITypes {
                             break;
                         }
                         case 30: {
-                            global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.FieldSizePayload payload248 = payload3.AsHttpResponseTrailerSize;
+                            global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.FieldSizePayload payload248 = payload3.AsHttpResponseTrailerSize;
 
                             int lowered257;
                             nint lowered258;
@@ -3386,7 +3386,7 @@ public interface ITypes {
             Dispose(true);
         }
 
-        [DllImport("wasi:http/types@0.2.0", EntryPoint = "[resource-drop]incoming-response"), WasmImportLinkage]
+        [DllImport("wasi:http/types@0.2.1", EntryPoint = "[resource-drop]incoming-response"), WasmImportLinkage]
         private static extern void wasmImportResourceDrop(int p0);
 
         protected virtual void Dispose(bool disposing) {
@@ -3398,7 +3398,7 @@ public interface ITypes {
 
         internal static class StatusWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[method]incoming-response.status"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[method]incoming-response.status"), WasmImportLinkage]
             internal static extern int wasmImportStatus(int p0);
 
         }
@@ -3414,16 +3414,16 @@ public interface ITypes {
 
         internal static class HeadersWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[method]incoming-response.headers"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[method]incoming-response.headers"), WasmImportLinkage]
             internal static extern int wasmImportHeaders(int p0);
 
         }
 
-        public   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields Headers()
+        public   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Fields Headers()
         {
             var handle = this.Handle;
             var result =  HeadersWasmInterop.wasmImportHeaders(handle);
-            var resource = new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields.THandle(result));
+            var resource = new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Fields(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Fields.THandle(result));
             return resource;
 
             //TODO: free alloc handle (interopString) if exists
@@ -3431,12 +3431,12 @@ public interface ITypes {
 
         internal static class ConsumeWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[method]incoming-response.consume"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[method]incoming-response.consume"), WasmImportLinkage]
             internal static extern void wasmImportConsume(int p0, nint p1);
 
         }
 
-        public   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.IncomingBody Consume()
+        public   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.IncomingBody Consume()
         {
             var handle = this.Handle;
 
@@ -3446,18 +3446,18 @@ public interface ITypes {
                 var ptr = (nint)retAreaByte0;
                 ConsumeWasmInterop.wasmImportConsume(handle, ptr);
 
-                Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.IncomingBody, None> lifted;
+                Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.IncomingBody, None> lifted;
 
                 switch (new Span<byte>((void*)(ptr + 0), 1)[0]) {
                     case 0: {
-                        var resource = new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.IncomingBody(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.IncomingBody.THandle(BitConverter.ToInt32(new Span<byte>((void*)(ptr + 4), 4))));
+                        var resource = new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.IncomingBody(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.IncomingBody.THandle(BitConverter.ToInt32(new Span<byte>((void*)(ptr + 4), 4))));
 
-                        lifted = Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.IncomingBody, None>.ok(resource);
+                        lifted = Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.IncomingBody, None>.ok(resource);
                         break;
                     }
                     case 1: {
 
-                        lifted = Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.IncomingBody, None>.err(new global::SpinHttpWorld.None());
+                        lifted = Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.IncomingBody, None>.err(new global::SpinHttpWorld.None());
                         break;
                     }
 
@@ -3500,7 +3500,7 @@ public interface ITypes {
             Dispose(true);
         }
 
-        [DllImport("wasi:http/types@0.2.0", EntryPoint = "[resource-drop]incoming-body"), WasmImportLinkage]
+        [DllImport("wasi:http/types@0.2.1", EntryPoint = "[resource-drop]incoming-body"), WasmImportLinkage]
         private static extern void wasmImportResourceDrop(int p0);
 
         protected virtual void Dispose(bool disposing) {
@@ -3512,12 +3512,12 @@ public interface ITypes {
 
         internal static class StreamWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[method]incoming-body.stream"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[method]incoming-body.stream"), WasmImportLinkage]
             internal static extern void wasmImportStream(int p0, nint p1);
 
         }
 
-        public   unsafe global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IStreams.InputStream Stream()
+        public   unsafe global::SpinHttpWorld.wit.imports.wasi.io.v0_2_1.IStreams.InputStream Stream()
         {
             var handle = this.Handle;
 
@@ -3527,18 +3527,18 @@ public interface ITypes {
                 var ptr = (nint)retAreaByte0;
                 StreamWasmInterop.wasmImportStream(handle, ptr);
 
-                Result<global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IStreams.InputStream, None> lifted;
+                Result<global::SpinHttpWorld.wit.imports.wasi.io.v0_2_1.IStreams.InputStream, None> lifted;
 
                 switch (new Span<byte>((void*)(ptr + 0), 1)[0]) {
                     case 0: {
-                        var resource = new global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IStreams.InputStream(new global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IStreams.InputStream.THandle(BitConverter.ToInt32(new Span<byte>((void*)(ptr + 4), 4))));
+                        var resource = new global::SpinHttpWorld.wit.imports.wasi.io.v0_2_1.IStreams.InputStream(new global::SpinHttpWorld.wit.imports.wasi.io.v0_2_1.IStreams.InputStream.THandle(BitConverter.ToInt32(new Span<byte>((void*)(ptr + 4), 4))));
 
-                        lifted = Result<global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IStreams.InputStream, None>.ok(resource);
+                        lifted = Result<global::SpinHttpWorld.wit.imports.wasi.io.v0_2_1.IStreams.InputStream, None>.ok(resource);
                         break;
                     }
                     case 1: {
 
-                        lifted = Result<global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IStreams.InputStream, None>.err(new global::SpinHttpWorld.None());
+                        lifted = Result<global::SpinHttpWorld.wit.imports.wasi.io.v0_2_1.IStreams.InputStream, None>.err(new global::SpinHttpWorld.None());
                         break;
                     }
 
@@ -3557,17 +3557,17 @@ public interface ITypes {
 
         internal static class FinishWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[static]incoming-body.finish"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[static]incoming-body.finish"), WasmImportLinkage]
             internal static extern int wasmImportFinish(int p0);
 
         }
 
-        public  static unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.FutureTrailers Finish(global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.IncomingBody @this)
+        public  static unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.FutureTrailers Finish(global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.IncomingBody @this)
         {
             var handle = @this.Handle;
             @this.Handle = 0;
             var result =  FinishWasmInterop.wasmImportFinish(handle);
-            var resource = new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.FutureTrailers(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.FutureTrailers.THandle(result));
+            var resource = new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.FutureTrailers(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.FutureTrailers.THandle(result));
             return resource;
 
             //TODO: free alloc handle (interopString) if exists
@@ -3596,7 +3596,7 @@ public interface ITypes {
             Dispose(true);
         }
 
-        [DllImport("wasi:http/types@0.2.0", EntryPoint = "[resource-drop]future-trailers"), WasmImportLinkage]
+        [DllImport("wasi:http/types@0.2.1", EntryPoint = "[resource-drop]future-trailers"), WasmImportLinkage]
         private static extern void wasmImportResourceDrop(int p0);
 
         protected virtual void Dispose(bool disposing) {
@@ -3608,16 +3608,16 @@ public interface ITypes {
 
         internal static class SubscribeWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[method]future-trailers.subscribe"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[method]future-trailers.subscribe"), WasmImportLinkage]
             internal static extern int wasmImportSubscribe(int p0);
 
         }
 
-        public   unsafe global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IPoll.Pollable Subscribe()
+        public   unsafe global::SpinHttpWorld.wit.imports.wasi.io.v0_2_1.IPoll.Pollable Subscribe()
         {
             var handle = this.Handle;
             var result =  SubscribeWasmInterop.wasmImportSubscribe(handle);
-            var resource = new global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IPoll.Pollable(new global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IPoll.Pollable.THandle(result));
+            var resource = new global::SpinHttpWorld.wit.imports.wasi.io.v0_2_1.IPoll.Pollable(new global::SpinHttpWorld.wit.imports.wasi.io.v0_2_1.IPoll.Pollable.THandle(result));
             return resource;
 
             //TODO: free alloc handle (interopString) if exists
@@ -3625,12 +3625,12 @@ public interface ITypes {
 
         internal static class GetWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[method]future-trailers.get"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[method]future-trailers.get"), WasmImportLinkage]
             internal static extern void wasmImportGet(int p0, nint p1);
 
         }
 
-        public   unsafe Result<Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields?, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode>, None>? Get()
+        public   unsafe Result<Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Fields?, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode>, None>? Get()
         {
             var handle = this.Handle;
 
@@ -3640,7 +3640,7 @@ public interface ITypes {
                 var ptr = (nint)retAreaByte0;
                 GetWasmInterop.wasmImportGet(handle, ptr);
 
-                Result<Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields?, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode>, None>? lifted205;
+                Result<Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Fields?, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode>, None>? lifted205;
 
                 switch (new Span<byte>((void*)(ptr + 0), 1)[0]) {
                     case 0: {
@@ -3650,17 +3650,17 @@ public interface ITypes {
 
                     case 1: {
 
-                        Result<Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields?, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode>, None> lifted204;
+                        Result<Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Fields?, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode>, None> lifted204;
 
                         switch (new Span<byte>((void*)(ptr + 8), 1)[0]) {
                             case 0: {
 
-                                Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields?, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode> lifted201;
+                                Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Fields?, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode> lifted201;
 
                                 switch (new Span<byte>((void*)(ptr + 16), 1)[0]) {
                                     case 0: {
 
-                                        global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields? lifted;
+                                        global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Fields? lifted;
 
                                         switch (new Span<byte>((void*)(ptr + 24), 1)[0]) {
                                             case 0: {
@@ -3669,7 +3669,7 @@ public interface ITypes {
                                             }
 
                                             case 1: {
-                                                var resource = new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields.THandle(BitConverter.ToInt32(new Span<byte>((void*)(ptr + 28), 4))));
+                                                var resource = new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Fields(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Fields.THandle(BitConverter.ToInt32(new Span<byte>((void*)(ptr + 28), 4))));
 
                                                 lifted = resource;
                                                 break;
@@ -3678,17 +3678,17 @@ public interface ITypes {
                                             default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 24), 1)[0]));
                                         }
 
-                                        lifted201 = Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields?, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode>.ok(lifted);
+                                        lifted201 = Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Fields?, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode>.ok(lifted);
                                         break;
                                     }
                                     case 1: {
 
-                                        global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode lifted200;
+                                        global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode lifted200;
 
                                         switch (new Span<byte>((void*)(ptr + 24), 1)[0]) {
                                             case 0: {
 
-                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.dnsTimeout();
+                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.dnsTimeout();
                                                 break;
                                             }
                                             case 1: {
@@ -3727,68 +3727,68 @@ public interface ITypes {
                                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 44), 1)[0]));
                                                 }
 
-                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.dnsError(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.DnsErrorPayload (
+                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.dnsError(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.DnsErrorPayload (
                                                 lifted20, lifted25));
                                                 break;
                                             }
                                             case 2: {
 
-                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.destinationNotFound();
+                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.destinationNotFound();
                                                 break;
                                             }
                                             case 3: {
 
-                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.destinationUnavailable();
+                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.destinationUnavailable();
                                                 break;
                                             }
                                             case 4: {
 
-                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.destinationIpProhibited();
+                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.destinationIpProhibited();
                                                 break;
                                             }
                                             case 5: {
 
-                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.destinationIpUnroutable();
+                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.destinationIpUnroutable();
                                                 break;
                                             }
                                             case 6: {
 
-                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.connectionRefused();
+                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.connectionRefused();
                                                 break;
                                             }
                                             case 7: {
 
-                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.connectionTerminated();
+                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.connectionTerminated();
                                                 break;
                                             }
                                             case 8: {
 
-                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.connectionTimeout();
+                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.connectionTimeout();
                                                 break;
                                             }
                                             case 9: {
 
-                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.connectionReadTimeout();
+                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.connectionReadTimeout();
                                                 break;
                                             }
                                             case 10: {
 
-                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.connectionWriteTimeout();
+                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.connectionWriteTimeout();
                                                 break;
                                             }
                                             case 11: {
 
-                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.connectionLimitReached();
+                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.connectionLimitReached();
                                                 break;
                                             }
                                             case 12: {
 
-                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.tlsProtocolError();
+                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.tlsProtocolError();
                                                 break;
                                             }
                                             case 13: {
 
-                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.tlsCertificateError();
+                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.tlsCertificateError();
                                                 break;
                                             }
                                             case 14: {
@@ -3827,18 +3827,18 @@ public interface ITypes {
                                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 36), 1)[0]));
                                                 }
 
-                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.tlsAlertReceived(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.TlsAlertReceivedPayload (
+                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.tlsAlertReceived(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.TlsAlertReceivedPayload (
                                                 lifted56, lifted61));
                                                 break;
                                             }
                                             case 15: {
 
-                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpRequestDenied();
+                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpRequestDenied();
                                                 break;
                                             }
                                             case 16: {
 
-                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpRequestLengthRequired();
+                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpRequestLengthRequired();
                                                 break;
                                             }
                                             case 17: {
@@ -3860,22 +3860,22 @@ public interface ITypes {
                                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 32), 1)[0]));
                                                 }
 
-                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpRequestBodySize(lifted72);
+                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpRequestBodySize(lifted72);
                                                 break;
                                             }
                                             case 18: {
 
-                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpRequestMethodInvalid();
+                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpRequestMethodInvalid();
                                                 break;
                                             }
                                             case 19: {
 
-                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpRequestUriInvalid();
+                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpRequestUriInvalid();
                                                 break;
                                             }
                                             case 20: {
 
-                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpRequestUriTooLong();
+                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpRequestUriTooLong();
                                                 break;
                                             }
                                             case 21: {
@@ -3897,12 +3897,12 @@ public interface ITypes {
                                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 32), 1)[0]));
                                                 }
 
-                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpRequestHeaderSectionSize(lifted85);
+                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpRequestHeaderSectionSize(lifted85);
                                                 break;
                                             }
                                             case 22: {
 
-                                                global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.FieldSizePayload? lifted102;
+                                                global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.FieldSizePayload? lifted102;
 
                                                 switch (new Span<byte>((void*)(ptr + 32), 1)[0]) {
                                                     case 0: {
@@ -3946,7 +3946,7 @@ public interface ITypes {
                                                             default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 48), 1)[0]));
                                                         }
 
-                                                        lifted102 = new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.FieldSizePayload (
+                                                        lifted102 = new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.FieldSizePayload (
                                                         lifted96, lifted101);
                                                         break;
                                                     }
@@ -3954,7 +3954,7 @@ public interface ITypes {
                                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 32), 1)[0]));
                                                 }
 
-                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpRequestHeaderSize(lifted102);
+                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpRequestHeaderSize(lifted102);
                                                 break;
                                             }
                                             case 23: {
@@ -3976,7 +3976,7 @@ public interface ITypes {
                                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 32), 1)[0]));
                                                 }
 
-                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpRequestTrailerSectionSize(lifted109);
+                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpRequestTrailerSectionSize(lifted109);
                                                 break;
                                             }
                                             case 24: {
@@ -4015,13 +4015,13 @@ public interface ITypes {
                                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 44), 1)[0]));
                                                 }
 
-                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpRequestTrailerSize(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.FieldSizePayload (
+                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpRequestTrailerSize(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.FieldSizePayload (
                                                 lifted116, lifted121));
                                                 break;
                                             }
                                             case 25: {
 
-                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpResponseIncomplete();
+                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpResponseIncomplete();
                                                 break;
                                             }
                                             case 26: {
@@ -4043,7 +4043,7 @@ public interface ITypes {
                                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 32), 1)[0]));
                                                 }
 
-                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpResponseHeaderSectionSize(lifted130);
+                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpResponseHeaderSectionSize(lifted130);
                                                 break;
                                             }
                                             case 27: {
@@ -4082,7 +4082,7 @@ public interface ITypes {
                                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 44), 1)[0]));
                                                 }
 
-                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpResponseHeaderSize(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.FieldSizePayload (
+                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpResponseHeaderSize(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.FieldSizePayload (
                                                 lifted137, lifted142));
                                                 break;
                                             }
@@ -4105,7 +4105,7 @@ public interface ITypes {
                                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 32), 1)[0]));
                                                 }
 
-                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpResponseBodySize(lifted149);
+                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpResponseBodySize(lifted149);
                                                 break;
                                             }
                                             case 29: {
@@ -4127,7 +4127,7 @@ public interface ITypes {
                                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 32), 1)[0]));
                                                 }
 
-                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpResponseTrailerSectionSize(lifted156);
+                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpResponseTrailerSectionSize(lifted156);
                                                 break;
                                             }
                                             case 30: {
@@ -4166,7 +4166,7 @@ public interface ITypes {
                                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 44), 1)[0]));
                                                 }
 
-                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpResponseTrailerSize(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.FieldSizePayload (
+                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpResponseTrailerSize(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.FieldSizePayload (
                                                 lifted163, lifted168));
                                                 break;
                                             }
@@ -4189,7 +4189,7 @@ public interface ITypes {
                                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 32), 1)[0]));
                                                 }
 
-                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpResponseTransferCoding(lifted175);
+                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpResponseTransferCoding(lifted175);
                                                 break;
                                             }
                                             case 32: {
@@ -4211,32 +4211,32 @@ public interface ITypes {
                                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 32), 1)[0]));
                                                 }
 
-                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpResponseContentCoding(lifted182);
+                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpResponseContentCoding(lifted182);
                                                 break;
                                             }
                                             case 33: {
 
-                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpResponseTimeout();
+                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpResponseTimeout();
                                                 break;
                                             }
                                             case 34: {
 
-                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpUpgradeFailed();
+                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpUpgradeFailed();
                                                 break;
                                             }
                                             case 35: {
 
-                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpProtocolError();
+                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpProtocolError();
                                                 break;
                                             }
                                             case 36: {
 
-                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.loopDetected();
+                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.loopDetected();
                                                 break;
                                             }
                                             case 37: {
 
-                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.configurationError();
+                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.configurationError();
                                                 break;
                                             }
                                             case 38: {
@@ -4258,26 +4258,26 @@ public interface ITypes {
                                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 32), 1)[0]));
                                                 }
 
-                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.internalError(lifted199);
+                                                lifted200 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.internalError(lifted199);
                                                 break;
                                             }
 
                                             default: throw new ArgumentException($"invalid discriminant: {new Span<byte>((void*)(ptr + 24), 1)[0]}");
                                         }
 
-                                        lifted201 = Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields?, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode>.err(lifted200);
+                                        lifted201 = Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Fields?, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode>.err(lifted200);
                                         break;
                                     }
 
                                     default: throw new ArgumentException($"invalid discriminant: {new Span<byte>((void*)(ptr + 16), 1)[0]}");
                                 }
 
-                                lifted204 = Result<Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields?, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode>, None>.ok(lifted201);
+                                lifted204 = Result<Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Fields?, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode>, None>.ok(lifted201);
                                 break;
                             }
                             case 1: {
 
-                                lifted204 = Result<Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields?, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode>, None>.err(new global::SpinHttpWorld.None());
+                                lifted204 = Result<Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Fields?, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode>, None>.err(new global::SpinHttpWorld.None());
                                 break;
                             }
 
@@ -4315,7 +4315,7 @@ public interface ITypes {
             Dispose(true);
         }
 
-        [DllImport("wasi:http/types@0.2.0", EntryPoint = "[resource-drop]outgoing-response"), WasmImportLinkage]
+        [DllImport("wasi:http/types@0.2.1", EntryPoint = "[resource-drop]outgoing-response"), WasmImportLinkage]
         private static extern void wasmImportResourceDrop(int p0);
 
         protected virtual void Dispose(bool disposing) {
@@ -4327,12 +4327,12 @@ public interface ITypes {
 
         internal static class ConstructorWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[constructor]outgoing-response"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[constructor]outgoing-response"), WasmImportLinkage]
             internal static extern int wasmImportConstructor(int p0);
 
         }
 
-        public   unsafe  OutgoingResponse(global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields headers)
+        public   unsafe  OutgoingResponse(global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Fields headers)
         {
             var handle = headers.Handle;
             headers.Handle = 0;
@@ -4344,7 +4344,7 @@ public interface ITypes {
 
         internal static class StatusCodeWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[method]outgoing-response.status-code"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[method]outgoing-response.status-code"), WasmImportLinkage]
             internal static extern int wasmImportStatusCode(int p0);
 
         }
@@ -4360,7 +4360,7 @@ public interface ITypes {
 
         internal static class SetStatusCodeWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[method]outgoing-response.set-status-code"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[method]outgoing-response.set-status-code"), WasmImportLinkage]
             internal static extern int wasmImportSetStatusCode(int p0, int p1);
 
         }
@@ -4398,16 +4398,16 @@ public interface ITypes {
 
         internal static class HeadersWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[method]outgoing-response.headers"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[method]outgoing-response.headers"), WasmImportLinkage]
             internal static extern int wasmImportHeaders(int p0);
 
         }
 
-        public   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields Headers()
+        public   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Fields Headers()
         {
             var handle = this.Handle;
             var result =  HeadersWasmInterop.wasmImportHeaders(handle);
-            var resource = new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields.THandle(result));
+            var resource = new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Fields(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Fields.THandle(result));
             return resource;
 
             //TODO: free alloc handle (interopString) if exists
@@ -4415,12 +4415,12 @@ public interface ITypes {
 
         internal static class BodyWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[method]outgoing-response.body"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[method]outgoing-response.body"), WasmImportLinkage]
             internal static extern void wasmImportBody(int p0, nint p1);
 
         }
 
-        public   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.OutgoingBody Body()
+        public   unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.OutgoingBody Body()
         {
             var handle = this.Handle;
 
@@ -4430,18 +4430,18 @@ public interface ITypes {
                 var ptr = (nint)retAreaByte0;
                 BodyWasmInterop.wasmImportBody(handle, ptr);
 
-                Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.OutgoingBody, None> lifted;
+                Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.OutgoingBody, None> lifted;
 
                 switch (new Span<byte>((void*)(ptr + 0), 1)[0]) {
                     case 0: {
-                        var resource = new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.OutgoingBody(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.OutgoingBody.THandle(BitConverter.ToInt32(new Span<byte>((void*)(ptr + 4), 4))));
+                        var resource = new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.OutgoingBody(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.OutgoingBody.THandle(BitConverter.ToInt32(new Span<byte>((void*)(ptr + 4), 4))));
 
-                        lifted = Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.OutgoingBody, None>.ok(resource);
+                        lifted = Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.OutgoingBody, None>.ok(resource);
                         break;
                     }
                     case 1: {
 
-                        lifted = Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.OutgoingBody, None>.err(new global::SpinHttpWorld.None());
+                        lifted = Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.OutgoingBody, None>.err(new global::SpinHttpWorld.None());
                         break;
                     }
 
@@ -4492,7 +4492,7 @@ public interface ITypes {
             Dispose(true);
         }
 
-        [DllImport("wasi:http/types@0.2.0", EntryPoint = "[resource-drop]outgoing-body"), WasmImportLinkage]
+        [DllImport("wasi:http/types@0.2.1", EntryPoint = "[resource-drop]outgoing-body"), WasmImportLinkage]
         private static extern void wasmImportResourceDrop(int p0);
 
         protected virtual void Dispose(bool disposing) {
@@ -4504,12 +4504,12 @@ public interface ITypes {
 
         internal static class WriteWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[method]outgoing-body.write"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[method]outgoing-body.write"), WasmImportLinkage]
             internal static extern void wasmImportWrite(int p0, nint p1);
 
         }
 
-        public   unsafe global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IStreams.OutputStream Write()
+        public   unsafe global::SpinHttpWorld.wit.imports.wasi.io.v0_2_1.IStreams.OutputStream Write()
         {
             var handle = this.Handle;
 
@@ -4519,18 +4519,18 @@ public interface ITypes {
                 var ptr = (nint)retAreaByte0;
                 WriteWasmInterop.wasmImportWrite(handle, ptr);
 
-                Result<global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IStreams.OutputStream, None> lifted;
+                Result<global::SpinHttpWorld.wit.imports.wasi.io.v0_2_1.IStreams.OutputStream, None> lifted;
 
                 switch (new Span<byte>((void*)(ptr + 0), 1)[0]) {
                     case 0: {
-                        var resource = new global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IStreams.OutputStream(new global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IStreams.OutputStream.THandle(BitConverter.ToInt32(new Span<byte>((void*)(ptr + 4), 4))));
+                        var resource = new global::SpinHttpWorld.wit.imports.wasi.io.v0_2_1.IStreams.OutputStream(new global::SpinHttpWorld.wit.imports.wasi.io.v0_2_1.IStreams.OutputStream.THandle(BitConverter.ToInt32(new Span<byte>((void*)(ptr + 4), 4))));
 
-                        lifted = Result<global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IStreams.OutputStream, None>.ok(resource);
+                        lifted = Result<global::SpinHttpWorld.wit.imports.wasi.io.v0_2_1.IStreams.OutputStream, None>.ok(resource);
                         break;
                     }
                     case 1: {
 
-                        lifted = Result<global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IStreams.OutputStream, None>.err(new global::SpinHttpWorld.None());
+                        lifted = Result<global::SpinHttpWorld.wit.imports.wasi.io.v0_2_1.IStreams.OutputStream, None>.err(new global::SpinHttpWorld.None());
                         break;
                     }
 
@@ -4549,12 +4549,12 @@ public interface ITypes {
 
         internal static class FinishWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[static]outgoing-body.finish"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[static]outgoing-body.finish"), WasmImportLinkage]
             internal static extern void wasmImportFinish(int p0, int p1, int p2, nint p3);
 
         }
 
-        public  static unsafe void Finish(global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.OutgoingBody @this, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields? trailers)
+        public  static unsafe void Finish(global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.OutgoingBody @this, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Fields? trailers)
         {
             var handle = @this.Handle;
             @this.Handle = 0;
@@ -4563,7 +4563,7 @@ public interface ITypes {
             int lowered4;
 
             if (trailers != null) {
-                var payload2 = (global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.Fields) trailers;
+                var payload2 = (global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.Fields) trailers;
                 var handle3 = payload2.Handle;
                 payload2.Handle = 0;
 
@@ -4583,22 +4583,22 @@ public interface ITypes {
                 var ptr = (nint)retAreaByte0;
                 FinishWasmInterop.wasmImportFinish(handle, lowered, lowered4, ptr);
 
-                Result<None, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode> lifted197;
+                Result<None, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode> lifted197;
 
                 switch (new Span<byte>((void*)(ptr + 0), 1)[0]) {
                     case 0: {
 
-                        lifted197 = Result<None, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode>.ok(new global::SpinHttpWorld.None());
+                        lifted197 = Result<None, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode>.ok(new global::SpinHttpWorld.None());
                         break;
                     }
                     case 1: {
 
-                        global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode lifted196;
+                        global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode lifted196;
 
                         switch (new Span<byte>((void*)(ptr + 8), 1)[0]) {
                             case 0: {
 
-                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.dnsTimeout();
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.dnsTimeout();
                                 break;
                             }
                             case 1: {
@@ -4637,68 +4637,68 @@ public interface ITypes {
                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 28), 1)[0]));
                                 }
 
-                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.dnsError(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.DnsErrorPayload (
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.dnsError(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.DnsErrorPayload (
                                 lifted, lifted21));
                                 break;
                             }
                             case 2: {
 
-                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.destinationNotFound();
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.destinationNotFound();
                                 break;
                             }
                             case 3: {
 
-                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.destinationUnavailable();
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.destinationUnavailable();
                                 break;
                             }
                             case 4: {
 
-                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.destinationIpProhibited();
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.destinationIpProhibited();
                                 break;
                             }
                             case 5: {
 
-                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.destinationIpUnroutable();
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.destinationIpUnroutable();
                                 break;
                             }
                             case 6: {
 
-                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.connectionRefused();
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.connectionRefused();
                                 break;
                             }
                             case 7: {
 
-                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.connectionTerminated();
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.connectionTerminated();
                                 break;
                             }
                             case 8: {
 
-                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.connectionTimeout();
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.connectionTimeout();
                                 break;
                             }
                             case 9: {
 
-                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.connectionReadTimeout();
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.connectionReadTimeout();
                                 break;
                             }
                             case 10: {
 
-                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.connectionWriteTimeout();
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.connectionWriteTimeout();
                                 break;
                             }
                             case 11: {
 
-                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.connectionLimitReached();
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.connectionLimitReached();
                                 break;
                             }
                             case 12: {
 
-                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.tlsProtocolError();
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.tlsProtocolError();
                                 break;
                             }
                             case 13: {
 
-                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.tlsCertificateError();
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.tlsCertificateError();
                                 break;
                             }
                             case 14: {
@@ -4737,18 +4737,18 @@ public interface ITypes {
                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 20), 1)[0]));
                                 }
 
-                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.tlsAlertReceived(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.TlsAlertReceivedPayload (
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.tlsAlertReceived(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.TlsAlertReceivedPayload (
                                 lifted52, lifted57));
                                 break;
                             }
                             case 15: {
 
-                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpRequestDenied();
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpRequestDenied();
                                 break;
                             }
                             case 16: {
 
-                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpRequestLengthRequired();
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpRequestLengthRequired();
                                 break;
                             }
                             case 17: {
@@ -4770,22 +4770,22 @@ public interface ITypes {
                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 16), 1)[0]));
                                 }
 
-                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpRequestBodySize(lifted68);
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpRequestBodySize(lifted68);
                                 break;
                             }
                             case 18: {
 
-                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpRequestMethodInvalid();
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpRequestMethodInvalid();
                                 break;
                             }
                             case 19: {
 
-                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpRequestUriInvalid();
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpRequestUriInvalid();
                                 break;
                             }
                             case 20: {
 
-                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpRequestUriTooLong();
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpRequestUriTooLong();
                                 break;
                             }
                             case 21: {
@@ -4807,12 +4807,12 @@ public interface ITypes {
                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 16), 1)[0]));
                                 }
 
-                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpRequestHeaderSectionSize(lifted81);
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpRequestHeaderSectionSize(lifted81);
                                 break;
                             }
                             case 22: {
 
-                                global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.FieldSizePayload? lifted98;
+                                global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.FieldSizePayload? lifted98;
 
                                 switch (new Span<byte>((void*)(ptr + 16), 1)[0]) {
                                     case 0: {
@@ -4856,7 +4856,7 @@ public interface ITypes {
                                             default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 32), 1)[0]));
                                         }
 
-                                        lifted98 = new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.FieldSizePayload (
+                                        lifted98 = new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.FieldSizePayload (
                                         lifted92, lifted97);
                                         break;
                                     }
@@ -4864,7 +4864,7 @@ public interface ITypes {
                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 16), 1)[0]));
                                 }
 
-                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpRequestHeaderSize(lifted98);
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpRequestHeaderSize(lifted98);
                                 break;
                             }
                             case 23: {
@@ -4886,7 +4886,7 @@ public interface ITypes {
                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 16), 1)[0]));
                                 }
 
-                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpRequestTrailerSectionSize(lifted105);
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpRequestTrailerSectionSize(lifted105);
                                 break;
                             }
                             case 24: {
@@ -4925,13 +4925,13 @@ public interface ITypes {
                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 28), 1)[0]));
                                 }
 
-                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpRequestTrailerSize(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.FieldSizePayload (
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpRequestTrailerSize(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.FieldSizePayload (
                                 lifted112, lifted117));
                                 break;
                             }
                             case 25: {
 
-                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpResponseIncomplete();
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpResponseIncomplete();
                                 break;
                             }
                             case 26: {
@@ -4953,7 +4953,7 @@ public interface ITypes {
                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 16), 1)[0]));
                                 }
 
-                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpResponseHeaderSectionSize(lifted126);
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpResponseHeaderSectionSize(lifted126);
                                 break;
                             }
                             case 27: {
@@ -4992,7 +4992,7 @@ public interface ITypes {
                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 28), 1)[0]));
                                 }
 
-                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpResponseHeaderSize(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.FieldSizePayload (
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpResponseHeaderSize(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.FieldSizePayload (
                                 lifted133, lifted138));
                                 break;
                             }
@@ -5015,7 +5015,7 @@ public interface ITypes {
                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 16), 1)[0]));
                                 }
 
-                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpResponseBodySize(lifted145);
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpResponseBodySize(lifted145);
                                 break;
                             }
                             case 29: {
@@ -5037,7 +5037,7 @@ public interface ITypes {
                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 16), 1)[0]));
                                 }
 
-                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpResponseTrailerSectionSize(lifted152);
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpResponseTrailerSectionSize(lifted152);
                                 break;
                             }
                             case 30: {
@@ -5076,7 +5076,7 @@ public interface ITypes {
                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 28), 1)[0]));
                                 }
 
-                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpResponseTrailerSize(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.FieldSizePayload (
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpResponseTrailerSize(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.FieldSizePayload (
                                 lifted159, lifted164));
                                 break;
                             }
@@ -5099,7 +5099,7 @@ public interface ITypes {
                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 16), 1)[0]));
                                 }
 
-                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpResponseTransferCoding(lifted171);
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpResponseTransferCoding(lifted171);
                                 break;
                             }
                             case 32: {
@@ -5121,32 +5121,32 @@ public interface ITypes {
                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 16), 1)[0]));
                                 }
 
-                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpResponseContentCoding(lifted178);
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpResponseContentCoding(lifted178);
                                 break;
                             }
                             case 33: {
 
-                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpResponseTimeout();
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpResponseTimeout();
                                 break;
                             }
                             case 34: {
 
-                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpUpgradeFailed();
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpUpgradeFailed();
                                 break;
                             }
                             case 35: {
 
-                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpProtocolError();
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpProtocolError();
                                 break;
                             }
                             case 36: {
 
-                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.loopDetected();
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.loopDetected();
                                 break;
                             }
                             case 37: {
 
-                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.configurationError();
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.configurationError();
                                 break;
                             }
                             case 38: {
@@ -5168,14 +5168,14 @@ public interface ITypes {
                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 16), 1)[0]));
                                 }
 
-                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.internalError(lifted195);
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.internalError(lifted195);
                                 break;
                             }
 
                             default: throw new ArgumentException($"invalid discriminant: {new Span<byte>((void*)(ptr + 8), 1)[0]}");
                         }
 
-                        lifted197 = Result<None, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode>.err(lifted196);
+                        lifted197 = Result<None, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode>.err(lifted196);
                         break;
                     }
 
@@ -5215,7 +5215,7 @@ public interface ITypes {
             Dispose(true);
         }
 
-        [DllImport("wasi:http/types@0.2.0", EntryPoint = "[resource-drop]future-incoming-response"), WasmImportLinkage]
+        [DllImport("wasi:http/types@0.2.1", EntryPoint = "[resource-drop]future-incoming-response"), WasmImportLinkage]
         private static extern void wasmImportResourceDrop(int p0);
 
         protected virtual void Dispose(bool disposing) {
@@ -5227,16 +5227,16 @@ public interface ITypes {
 
         internal static class SubscribeWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[method]future-incoming-response.subscribe"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[method]future-incoming-response.subscribe"), WasmImportLinkage]
             internal static extern int wasmImportSubscribe(int p0);
 
         }
 
-        public   unsafe global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IPoll.Pollable Subscribe()
+        public   unsafe global::SpinHttpWorld.wit.imports.wasi.io.v0_2_1.IPoll.Pollable Subscribe()
         {
             var handle = this.Handle;
             var result =  SubscribeWasmInterop.wasmImportSubscribe(handle);
-            var resource = new global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IPoll.Pollable(new global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IPoll.Pollable.THandle(result));
+            var resource = new global::SpinHttpWorld.wit.imports.wasi.io.v0_2_1.IPoll.Pollable(new global::SpinHttpWorld.wit.imports.wasi.io.v0_2_1.IPoll.Pollable.THandle(result));
             return resource;
 
             //TODO: free alloc handle (interopString) if exists
@@ -5244,12 +5244,12 @@ public interface ITypes {
 
         internal static class GetWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "[method]future-incoming-response.get"), WasmImportLinkage]
+            [DllImport("wasi:http/types@0.2.1", EntryPoint = "[method]future-incoming-response.get"), WasmImportLinkage]
             internal static extern void wasmImportGet(int p0, nint p1);
 
         }
 
-        public   unsafe Result<Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.IncomingResponse, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode>, None>? Get()
+        public   unsafe Result<Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.IncomingResponse, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode>, None>? Get()
         {
             var handle = this.Handle;
 
@@ -5259,7 +5259,7 @@ public interface ITypes {
                 var ptr = (nint)retAreaByte0;
                 GetWasmInterop.wasmImportGet(handle, ptr);
 
-                Result<Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.IncomingResponse, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode>, None>? lifted200;
+                Result<Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.IncomingResponse, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode>, None>? lifted200;
 
                 switch (new Span<byte>((void*)(ptr + 0), 1)[0]) {
                     case 0: {
@@ -5269,28 +5269,28 @@ public interface ITypes {
 
                     case 1: {
 
-                        Result<Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.IncomingResponse, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode>, None> lifted199;
+                        Result<Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.IncomingResponse, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode>, None> lifted199;
 
                         switch (new Span<byte>((void*)(ptr + 8), 1)[0]) {
                             case 0: {
 
-                                Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.IncomingResponse, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode> lifted196;
+                                Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.IncomingResponse, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode> lifted196;
 
                                 switch (new Span<byte>((void*)(ptr + 16), 1)[0]) {
                                     case 0: {
-                                        var resource = new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.IncomingResponse(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.IncomingResponse.THandle(BitConverter.ToInt32(new Span<byte>((void*)(ptr + 24), 4))));
+                                        var resource = new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.IncomingResponse(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.IncomingResponse.THandle(BitConverter.ToInt32(new Span<byte>((void*)(ptr + 24), 4))));
 
-                                        lifted196 = Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.IncomingResponse, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode>.ok(resource);
+                                        lifted196 = Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.IncomingResponse, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode>.ok(resource);
                                         break;
                                     }
                                     case 1: {
 
-                                        global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode lifted195;
+                                        global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode lifted195;
 
                                         switch (new Span<byte>((void*)(ptr + 24), 1)[0]) {
                                             case 0: {
 
-                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.dnsTimeout();
+                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.dnsTimeout();
                                                 break;
                                             }
                                             case 1: {
@@ -5329,68 +5329,68 @@ public interface ITypes {
                                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 44), 1)[0]));
                                                 }
 
-                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.dnsError(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.DnsErrorPayload (
+                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.dnsError(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.DnsErrorPayload (
                                                 lifted, lifted20));
                                                 break;
                                             }
                                             case 2: {
 
-                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.destinationNotFound();
+                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.destinationNotFound();
                                                 break;
                                             }
                                             case 3: {
 
-                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.destinationUnavailable();
+                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.destinationUnavailable();
                                                 break;
                                             }
                                             case 4: {
 
-                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.destinationIpProhibited();
+                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.destinationIpProhibited();
                                                 break;
                                             }
                                             case 5: {
 
-                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.destinationIpUnroutable();
+                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.destinationIpUnroutable();
                                                 break;
                                             }
                                             case 6: {
 
-                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.connectionRefused();
+                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.connectionRefused();
                                                 break;
                                             }
                                             case 7: {
 
-                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.connectionTerminated();
+                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.connectionTerminated();
                                                 break;
                                             }
                                             case 8: {
 
-                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.connectionTimeout();
+                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.connectionTimeout();
                                                 break;
                                             }
                                             case 9: {
 
-                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.connectionReadTimeout();
+                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.connectionReadTimeout();
                                                 break;
                                             }
                                             case 10: {
 
-                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.connectionWriteTimeout();
+                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.connectionWriteTimeout();
                                                 break;
                                             }
                                             case 11: {
 
-                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.connectionLimitReached();
+                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.connectionLimitReached();
                                                 break;
                                             }
                                             case 12: {
 
-                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.tlsProtocolError();
+                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.tlsProtocolError();
                                                 break;
                                             }
                                             case 13: {
 
-                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.tlsCertificateError();
+                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.tlsCertificateError();
                                                 break;
                                             }
                                             case 14: {
@@ -5429,18 +5429,18 @@ public interface ITypes {
                                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 36), 1)[0]));
                                                 }
 
-                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.tlsAlertReceived(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.TlsAlertReceivedPayload (
+                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.tlsAlertReceived(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.TlsAlertReceivedPayload (
                                                 lifted51, lifted56));
                                                 break;
                                             }
                                             case 15: {
 
-                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpRequestDenied();
+                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpRequestDenied();
                                                 break;
                                             }
                                             case 16: {
 
-                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpRequestLengthRequired();
+                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpRequestLengthRequired();
                                                 break;
                                             }
                                             case 17: {
@@ -5462,22 +5462,22 @@ public interface ITypes {
                                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 32), 1)[0]));
                                                 }
 
-                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpRequestBodySize(lifted67);
+                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpRequestBodySize(lifted67);
                                                 break;
                                             }
                                             case 18: {
 
-                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpRequestMethodInvalid();
+                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpRequestMethodInvalid();
                                                 break;
                                             }
                                             case 19: {
 
-                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpRequestUriInvalid();
+                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpRequestUriInvalid();
                                                 break;
                                             }
                                             case 20: {
 
-                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpRequestUriTooLong();
+                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpRequestUriTooLong();
                                                 break;
                                             }
                                             case 21: {
@@ -5499,12 +5499,12 @@ public interface ITypes {
                                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 32), 1)[0]));
                                                 }
 
-                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpRequestHeaderSectionSize(lifted80);
+                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpRequestHeaderSectionSize(lifted80);
                                                 break;
                                             }
                                             case 22: {
 
-                                                global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.FieldSizePayload? lifted97;
+                                                global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.FieldSizePayload? lifted97;
 
                                                 switch (new Span<byte>((void*)(ptr + 32), 1)[0]) {
                                                     case 0: {
@@ -5548,7 +5548,7 @@ public interface ITypes {
                                                             default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 48), 1)[0]));
                                                         }
 
-                                                        lifted97 = new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.FieldSizePayload (
+                                                        lifted97 = new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.FieldSizePayload (
                                                         lifted91, lifted96);
                                                         break;
                                                     }
@@ -5556,7 +5556,7 @@ public interface ITypes {
                                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 32), 1)[0]));
                                                 }
 
-                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpRequestHeaderSize(lifted97);
+                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpRequestHeaderSize(lifted97);
                                                 break;
                                             }
                                             case 23: {
@@ -5578,7 +5578,7 @@ public interface ITypes {
                                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 32), 1)[0]));
                                                 }
 
-                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpRequestTrailerSectionSize(lifted104);
+                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpRequestTrailerSectionSize(lifted104);
                                                 break;
                                             }
                                             case 24: {
@@ -5617,13 +5617,13 @@ public interface ITypes {
                                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 44), 1)[0]));
                                                 }
 
-                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpRequestTrailerSize(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.FieldSizePayload (
+                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpRequestTrailerSize(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.FieldSizePayload (
                                                 lifted111, lifted116));
                                                 break;
                                             }
                                             case 25: {
 
-                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpResponseIncomplete();
+                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpResponseIncomplete();
                                                 break;
                                             }
                                             case 26: {
@@ -5645,7 +5645,7 @@ public interface ITypes {
                                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 32), 1)[0]));
                                                 }
 
-                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpResponseHeaderSectionSize(lifted125);
+                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpResponseHeaderSectionSize(lifted125);
                                                 break;
                                             }
                                             case 27: {
@@ -5684,7 +5684,7 @@ public interface ITypes {
                                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 44), 1)[0]));
                                                 }
 
-                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpResponseHeaderSize(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.FieldSizePayload (
+                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpResponseHeaderSize(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.FieldSizePayload (
                                                 lifted132, lifted137));
                                                 break;
                                             }
@@ -5707,7 +5707,7 @@ public interface ITypes {
                                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 32), 1)[0]));
                                                 }
 
-                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpResponseBodySize(lifted144);
+                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpResponseBodySize(lifted144);
                                                 break;
                                             }
                                             case 29: {
@@ -5729,7 +5729,7 @@ public interface ITypes {
                                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 32), 1)[0]));
                                                 }
 
-                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpResponseTrailerSectionSize(lifted151);
+                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpResponseTrailerSectionSize(lifted151);
                                                 break;
                                             }
                                             case 30: {
@@ -5768,7 +5768,7 @@ public interface ITypes {
                                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 44), 1)[0]));
                                                 }
 
-                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpResponseTrailerSize(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.FieldSizePayload (
+                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpResponseTrailerSize(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.FieldSizePayload (
                                                 lifted158, lifted163));
                                                 break;
                                             }
@@ -5791,7 +5791,7 @@ public interface ITypes {
                                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 32), 1)[0]));
                                                 }
 
-                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpResponseTransferCoding(lifted170);
+                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpResponseTransferCoding(lifted170);
                                                 break;
                                             }
                                             case 32: {
@@ -5813,32 +5813,32 @@ public interface ITypes {
                                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 32), 1)[0]));
                                                 }
 
-                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpResponseContentCoding(lifted177);
+                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpResponseContentCoding(lifted177);
                                                 break;
                                             }
                                             case 33: {
 
-                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpResponseTimeout();
+                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpResponseTimeout();
                                                 break;
                                             }
                                             case 34: {
 
-                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpUpgradeFailed();
+                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpUpgradeFailed();
                                                 break;
                                             }
                                             case 35: {
 
-                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpProtocolError();
+                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpProtocolError();
                                                 break;
                                             }
                                             case 36: {
 
-                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.loopDetected();
+                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.loopDetected();
                                                 break;
                                             }
                                             case 37: {
 
-                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.configurationError();
+                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.configurationError();
                                                 break;
                                             }
                                             case 38: {
@@ -5860,26 +5860,26 @@ public interface ITypes {
                                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 32), 1)[0]));
                                                 }
 
-                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.internalError(lifted194);
+                                                lifted195 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.internalError(lifted194);
                                                 break;
                                             }
 
                                             default: throw new ArgumentException($"invalid discriminant: {new Span<byte>((void*)(ptr + 24), 1)[0]}");
                                         }
 
-                                        lifted196 = Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.IncomingResponse, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode>.err(lifted195);
+                                        lifted196 = Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.IncomingResponse, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode>.err(lifted195);
                                         break;
                                     }
 
                                     default: throw new ArgumentException($"invalid discriminant: {new Span<byte>((void*)(ptr + 16), 1)[0]}");
                                 }
 
-                                lifted199 = Result<Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.IncomingResponse, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode>, None>.ok(lifted196);
+                                lifted199 = Result<Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.IncomingResponse, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode>, None>.ok(lifted196);
                                 break;
                             }
                             case 1: {
 
-                                lifted199 = Result<Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.IncomingResponse, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode>, None>.err(new global::SpinHttpWorld.None());
+                                lifted199 = Result<Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.IncomingResponse, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode>, None>.err(new global::SpinHttpWorld.None());
                                 break;
                             }
 

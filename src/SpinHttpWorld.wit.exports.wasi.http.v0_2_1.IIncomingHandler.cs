@@ -11,9 +11,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 
-namespace SpinHttpWorld.wit.exports.wasi.http.v0_2_0;
+namespace SpinHttpWorld.wit.exports.wasi.http.v0_2_1;
 
 public interface IIncomingHandler {
-    static abstract void Handle(global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.IncomingRequest request, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ResponseOutparam responseOut);
+    static abstract void Handle(global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.IncomingRequest request, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ResponseOutparam responseOut);
 
 }

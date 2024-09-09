@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using SpinHttpWorld;
-using SpinHttpWorld.wit.imports.wasi.http.v0_2_0;
-using SpinHttpWorld.wit.imports.wasi.io.v0_2_0;
+using SpinHttpWorld.wit.imports.wasi.http.v0_2_1;
+using SpinHttpWorld.wit.imports.wasi.io.v0_2_1;
 
 namespace Spin.Http;
 

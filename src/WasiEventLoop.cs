@@ -1,7 +1,7 @@
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
-using SpinHttpWorld.wit.imports.wasi.io.v0_2_0;
+using SpinHttpWorld.wit.imports.wasi.io.v0_2_1;
 
 namespace Spin.Http;
 

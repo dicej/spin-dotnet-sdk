@@ -11,43 +11,63 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 
-namespace SpinHttpWorld.wit.imports.wasi.http.v0_2_0
+namespace SpinHttpWorld.wit.imports.wasi.http.v0_2_1
 {
-    public static class TypesInterop {
+    public static class OutgoingHandlerInterop {
 
-        internal static class HttpErrorCodeWasmInterop
+        internal static class HandleWasmInterop
         {
-            [DllImport("wasi:http/types@0.2.0", EntryPoint = "http-error-code"), WasmImportLinkage]
-            internal static extern void wasmImportHttpErrorCode(int p0, nint p1);
+            [DllImport("wasi:http/outgoing-handler@0.2.1", EntryPoint = "handle"), WasmImportLinkage]
+            internal static extern void wasmImportHandle(int p0, int p1, int p2, nint p3);
 
         }
 
-        public  static unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode? HttpErrorCode(global::SpinHttpWorld.wit.imports.wasi.io.v0_2_0.IError.Error err)
+        public  static unsafe global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.FutureIncomingResponse Handle(global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.OutgoingRequest request, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.RequestOptions? options)
         {
-            var handle = err.Handle;
+            var handle = request.Handle;
+            request.Handle = 0;
+
+            int lowered;
+            int lowered4;
+
+            if (options != null) {
+                var payload2 = (global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.RequestOptions) options;
+                var handle3 = payload2.Handle;
+                payload2.Handle = 0;
+
+                lowered = 1;
+                lowered4 = handle3;
+
+            } else {
+
+                lowered = 0;
+                lowered4 = 0;
+
+            }
 
             var retArea = new ulong[5];
             fixed (ulong* retAreaByte0 = &retArea[0])
             {
                 var ptr = (nint)retAreaByte0;
-                HttpErrorCodeWasmInterop.wasmImportHttpErrorCode(handle, ptr);
+                HandleWasmInterop.wasmImportHandle(handle, lowered, lowered4, ptr);
 
-                global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode? lifted190;
+                Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.FutureIncomingResponse, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode> lifted197;
 
                 switch (new Span<byte>((void*)(ptr + 0), 1)[0]) {
                     case 0: {
-                        lifted190 = null;
+                        var resource = new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.FutureIncomingResponse(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.FutureIncomingResponse.THandle(BitConverter.ToInt32(new Span<byte>((void*)(ptr + 8), 4))));
+
+                        lifted197 = Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.FutureIncomingResponse, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode>.ok(resource);
                         break;
                     }
-
                     case 1: {
 
-                        global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode lifted189;
+                        global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode lifted196;
 
                         switch (new Span<byte>((void*)(ptr + 8), 1)[0]) {
                             case 0: {
 
-                                lifted189 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.dnsTimeout();
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.dnsTimeout();
                                 break;
                             }
                             case 1: {
@@ -69,256 +89,199 @@ namespace SpinHttpWorld.wit.imports.wasi.http.v0_2_0
                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 16), 1)[0]));
                                 }
 
-                                ushort? lifted14;
+                                ushort? lifted21;
 
                                 switch (new Span<byte>((void*)(ptr + 28), 1)[0]) {
                                     case 0: {
-                                        lifted14 = null;
+                                        lifted21 = null;
                                         break;
                                     }
 
                                     case 1: {
 
-                                        lifted14 = ((ushort)BitConverter.ToUInt16(new Span<byte>((void*)(ptr + 30), 2)));
+                                        lifted21 = ((ushort)BitConverter.ToUInt16(new Span<byte>((void*)(ptr + 30), 2)));
                                         break;
                                     }
 
                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 28), 1)[0]));
                                 }
 
-                                lifted189 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.dnsError(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.DnsErrorPayload (
-                                lifted, lifted14));
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.dnsError(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.DnsErrorPayload (
+                                lifted, lifted21));
                                 break;
                             }
                             case 2: {
 
-                                lifted189 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.destinationNotFound();
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.destinationNotFound();
                                 break;
                             }
                             case 3: {
 
-                                lifted189 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.destinationUnavailable();
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.destinationUnavailable();
                                 break;
                             }
                             case 4: {
 
-                                lifted189 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.destinationIpProhibited();
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.destinationIpProhibited();
                                 break;
                             }
                             case 5: {
 
-                                lifted189 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.destinationIpUnroutable();
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.destinationIpUnroutable();
                                 break;
                             }
                             case 6: {
 
-                                lifted189 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.connectionRefused();
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.connectionRefused();
                                 break;
                             }
                             case 7: {
 
-                                lifted189 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.connectionTerminated();
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.connectionTerminated();
                                 break;
                             }
                             case 8: {
 
-                                lifted189 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.connectionTimeout();
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.connectionTimeout();
                                 break;
                             }
                             case 9: {
 
-                                lifted189 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.connectionReadTimeout();
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.connectionReadTimeout();
                                 break;
                             }
                             case 10: {
 
-                                lifted189 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.connectionWriteTimeout();
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.connectionWriteTimeout();
                                 break;
                             }
                             case 11: {
 
-                                lifted189 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.connectionLimitReached();
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.connectionLimitReached();
                                 break;
                             }
                             case 12: {
 
-                                lifted189 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.tlsProtocolError();
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.tlsProtocolError();
                                 break;
                             }
                             case 13: {
 
-                                lifted189 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.tlsCertificateError();
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.tlsCertificateError();
                                 break;
                             }
                             case 14: {
 
-                                byte? lifted45;
+                                byte? lifted52;
 
                                 switch (new Span<byte>((void*)(ptr + 16), 1)[0]) {
                                     case 0: {
-                                        lifted45 = null;
+                                        lifted52 = null;
                                         break;
                                     }
 
                                     case 1: {
 
-                                        lifted45 = ((byte)new Span<byte>((void*)(ptr + 17), 1)[0]);
+                                        lifted52 = ((byte)new Span<byte>((void*)(ptr + 17), 1)[0]);
                                         break;
                                     }
 
                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 16), 1)[0]));
                                 }
 
-                                string? lifted50;
+                                string? lifted57;
 
                                 switch (new Span<byte>((void*)(ptr + 20), 1)[0]) {
                                     case 0: {
-                                        lifted50 = null;
+                                        lifted57 = null;
                                         break;
                                     }
 
                                     case 1: {
 
-                                        lifted50 = Encoding.UTF8.GetString((byte*)BitConverter.ToInt32(new Span<byte>((void*)(ptr + 24), 4)), BitConverter.ToInt32(new Span<byte>((void*)(ptr + 28), 4)));
+                                        lifted57 = Encoding.UTF8.GetString((byte*)BitConverter.ToInt32(new Span<byte>((void*)(ptr + 24), 4)), BitConverter.ToInt32(new Span<byte>((void*)(ptr + 28), 4)));
                                         break;
                                     }
 
                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 20), 1)[0]));
                                 }
 
-                                lifted189 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.tlsAlertReceived(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.TlsAlertReceivedPayload (
-                                lifted45, lifted50));
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.tlsAlertReceived(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.TlsAlertReceivedPayload (
+                                lifted52, lifted57));
                                 break;
                             }
                             case 15: {
 
-                                lifted189 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpRequestDenied();
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpRequestDenied();
                                 break;
                             }
                             case 16: {
 
-                                lifted189 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpRequestLengthRequired();
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpRequestLengthRequired();
                                 break;
                             }
                             case 17: {
 
-                                ulong? lifted61;
+                                ulong? lifted68;
 
                                 switch (new Span<byte>((void*)(ptr + 16), 1)[0]) {
                                     case 0: {
-                                        lifted61 = null;
+                                        lifted68 = null;
                                         break;
                                     }
 
                                     case 1: {
 
-                                        lifted61 = unchecked((ulong)(BitConverter.ToInt64(new Span<byte>((void*)(ptr + 24), 8))));
+                                        lifted68 = unchecked((ulong)(BitConverter.ToInt64(new Span<byte>((void*)(ptr + 24), 8))));
                                         break;
                                     }
 
                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 16), 1)[0]));
                                 }
 
-                                lifted189 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpRequestBodySize(lifted61);
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpRequestBodySize(lifted68);
                                 break;
                             }
                             case 18: {
 
-                                lifted189 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpRequestMethodInvalid();
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpRequestMethodInvalid();
                                 break;
                             }
                             case 19: {
 
-                                lifted189 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpRequestUriInvalid();
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpRequestUriInvalid();
                                 break;
                             }
                             case 20: {
 
-                                lifted189 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpRequestUriTooLong();
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpRequestUriTooLong();
                                 break;
                             }
                             case 21: {
 
-                                uint? lifted74;
+                                uint? lifted81;
 
                                 switch (new Span<byte>((void*)(ptr + 16), 1)[0]) {
                                     case 0: {
-                                        lifted74 = null;
+                                        lifted81 = null;
                                         break;
                                     }
 
                                     case 1: {
 
-                                        lifted74 = unchecked((uint)(BitConverter.ToInt32(new Span<byte>((void*)(ptr + 20), 4))));
+                                        lifted81 = unchecked((uint)(BitConverter.ToInt32(new Span<byte>((void*)(ptr + 20), 4))));
                                         break;
                                     }
 
                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 16), 1)[0]));
                                 }
 
-                                lifted189 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpRequestHeaderSectionSize(lifted74);
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpRequestHeaderSectionSize(lifted81);
                                 break;
                             }
                             case 22: {
 
-                                global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.FieldSizePayload? lifted91;
-
-                                switch (new Span<byte>((void*)(ptr + 16), 1)[0]) {
-                                    case 0: {
-                                        lifted91 = null;
-                                        break;
-                                    }
-
-                                    case 1: {
-
-                                        string? lifted85;
-
-                                        switch (new Span<byte>((void*)(ptr + 20), 1)[0]) {
-                                            case 0: {
-                                                lifted85 = null;
-                                                break;
-                                            }
-
-                                            case 1: {
-
-                                                lifted85 = Encoding.UTF8.GetString((byte*)BitConverter.ToInt32(new Span<byte>((void*)(ptr + 24), 4)), BitConverter.ToInt32(new Span<byte>((void*)(ptr + 28), 4)));
-                                                break;
-                                            }
-
-                                            default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 20), 1)[0]));
-                                        }
-
-                                        uint? lifted90;
-
-                                        switch (new Span<byte>((void*)(ptr + 32), 1)[0]) {
-                                            case 0: {
-                                                lifted90 = null;
-                                                break;
-                                            }
-
-                                            case 1: {
-
-                                                lifted90 = unchecked((uint)(BitConverter.ToInt32(new Span<byte>((void*)(ptr + 36), 4))));
-                                                break;
-                                            }
-
-                                            default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 32), 1)[0]));
-                                        }
-
-                                        lifted91 = new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.FieldSizePayload (
-                                        lifted85, lifted90);
-                                        break;
-                                    }
-
-                                    default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 16), 1)[0]));
-                                }
-
-                                lifted189 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpRequestHeaderSize(lifted91);
-                                break;
-                            }
-                            case 23: {
-
-                                uint? lifted98;
+                                global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.FieldSizePayload? lifted98;
 
                                 switch (new Span<byte>((void*)(ptr + 16), 1)[0]) {
                                     case 0: {
@@ -328,19 +291,54 @@ namespace SpinHttpWorld.wit.imports.wasi.http.v0_2_0
 
                                     case 1: {
 
-                                        lifted98 = unchecked((uint)(BitConverter.ToInt32(new Span<byte>((void*)(ptr + 20), 4))));
+                                        string? lifted92;
+
+                                        switch (new Span<byte>((void*)(ptr + 20), 1)[0]) {
+                                            case 0: {
+                                                lifted92 = null;
+                                                break;
+                                            }
+
+                                            case 1: {
+
+                                                lifted92 = Encoding.UTF8.GetString((byte*)BitConverter.ToInt32(new Span<byte>((void*)(ptr + 24), 4)), BitConverter.ToInt32(new Span<byte>((void*)(ptr + 28), 4)));
+                                                break;
+                                            }
+
+                                            default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 20), 1)[0]));
+                                        }
+
+                                        uint? lifted97;
+
+                                        switch (new Span<byte>((void*)(ptr + 32), 1)[0]) {
+                                            case 0: {
+                                                lifted97 = null;
+                                                break;
+                                            }
+
+                                            case 1: {
+
+                                                lifted97 = unchecked((uint)(BitConverter.ToInt32(new Span<byte>((void*)(ptr + 36), 4))));
+                                                break;
+                                            }
+
+                                            default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 32), 1)[0]));
+                                        }
+
+                                        lifted98 = new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.FieldSizePayload (
+                                        lifted92, lifted97);
                                         break;
                                     }
 
                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 16), 1)[0]));
                                 }
 
-                                lifted189 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpRequestTrailerSectionSize(lifted98);
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpRequestHeaderSize(lifted98);
                                 break;
                             }
-                            case 24: {
+                            case 23: {
 
-                                string? lifted105;
+                                uint? lifted105;
 
                                 switch (new Span<byte>((void*)(ptr + 16), 1)[0]) {
                                     case 0: {
@@ -350,64 +348,64 @@ namespace SpinHttpWorld.wit.imports.wasi.http.v0_2_0
 
                                     case 1: {
 
-                                        lifted105 = Encoding.UTF8.GetString((byte*)BitConverter.ToInt32(new Span<byte>((void*)(ptr + 20), 4)), BitConverter.ToInt32(new Span<byte>((void*)(ptr + 24), 4)));
+                                        lifted105 = unchecked((uint)(BitConverter.ToInt32(new Span<byte>((void*)(ptr + 20), 4))));
                                         break;
                                     }
 
                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 16), 1)[0]));
                                 }
 
-                                uint? lifted110;
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpRequestTrailerSectionSize(lifted105);
+                                break;
+                            }
+                            case 24: {
 
-                                switch (new Span<byte>((void*)(ptr + 28), 1)[0]) {
+                                string? lifted112;
+
+                                switch (new Span<byte>((void*)(ptr + 16), 1)[0]) {
                                     case 0: {
-                                        lifted110 = null;
+                                        lifted112 = null;
                                         break;
                                     }
 
                                     case 1: {
 
-                                        lifted110 = unchecked((uint)(BitConverter.ToInt32(new Span<byte>((void*)(ptr + 32), 4))));
+                                        lifted112 = Encoding.UTF8.GetString((byte*)BitConverter.ToInt32(new Span<byte>((void*)(ptr + 20), 4)), BitConverter.ToInt32(new Span<byte>((void*)(ptr + 24), 4)));
+                                        break;
+                                    }
+
+                                    default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 16), 1)[0]));
+                                }
+
+                                uint? lifted117;
+
+                                switch (new Span<byte>((void*)(ptr + 28), 1)[0]) {
+                                    case 0: {
+                                        lifted117 = null;
+                                        break;
+                                    }
+
+                                    case 1: {
+
+                                        lifted117 = unchecked((uint)(BitConverter.ToInt32(new Span<byte>((void*)(ptr + 32), 4))));
                                         break;
                                     }
 
                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 28), 1)[0]));
                                 }
 
-                                lifted189 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpRequestTrailerSize(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.FieldSizePayload (
-                                lifted105, lifted110));
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpRequestTrailerSize(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.FieldSizePayload (
+                                lifted112, lifted117));
                                 break;
                             }
                             case 25: {
 
-                                lifted189 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpResponseIncomplete();
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpResponseIncomplete();
                                 break;
                             }
                             case 26: {
 
-                                uint? lifted119;
-
-                                switch (new Span<byte>((void*)(ptr + 16), 1)[0]) {
-                                    case 0: {
-                                        lifted119 = null;
-                                        break;
-                                    }
-
-                                    case 1: {
-
-                                        lifted119 = unchecked((uint)(BitConverter.ToInt32(new Span<byte>((void*)(ptr + 20), 4))));
-                                        break;
-                                    }
-
-                                    default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 16), 1)[0]));
-                                }
-
-                                lifted189 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpResponseHeaderSectionSize(lifted119);
-                                break;
-                            }
-                            case 27: {
-
-                                string? lifted126;
+                                uint? lifted126;
 
                                 switch (new Span<byte>((void*)(ptr + 16), 1)[0]) {
                                     case 0: {
@@ -417,39 +415,38 @@ namespace SpinHttpWorld.wit.imports.wasi.http.v0_2_0
 
                                     case 1: {
 
-                                        lifted126 = Encoding.UTF8.GetString((byte*)BitConverter.ToInt32(new Span<byte>((void*)(ptr + 20), 4)), BitConverter.ToInt32(new Span<byte>((void*)(ptr + 24), 4)));
+                                        lifted126 = unchecked((uint)(BitConverter.ToInt32(new Span<byte>((void*)(ptr + 20), 4))));
                                         break;
                                     }
 
                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 16), 1)[0]));
                                 }
 
-                                uint? lifted131;
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpResponseHeaderSectionSize(lifted126);
+                                break;
+                            }
+                            case 27: {
 
-                                switch (new Span<byte>((void*)(ptr + 28), 1)[0]) {
+                                string? lifted133;
+
+                                switch (new Span<byte>((void*)(ptr + 16), 1)[0]) {
                                     case 0: {
-                                        lifted131 = null;
+                                        lifted133 = null;
                                         break;
                                     }
 
                                     case 1: {
 
-                                        lifted131 = unchecked((uint)(BitConverter.ToInt32(new Span<byte>((void*)(ptr + 32), 4))));
+                                        lifted133 = Encoding.UTF8.GetString((byte*)BitConverter.ToInt32(new Span<byte>((void*)(ptr + 20), 4)), BitConverter.ToInt32(new Span<byte>((void*)(ptr + 24), 4)));
                                         break;
                                     }
 
-                                    default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 28), 1)[0]));
+                                    default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 16), 1)[0]));
                                 }
 
-                                lifted189 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpResponseHeaderSize(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.FieldSizePayload (
-                                lifted126, lifted131));
-                                break;
-                            }
-                            case 28: {
+                                uint? lifted138;
 
-                                ulong? lifted138;
-
-                                switch (new Span<byte>((void*)(ptr + 16), 1)[0]) {
+                                switch (new Span<byte>((void*)(ptr + 28), 1)[0]) {
                                     case 0: {
                                         lifted138 = null;
                                         break;
@@ -457,19 +454,20 @@ namespace SpinHttpWorld.wit.imports.wasi.http.v0_2_0
 
                                     case 1: {
 
-                                        lifted138 = unchecked((ulong)(BitConverter.ToInt64(new Span<byte>((void*)(ptr + 24), 8))));
+                                        lifted138 = unchecked((uint)(BitConverter.ToInt32(new Span<byte>((void*)(ptr + 32), 4))));
                                         break;
                                     }
 
-                                    default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 16), 1)[0]));
+                                    default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 28), 1)[0]));
                                 }
 
-                                lifted189 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpResponseBodySize(lifted138);
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpResponseHeaderSize(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.FieldSizePayload (
+                                lifted133, lifted138));
                                 break;
                             }
-                            case 29: {
+                            case 28: {
 
-                                uint? lifted145;
+                                ulong? lifted145;
 
                                 switch (new Span<byte>((void*)(ptr + 16), 1)[0]) {
                                     case 0: {
@@ -479,19 +477,19 @@ namespace SpinHttpWorld.wit.imports.wasi.http.v0_2_0
 
                                     case 1: {
 
-                                        lifted145 = unchecked((uint)(BitConverter.ToInt32(new Span<byte>((void*)(ptr + 20), 4))));
+                                        lifted145 = unchecked((ulong)(BitConverter.ToInt64(new Span<byte>((void*)(ptr + 24), 8))));
                                         break;
                                     }
 
                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 16), 1)[0]));
                                 }
 
-                                lifted189 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpResponseTrailerSectionSize(lifted145);
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpResponseBodySize(lifted145);
                                 break;
                             }
-                            case 30: {
+                            case 29: {
 
-                                string? lifted152;
+                                uint? lifted152;
 
                                 switch (new Span<byte>((void*)(ptr + 16), 1)[0]) {
                                     case 0: {
@@ -501,39 +499,38 @@ namespace SpinHttpWorld.wit.imports.wasi.http.v0_2_0
 
                                     case 1: {
 
-                                        lifted152 = Encoding.UTF8.GetString((byte*)BitConverter.ToInt32(new Span<byte>((void*)(ptr + 20), 4)), BitConverter.ToInt32(new Span<byte>((void*)(ptr + 24), 4)));
+                                        lifted152 = unchecked((uint)(BitConverter.ToInt32(new Span<byte>((void*)(ptr + 20), 4))));
                                         break;
                                     }
 
                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 16), 1)[0]));
                                 }
 
-                                uint? lifted157;
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpResponseTrailerSectionSize(lifted152);
+                                break;
+                            }
+                            case 30: {
 
-                                switch (new Span<byte>((void*)(ptr + 28), 1)[0]) {
+                                string? lifted159;
+
+                                switch (new Span<byte>((void*)(ptr + 16), 1)[0]) {
                                     case 0: {
-                                        lifted157 = null;
+                                        lifted159 = null;
                                         break;
                                     }
 
                                     case 1: {
 
-                                        lifted157 = unchecked((uint)(BitConverter.ToInt32(new Span<byte>((void*)(ptr + 32), 4))));
+                                        lifted159 = Encoding.UTF8.GetString((byte*)BitConverter.ToInt32(new Span<byte>((void*)(ptr + 20), 4)), BitConverter.ToInt32(new Span<byte>((void*)(ptr + 24), 4)));
                                         break;
                                     }
 
-                                    default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 28), 1)[0]));
+                                    default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 16), 1)[0]));
                                 }
 
-                                lifted189 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpResponseTrailerSize(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.FieldSizePayload (
-                                lifted152, lifted157));
-                                break;
-                            }
-                            case 31: {
+                                uint? lifted164;
 
-                                string? lifted164;
-
-                                switch (new Span<byte>((void*)(ptr + 16), 1)[0]) {
+                                switch (new Span<byte>((void*)(ptr + 28), 1)[0]) {
                                     case 0: {
                                         lifted164 = null;
                                         break;
@@ -541,17 +538,18 @@ namespace SpinHttpWorld.wit.imports.wasi.http.v0_2_0
 
                                     case 1: {
 
-                                        lifted164 = Encoding.UTF8.GetString((byte*)BitConverter.ToInt32(new Span<byte>((void*)(ptr + 20), 4)), BitConverter.ToInt32(new Span<byte>((void*)(ptr + 24), 4)));
+                                        lifted164 = unchecked((uint)(BitConverter.ToInt32(new Span<byte>((void*)(ptr + 32), 4))));
                                         break;
                                     }
 
-                                    default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 16), 1)[0]));
+                                    default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 28), 1)[0]));
                                 }
 
-                                lifted189 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpResponseTransferCoding(lifted164);
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpResponseTrailerSize(new global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.FieldSizePayload (
+                                lifted159, lifted164));
                                 break;
                             }
-                            case 32: {
+                            case 31: {
 
                                 string? lifted171;
 
@@ -570,67 +568,94 @@ namespace SpinHttpWorld.wit.imports.wasi.http.v0_2_0
                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 16), 1)[0]));
                                 }
 
-                                lifted189 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpResponseContentCoding(lifted171);
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpResponseTransferCoding(lifted171);
                                 break;
                             }
-                            case 33: {
+                            case 32: {
 
-                                lifted189 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpResponseTimeout();
-                                break;
-                            }
-                            case 34: {
-
-                                lifted189 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpUpgradeFailed();
-                                break;
-                            }
-                            case 35: {
-
-                                lifted189 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.httpProtocolError();
-                                break;
-                            }
-                            case 36: {
-
-                                lifted189 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.loopDetected();
-                                break;
-                            }
-                            case 37: {
-
-                                lifted189 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.configurationError();
-                                break;
-                            }
-                            case 38: {
-
-                                string? lifted188;
+                                string? lifted178;
 
                                 switch (new Span<byte>((void*)(ptr + 16), 1)[0]) {
                                     case 0: {
-                                        lifted188 = null;
+                                        lifted178 = null;
                                         break;
                                     }
 
                                     case 1: {
 
-                                        lifted188 = Encoding.UTF8.GetString((byte*)BitConverter.ToInt32(new Span<byte>((void*)(ptr + 20), 4)), BitConverter.ToInt32(new Span<byte>((void*)(ptr + 24), 4)));
+                                        lifted178 = Encoding.UTF8.GetString((byte*)BitConverter.ToInt32(new Span<byte>((void*)(ptr + 20), 4)), BitConverter.ToInt32(new Span<byte>((void*)(ptr + 24), 4)));
                                         break;
                                     }
 
                                     default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 16), 1)[0]));
                                 }
 
-                                lifted189 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_0.ITypes.ErrorCode.internalError(lifted188);
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpResponseContentCoding(lifted178);
+                                break;
+                            }
+                            case 33: {
+
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpResponseTimeout();
+                                break;
+                            }
+                            case 34: {
+
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpUpgradeFailed();
+                                break;
+                            }
+                            case 35: {
+
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.httpProtocolError();
+                                break;
+                            }
+                            case 36: {
+
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.loopDetected();
+                                break;
+                            }
+                            case 37: {
+
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.configurationError();
+                                break;
+                            }
+                            case 38: {
+
+                                string? lifted195;
+
+                                switch (new Span<byte>((void*)(ptr + 16), 1)[0]) {
+                                    case 0: {
+                                        lifted195 = null;
+                                        break;
+                                    }
+
+                                    case 1: {
+
+                                        lifted195 = Encoding.UTF8.GetString((byte*)BitConverter.ToInt32(new Span<byte>((void*)(ptr + 20), 4)), BitConverter.ToInt32(new Span<byte>((void*)(ptr + 24), 4)));
+                                        break;
+                                    }
+
+                                    default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 16), 1)[0]));
+                                }
+
+                                lifted196 = global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode.internalError(lifted195);
                                 break;
                             }
 
                             default: throw new ArgumentException($"invalid discriminant: {new Span<byte>((void*)(ptr + 8), 1)[0]}");
                         }
 
-                        lifted190 = lifted189;
+                        lifted197 = Result<global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.FutureIncomingResponse, global::SpinHttpWorld.wit.imports.wasi.http.v0_2_1.ITypes.ErrorCode>.err(lifted196);
                         break;
                     }
 
-                    default: throw new ArgumentException("invalid discriminant: " + (new Span<byte>((void*)(ptr + 0), 1)[0]));
+                    default: throw new ArgumentException($"invalid discriminant: {new Span<byte>((void*)(ptr + 0), 1)[0]}");
                 }
-                return lifted190;
+                if (lifted197.IsOk) {
+                    var tmp = lifted197.AsOk;
+                    return tmp;
+                } else {
+                    throw new WitException(lifted197.AsErr!, 0);
+                }
             }
 
             //TODO: free alloc handle (interopString) if exists
