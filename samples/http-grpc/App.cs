@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Grpc.Core;
 using Grpc.Net.Client;
 using Spin.Http;
 using SpinHttpWorld.wit.imports.wasi.http.v0_2_1;
@@ -20,14 +21,13 @@ public class IncomingHandlerImpl : IIncomingHandler
 
     static async Task HandleAsync(ITypes.IncomingRequest request, ITypes.ResponseOutparam responseOut)
     {
-        var channel = GrpcChannel.ForAddress("https://localhost:7042", new GrpcChannelOptions
+        var channel = GrpcChannel.ForAddress("http://localhost:5154", new GrpcChannelOptions
         {
             // TODO: remove once System.Net.Sockets support is available
             HttpHandler = new HttpClientHandler()
         });
         var client = new Greeter.GreeterClient(channel);
         var reply = await client.SayHelloAsync(new HelloRequest { Name = "gRPC" });
-        var greeting = $"Hello, {reply.Message}!";
         RequestHandler.Run(
             new RequestHandler.Response(
                 200,
@@ -35,7 +35,7 @@ public class IncomingHandlerImpl : IIncomingHandler
                 {
                     { "content-type", Encoding.UTF8.GetBytes("text/plain") }
                 },
-                Encoding.UTF8.GetBytes(greeting)
+                Encoding.UTF8.GetBytes(reply.Message)
             ).SetAsync(responseOut)
         );
     }
