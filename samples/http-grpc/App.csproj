@@ -21,7 +21,17 @@
 
   <ItemGroup>
     <PackageReference Include="Fermyon.Spin.SDK" Version="0.1.0-dev" />
+    <PackageReference Include="Google.Protobuf" Version="3.28.0" />
+    <PackageReference Include="Grpc.Net.Client" Version="2.65.0" />
+    <PackageReference Include="Grpc.Tools" Version="2.66.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.DotNet.ILCompiler.LLVM" Version="9.0.0-dev" />
     <PackageReference Include="runtime.$(_hostOS)-$(_hostArch).Microsoft.DotNet.ILCompiler.LLVM" Version="9.0.0-dev" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="Protos\greet.proto" GrpcServices="Client" />
   </ItemGroup>
 </Project>
