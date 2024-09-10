@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Grpc.Net.Client;
@@ -18,10 +20,13 @@ public class IncomingHandlerImpl : IIncomingHandler
 
     static async Task HandleAsync(ITypes.IncomingRequest request, ITypes.ResponseOutparam responseOut)
     {
-        using var channel = GrpcChannel.ForAddress("https://localhost:7042");
+        var channel = GrpcChannel.ForAddress("https://localhost:7042", new GrpcChannelOptions
+        {
+            // TODO: remove once System.Net.Sockets support is available
+            HttpHandler = new HttpClientHandler()
+        });
         var client = new Greeter.GreeterClient(channel);
-        var reply = await client.SayHelloAsync(
-                  new HelloRequest { Name = "gRPC" });
+        var reply = await client.SayHelloAsync(new HelloRequest { Name = "gRPC" });
         var greeting = $"Hello, {reply.Message}!";
         RequestHandler.Run(
             new RequestHandler.Response(
