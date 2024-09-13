@@ -19,11 +19,6 @@ public class InputStream : Stream
         this.stream = stream;
     }
 
-    ~InputStream()
-    {
-        Dispose(false);
-    }
-
     public override bool CanRead => true;
     public override bool CanWrite => false;
     public override bool CanSeek => false;
